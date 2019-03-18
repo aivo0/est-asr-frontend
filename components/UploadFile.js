@@ -7,7 +7,6 @@ import Error from "./ErrorMessage";
 
 const UPLOAD_FILE_MUTATION = gql`
   mutation UPLOAD_FILE(
-    $userId: ID!
     $title: String
     $url: String
     $duration: Float
@@ -15,7 +14,6 @@ const UPLOAD_FILE_MUTATION = gql`
     $name: String!
   ) {
     uploadFile(
-      userId: $userId
       title: $title
       url: $url
       duration: $duration
@@ -40,7 +38,6 @@ const UPLOAD_FILE_MUTATION = gql`
 
 class UploadFile extends Component {
   state = {
-    userId: "5c86586e02743900072791a9",
     name: "",
     title: "",
     fileSizeInKB: 0.0,

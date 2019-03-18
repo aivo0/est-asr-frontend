@@ -6,7 +6,7 @@ import File from "./File";
 
 const FILES_BY_USER = gql`
   query FILES_BY_USER {
-    filesByUser(userId: "5c86586e02743900072791a9") {
+    filesByUser {
       id
       name
       fileSizeInKB

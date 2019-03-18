@@ -12,19 +12,29 @@
     "heroku-postbuild": "next build"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "apollo-boost": "^0.3.1",
     "apollo-client": "^2.5.1",
+    "apollo-link-batch-http": "^1.2.11",
+    "apollo-link-http": "^1.5.14",
+    "apollo-link-ws": "^1.0.17",
+    "evergreen-ui": "^4.14.0",
     "graphql-tag": "^2.10.1",
     "next": "^8.0.3",
     "next-with-apollo": "^3.3.2",
     "nprogress": "^0.2.0",
+    "parchment": "^1.1.4",
     "prisma-client-lib": "^1.28.0",
     "prop-types": "^15.7.2",
     "quill": "^1.3.6",
     "react": "^16.8.4",
     "react-apollo": "^2.5.2",
     "react-dom": "^16.8.4",
-    "styled-components": "^4.1.3"
+    "react-quill": "^1.3.3",
+    "react-select": "^2.4.2",
+    "styled-components": "^4.1.3",
+    "subscriptions-transport-ws": "^0.9.16",
+    "wavesurfer.js": "^2.2.0"
   },
   "//": "This is our babel config, could also be put into a .babelrc file",
   "babel": {

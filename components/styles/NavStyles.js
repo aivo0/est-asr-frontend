@@ -1,31 +1,30 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const NavStyles = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
   justify-self: end;
-  font-size: 2rem;
+  font-size: 1.5rem;
   a,
   button {
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     position: relative;
     text-transform: uppercase;
-    font-weight: 900;
-    font-size: 1em;
+    font-size: 1.5rem;
     background: none;
     border: 0;
     cursor: pointer;
     color: ${props => props.theme.black};
     font-weight: 800;
-    @media (max-width: 700px) {
+    @media (max-width: 770px) {
       font-size: 10px;
       padding: 0 10px;
     }
     &:before {
-      content: '';
+      content: "";
       width: 2px;
       background: ${props => props.theme.lightgrey};
       height: 100%;
@@ -38,7 +37,7 @@ const NavStyles = styled.ul`
     &:after {
       height: 2px;
       background: red;
-      content: '';
+      content: "";
       width: 0;
       position: absolute;
       transform: translateX(-50%);
@@ -55,7 +54,7 @@ const NavStyles = styled.ul`
       }
     }
   }
-  @media (max-width: 1300px) {
+  @media (max-width: 950px) {
     border-top: 1px solid ${props => props.theme.lightgrey};
     width: 100%;
     justify-content: center;

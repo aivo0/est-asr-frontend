@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 import { throwServerError } from "apollo-link-http-common";
 import styled from "styled-components";
 import Head from "next/head";
+
 import Error from "./ErrorMessage";
 
 const TranscriberStyles = styled.div`
@@ -42,12 +43,14 @@ class Transcriber extends Component {
             <TranscriberStyles>
               {file.title ? (
                 <Head>
-                  <title> Kõne tekstiks | {file.title} </title>
+                  <title> Heli tekstiks | {file.title} </title>
                 </Head>
               ) : (
                 ""
               )}
-              <h1>Helisalvestist töödeldakse.</h1>
+              <>
+                <h1>Helisalvestist töödeldakse.</h1>
+              </>
             </TranscriberStyles>
           );
         }}
