@@ -6,26 +6,24 @@ import styled from "styled-components";
 import Head from "next/head";
 
 import Error from "./ErrorMessage";
+import EditorAndPlayer from "./EditorAndPlayer";
 
 const TranscriberStyles = styled.div`
-  max-width: 1200px;
+  max-width: ${props => props.theme.maxWidth};
   margin: 2rem auto;
-  box-shadow: ${props => props.theme.bs};
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-flow: column;
-  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
 `;
 
 const FILE_QUERY = gql`
   query FILE_QUERY($fileId: ID!) {
     file(fileId: $fileId) {
       id
-      title
-      text {
-        id
-        state
-      }
+      filename
+      initialTranscription
+      textTitle
+      state
     }
   }
 `;
@@ -41,16 +39,18 @@ class Transcriber extends Component {
           const file = data.file;
           return (
             <TranscriberStyles>
-              {file.title ? (
-                <Head>
-                  <title> Heli tekstiks | {file.title} </title>
-                </Head>
+              {file.initialTranscription ? (
+                <>
+                  <Head>
+                    <title> Heli tekstiks | {file.title} </title>
+                  </Head>
+                  <EditorAndPlayer text={file.initialTranscription} />
+                </>
               ) : (
-                ""
+                <>
+                  <h1>Helisalvestist töödeldakse.</h1>
+                </>
               )}
-              <>
-                <h1>Helisalvestist töödeldakse.</h1>
-              </>
             </TranscriberStyles>
           );
         }}

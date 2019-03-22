@@ -136,53 +136,51 @@ next_router__WEBPACK_IMPORTED_MODULE_4___default.a.onRouteChangeError = function
 var Logo = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.h1.withConfig({
   displayName: "Header__Logo",
   componentId: "sc-2x8yqs-0"
-})(["font-size:3rem;margin-left:2rem;margin-right:2rem;position:relative;z-index:2;transform:skew(-7deg);a{padding:0.5rem 1rem;background:", ";color:white;text-underline-position:uppercase;text-decoration:none;}@media (max-width:600px){margin:0;text-align:center;}"], function (props) {
-  return props.theme.red;
+})(["font-family:\"Monserrat\";font-size:4rem;margin-left:1rem;margin-right:1rem;position:relative;z-index:2;margin-block-start:0;margin-block-end:0;a{padding:0.5rem 1rem;color:", ";text-underline-position:uppercase;text-decoration:none;}@media (max-width:600px){margin:0;text-align:center;}"], function (props) {
+  return props.theme.black;
 });
 var StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.header.withConfig({
   displayName: "Header__StyledHeader",
   componentId: "sc-2x8yqs-1"
-})([".bar{border-bottom:10px solid ", ";display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:600px){grid-template-columns:1fr;justify-content:center;}}"], function (props) {
-  return props.theme.black;
-});
+})([".bar{border-bottom:2px solid rgba(23,42,58,0.1);display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:600px){grid-template-columns:1fr;justify-content:center;}}"]);
 
 var Header = function Header() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 54
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Logo, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 55
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 56
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 57
     },
     __self: this
   }, "Heli tekstiks"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 60
     },
     __self: this
   })));
@@ -412,7 +410,7 @@ __webpack_require__.r(__webpack_exports__);
 var _jsxFileName = "C:\\thesis\\client\\components\\Page.js";
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n  @font-face {\n    font-family: 'radnika_next';\n    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');\n    font-weight: normal;\n    font-style: normal;\n  }\n  html {\n    box-sizing: border-box;\n    font-size: 10px;\n  }\n  *, *:before, *:after {\n    box-sizing: inherit;\n  }\n  body {\n    padding: 0;\n    margin: 0;\n    font-size: 1.5rem;\n    line-height: 2;\n    font-family: 'radnika_next';\n  }\n  a {\n    text-decoration: none;\n    color: ", ";\n  }\n  button {  font-family: 'radnika_next'; }\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n  @font-face {\n    font-family: 'radnika_next';\n    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');\n    font-weight: normal;\n    font-style: normal;\n  }\n  @font-face {\n      font-family: \"Montserrat\" !important;\n      src: url(\"/static/monserrat.woff2\") format(\"woff2\");\n      font-weight: normal;\n      font-style: normal;\n    }\n  html {\n    box-sizing: border-box;\n    font-size: 10px;\n  }\n  *, *:before, *:after {\n    box-sizing: inherit;\n  }\n  body {\n    padding: 0;\n    margin: 0;\n    font-size: 1.5rem;\n    line-height: 2;\n    font-family: 'radnika_next';\n  }\n  a {\n    text-decoration: none;\n    color: ", ";\n  }\n  button {  font-family: 'radnika_next'; }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -430,9 +428,10 @@ var theme = {
   black: "#393939",
   grey: "#3A3A3A",
   lightgrey: "#E1E1E1",
+  backgroundGrey: "#f7f7f7",
   offWhite: "#EDEDED",
   maxWidth: "1000px",
-  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)"
+  bs: "0 12px 12px 12px rgba(0, 0, 0, 0.09)"
 };
 var StyledPage = styled_components__WEBPACK_IMPORTED_MODULE_7___default.a.div.withConfig({
   displayName: "Page__StyledPage",
@@ -466,37 +465,37 @@ function (_Component) {
         theme: theme,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 65
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(StyledPage, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60
+          lineNumber: 67
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(GlobalStyle, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61
+          lineNumber: 68
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Meta__WEBPACK_IMPORTED_MODULE_9__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62
+          lineNumber: 69
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_8__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 70
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Inner, {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 71
         },
         __self: this
       }, this.props.children))));
@@ -686,17 +685,33 @@ var wssEndpoint = "ws://localhost:4000"; //export const prodWssEndpoint = `ws://
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next-with-apollo */ "next-with-apollo");
-/* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_with_apollo__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-boost */ "apollo-boost");
-/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(apollo_boost__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-link */ "apollo-link");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! apollo-link-ws */ "apollo-link-ws");
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apollo-utilities */ "apollo-utilities");
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../config */ "./config.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next-with-apollo */ "next-with-apollo");
+/* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_with_apollo__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-client */ "apollo-client");
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(apollo_client__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! apollo-link */ "apollo-link");
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(apollo_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apollo-link-ws */ "apollo-link-ws");
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(apollo_link_ws__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! apollo-utilities */ "apollo-utilities");
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(apollo_utilities__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config */ "./config.js");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! apollo-cache-inmemory */ "apollo-cache-inmemory");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var apollo_link_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! apollo-link-http */ "apollo-link-http");
+/* harmony import */ var apollo_link_http__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(apollo_link_http__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var apollo_link_error__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! apollo-link-error */ "apollo-link-error");
+/* harmony import */ var apollo_link_error__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(apollo_link_error__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var apollo_upload_client__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! apollo-upload-client */ "apollo-upload-client");
+/* harmony import */ var apollo_upload_client__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(apollo_upload_client__WEBPACK_IMPORTED_MODULE_10__);
+
+
+ //import ApolloClient from "apollo-boost";
+
+
+
 
 
 
@@ -706,42 +721,70 @@ __webpack_require__.r(__webpack_exports__);
 
 function createClient(_ref) {
   var headers = _ref.headers;
-  return new apollo_boost__WEBPACK_IMPORTED_MODULE_1___default.a({
-    uri:  true ? _config__WEBPACK_IMPORTED_MODULE_5__["endpoint"] : undefined,
-    request: function request(operation) {
+
+  /* return new ApolloClient({
+    uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint,
+    request: operation => {
       operation.setContext({
         fetchOptions: {
           credentials: "include"
         },
-        headers: headers
+        headers
       });
-    },
-    // local data
-    clientState: {
-      resolvers: {
-        /* Mutation: {
-          toggleCart(_, variables, { cache }) {
-            // read the cartOpen value from the cache
-            const { cartOpen } = cache.readQuery({
-              query: LOCAL_STATE_QUERY,
-            });
-            // Write the cart State to the opposite
-            const data = {
-              data: { cartOpen: !cartOpen },
-            };
-            cache.writeData(data);
-            return data;
-          },
-        }, */
-      },
-      defaults: {
-        /* cartOpen: false, */
-      }
     }
+  }); */
+  var request = function request(operation) {
+    operation.setContext({
+      fetchOptions: {
+        credentials: "include"
+      },
+      headers: headers
+    });
+  };
+
+  var requestLink = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"](function (operation, forward) {
+    return new apollo_link__WEBPACK_IMPORTED_MODULE_3__["Observable"](function (observer) {
+      var handle;
+
+      _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve(operation).then(function (oper) {
+        return request(oper);
+      }).then(function () {
+        handle = forward(operation).subscribe({
+          next: observer.next.bind(observer),
+          error: observer.error.bind(observer),
+          complete: observer.complete.bind(observer)
+        });
+      }).catch(observer.error.bind(observer));
+
+      return function () {
+        if (handle) handle.unsubscribe();
+      };
+    });
+  });
+  return new apollo_client__WEBPACK_IMPORTED_MODULE_2__["ApolloClient"]({
+    link: apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"].from([Object(apollo_link_error__WEBPACK_IMPORTED_MODULE_9__["onError"])(function (_ref2) {
+      var graphQLErrors = _ref2.graphQLErrors,
+          networkError = _ref2.networkError;
+      if (graphQLErrors) graphQLErrors.map(function (_ref3) {
+        var message = _ref3.message,
+            locations = _ref3.locations,
+            path = _ref3.path;
+        return console.log("[GraphQL error]: Message: ".concat(message, ", Location: ").concat(locations, ", Path: ").concat(path));
+      });
+      if (networkError) console.log("[Network error]: ".concat(networkError));
+    }), requestLink, Object(apollo_upload_client__WEBPACK_IMPORTED_MODULE_10__["createUploadLink"])({
+      uri:  true ? _config__WEBPACK_IMPORTED_MODULE_6__["endpoint"] : undefined
+    })
+    /* new HttpLink({
+      uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint,
+      //credentials: "same-origin"
+    }) */
+    ]),
+    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_7__["InMemoryCache"]()
   });
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (next_with_apollo__WEBPACK_IMPORTED_MODULE_0___default()(createClient));
+/* harmony default export */ __webpack_exports__["default"] = (next_with_apollo__WEBPACK_IMPORTED_MODULE_1___default()(createClient));
 
 /***/ }),
 
@@ -2546,14 +2589,25 @@ module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_
 
 /***/ }),
 
-/***/ "apollo-boost":
-/*!*******************************!*\
-  !*** external "apollo-boost" ***!
-  \*******************************/
+/***/ "apollo-cache-inmemory":
+/*!****************************************!*\
+  !*** external "apollo-cache-inmemory" ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("apollo-boost");
+module.exports = require("apollo-cache-inmemory");
+
+/***/ }),
+
+/***/ "apollo-client":
+/*!********************************!*\
+  !*** external "apollo-client" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-client");
 
 /***/ }),
 
@@ -2568,6 +2622,28 @@ module.exports = require("apollo-link");
 
 /***/ }),
 
+/***/ "apollo-link-error":
+/*!************************************!*\
+  !*** external "apollo-link-error" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-link-error");
+
+/***/ }),
+
+/***/ "apollo-link-http":
+/*!***********************************!*\
+  !*** external "apollo-link-http" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-link-http");
+
+/***/ }),
+
 /***/ "apollo-link-ws":
 /*!*********************************!*\
   !*** external "apollo-link-ws" ***!
@@ -2576,6 +2652,17 @@ module.exports = require("apollo-link");
 /***/ (function(module, exports) {
 
 module.exports = require("apollo-link-ws");
+
+/***/ }),
+
+/***/ "apollo-upload-client":
+/*!***************************************!*\
+  !*** external "apollo-upload-client" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("apollo-upload-client");
 
 /***/ }),
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { speakerArray } from "../lib/loadTranscription";
+//import { speakerArray } from "../lib/loadTranscription";
 import CreatableSelect from "react-select/lib/Creatable";
 
 const createOption = label => ({
@@ -7,7 +7,7 @@ const createOption = label => ({
   value: label.toLowerCase().replace(/\W/g, "")
 });
 
-const speakerOptions = speakerArray.map(createOption);
+const speakerOptions = []; //speakerArray.map(createOption);
 
 const customStyles = {
   container: (provided, state) => ({

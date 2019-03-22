@@ -8,67 +8,17 @@ let BlockEmbed = Quill.import("blots/block/embed");
 let Inline = Quill.import("blots/inline");
 import Speaker from "./Speaker";
 
-function PlayButton(props) {
-  const { className, id } = props;
-
-  const clickHandler = () => {
-    if (
-      window.myWaveSurferPlayer &&
-      window.myWaveSurferPlayer.seekTo &&
-      window.myWaveSurferPlayer.startTime
-    ) {
+function handleClick(e) {
+  //console.log(getOffset(e.target).left, getOffset(e.target).top);
+  if (window.myWaveSurferPlayer) {
+    window.myWaveSurferPlayer.startTime = parseFloat(
+      e.target.getAttribute("href")
+    );
+    console.log(window.myWaveSurferPlayer.startTime);
+    if (window.myWaveSurferPlayer.seekTo) {
       window.myWaveSurferPlayer.seekTo(window.myWaveSurferPlayer.startTime);
     }
-  };
-  return (
-    <button id={id} type="button" className={className} onClick={clickHandler}>
-      Mängi
-    </button>
-  );
-}
-
-const StyledPlayButton = styled(PlayButton)`
-  color: red;
-  position: absolute;
-  z-index: 100;
-  display: none;
-`;
-function getOffset(el) {
-  const rect = el.getBoundingClientRect();
-  return {
-    left: rect.left + window.scrollX,
-    top: rect.top + window.scrollY
-  };
-}
-function handleMouseEnter(e) {
-  //console.log(getOffset(e.target).left, getOffset(e.target).top);
-  const button = document.querySelector("#play-pop-over");
-  if (button) {
-    if (window.myWaveSurferPlayer) {
-      window.myWaveSurferPlayer.startTime = parseFloat(
-        e.target.getAttribute("href")
-      );
-      console.log(window.myWaveSurferPlayer.startTime);
-    }
-    const offsets = getOffset(e.target);
-    button.style.top = offsets.top + 15 + "px";
-    button.style.left = offsets.left + 5 + "px";
-    button.style.display = "block";
   }
-}
-function handleMouseLeave(e) {
-  const button = document.querySelector("#play-pop-over");
-  button.style.display = "none";
-  button.addEventListener(
-    "mouseenter",
-    e => (e.target.style.display = "block"),
-    false
-  );
-  button.addEventListener(
-    "mouseleave",
-    e => (e.target.style.display = "none"),
-    false
-  );
 }
 
 class WordBlot extends Inline {
@@ -78,8 +28,8 @@ class WordBlot extends Inline {
     node.setAttribute("data-start", start);
     node.setAttribute("data-end", end);
     node.setAttribute("data-mode", "link");
-    node.addEventListener("mouseenter", handleMouseEnter, false);
-    node.addEventListener("mouseleave", handleMouseLeave, false);
+    node.addEventListener("click", handleClick, false);
+    //node.addEventListener("mouseleave", handleMouseLeave, false);
     node.setAttribute("target", "_blank");
     return node;
   }
@@ -198,7 +148,6 @@ class Editor extends React.Component {
           }}
           placeholder="Kui kõne on töödeldud, siis ilmub siia kõne transkriptsioon."
         />
-        <StyledPlayButton id="play-pop-over" />
       </>
     );
   }
@@ -217,7 +166,7 @@ const StyledEditor = styled(Editor)`
     margin-left: 10px !important;
   }
   a {
-    color: grey !important;
+    color: ${props => props.theme.lightgrey} !important;
   }
   ::selection {
     background: #f2594b;

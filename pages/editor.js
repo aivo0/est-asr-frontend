@@ -1,9 +1,5 @@
-import EditorAndPlayer from "../components/EditorAndPlayer";
+//import EditorAndPlayer from "../components/EditorAndPlayer";
 
-const Editor = props => (
-  <div>
-    <EditorAndPlayer />
-  </div>
-);
+const Editor = props => <div />;
 
 export default Editor;

@@ -8,13 +8,9 @@ const FILES_BY_USER = gql`
   query FILES_BY_USER {
     filesByUser {
       id
-      name
-      fileSizeInKB
+      filename
+      textTitle
       state
-      text {
-        id
-        state
-      }
     }
   }
 `;

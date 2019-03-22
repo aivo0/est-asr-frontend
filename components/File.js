@@ -21,24 +21,23 @@ export default class Item extends Component {
               query: { id: file.id }
             }}
           >
-            <a>{file.name}</a>
+            <a>{file.filename}</a>
           </Link>
         </Title>
         <>
-          <p>Suurus: {file.fileSizeInKB} kB</p>
           <p>Staatus: {file.state}</p>
-          {file.text ? <p>Text: {file.text.id}</p> : null}
+          {file.textTitle ? <p>Text: {file.textTitle}</p> : null}
         </>
 
         <div className="buttonList">
-          <Link
+          {/* <Link
             href={{
               pathname: "edit",
               query: { id: file.id }
             }}
           >
             <a>Muuda ️️✏️</a>
-          </Link>
+          </Link> */}
           <DeleteFile id={file.id}>Kustuta ❌</DeleteFile>
         </div>
       </FileStyles>

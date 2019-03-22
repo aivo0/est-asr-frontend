@@ -42,53 +42,51 @@ next_router__WEBPACK_IMPORTED_MODULE_4___default.a.onRouteChangeError = function
 var Logo = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].h1.withConfig({
   displayName: "Header__Logo",
   componentId: "sc-2x8yqs-0"
-})(["font-size:3rem;margin-left:2rem;margin-right:2rem;position:relative;z-index:2;transform:skew(-7deg);a{padding:0.5rem 1rem;background:", ";color:white;text-underline-position:uppercase;text-decoration:none;}@media (max-width:600px){margin:0;text-align:center;}"], function (props) {
-  return props.theme.red;
+})(["font-family:\"Monserrat\";font-size:4rem;margin-left:1rem;margin-right:1rem;position:relative;z-index:2;margin-block-start:0;margin-block-end:0;a{padding:0.5rem 1rem;color:", ";text-underline-position:uppercase;text-decoration:none;}@media (max-width:600px){margin:0;text-align:center;}"], function (props) {
+  return props.theme.black;
 });
 var StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].header.withConfig({
   displayName: "Header__StyledHeader",
   componentId: "sc-2x8yqs-1"
-})([".bar{border-bottom:10px solid ", ";display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:600px){grid-template-columns:1fr;justify-content:center;}}"], function (props) {
-  return props.theme.black;
-});
+})([".bar{border-bottom:2px solid rgba(23,42,58,0.1);display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:600px){grid-template-columns:1fr;justify-content:center;}}"]);
 
 var Header = function Header() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 54
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Logo, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 55
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 56
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 57
     },
     __self: this
   }, "Heli tekstiks"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 60
     },
     __self: this
   })));
@@ -317,7 +315,7 @@ __webpack_require__.r(__webpack_exports__);
 var _jsxFileName = "C:\\thesis\\client\\components\\Page.js";
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n  @font-face {\n    font-family: 'radnika_next';\n    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');\n    font-weight: normal;\n    font-style: normal;\n  }\n  html {\n    box-sizing: border-box;\n    font-size: 10px;\n  }\n  *, *:before, *:after {\n    box-sizing: inherit;\n  }\n  body {\n    padding: 0;\n    margin: 0;\n    font-size: 1.5rem;\n    line-height: 2;\n    font-family: 'radnika_next';\n  }\n  a {\n    text-decoration: none;\n    color: ", ";\n  }\n  button {  font-family: 'radnika_next'; }\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n  @font-face {\n    font-family: 'radnika_next';\n    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');\n    font-weight: normal;\n    font-style: normal;\n  }\n  @font-face {\n      font-family: \"Montserrat\" !important;\n      src: url(\"/static/monserrat.woff2\") format(\"woff2\");\n      font-weight: normal;\n      font-style: normal;\n    }\n  html {\n    box-sizing: border-box;\n    font-size: 10px;\n  }\n  *, *:before, *:after {\n    box-sizing: inherit;\n  }\n  body {\n    padding: 0;\n    margin: 0;\n    font-size: 1.5rem;\n    line-height: 2;\n    font-family: 'radnika_next';\n  }\n  a {\n    text-decoration: none;\n    color: ", ";\n  }\n  button {  font-family: 'radnika_next'; }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -335,9 +333,10 @@ var theme = {
   black: "#393939",
   grey: "#3A3A3A",
   lightgrey: "#E1E1E1",
+  backgroundGrey: "#f7f7f7",
   offWhite: "#EDEDED",
   maxWidth: "1000px",
-  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)"
+  bs: "0 12px 12px 12px rgba(0, 0, 0, 0.09)"
 };
 var StyledPage = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div.withConfig({
   displayName: "Page__StyledPage",
@@ -371,37 +370,37 @@ function (_Component) {
         theme: theme,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 65
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(StyledPage, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60
+          lineNumber: 67
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(GlobalStyle, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61
+          lineNumber: 68
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Meta__WEBPACK_IMPORTED_MODULE_9__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62
+          lineNumber: 69
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_8__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63
+          lineNumber: 70
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(Inner, {
+      }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64
+          lineNumber: 71
         },
         __self: this
       }, this.props.children))));
@@ -588,13 +587,26 @@ var wssEndpoint = "ws://localhost:4000"; //export const prodWssEndpoint = `ws://
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next-with-apollo */ "./node_modules/next-with-apollo/lib/index.js");
-/* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_with_apollo__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-boost */ "./node_modules/apollo-boost/lib/bundle.esm.js");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link/lib/bundle.esm.js");
-/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! apollo-link-ws */ "./node_modules/apollo-link-ws/lib/bundle.esm.js");
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apollo-utilities */ "./node_modules/apollo-utilities/lib/bundle.esm.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../config */ "./config.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next-with-apollo */ "./node_modules/next-with-apollo/lib/index.js");
+/* harmony import */ var next_with_apollo__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_with_apollo__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-client */ "./node_modules/apollo-client/bundle.esm.js");
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link/lib/bundle.esm.js");
+/* harmony import */ var apollo_link_ws__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apollo-link-ws */ "./node_modules/apollo-link-ws/lib/bundle.esm.js");
+/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! apollo-utilities */ "./node_modules/apollo-utilities/lib/bundle.esm.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config */ "./config.js");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! apollo-cache-inmemory */ "./node_modules/apollo-cache-inmemory/lib/bundle.esm.js");
+/* harmony import */ var apollo_link_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! apollo-link-http */ "./node_modules/apollo-link-http/lib/bundle.esm.js");
+/* harmony import */ var apollo_link_error__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! apollo-link-error */ "./node_modules/apollo-link-error/lib/bundle.esm.js");
+/* harmony import */ var apollo_upload_client__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! apollo-upload-client */ "./node_modules/apollo-upload-client/lib/index.js");
+/* harmony import */ var apollo_upload_client__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(apollo_upload_client__WEBPACK_IMPORTED_MODULE_10__);
+
+
+ //import ApolloClient from "apollo-boost";
+
+
+
 
 
 
@@ -604,42 +616,70 @@ __webpack_require__.r(__webpack_exports__);
 
 function createClient(_ref) {
   var headers = _ref.headers;
-  return new apollo_boost__WEBPACK_IMPORTED_MODULE_1__["default"]({
-    uri:  true ? _config__WEBPACK_IMPORTED_MODULE_5__["endpoint"] : undefined,
-    request: function request(operation) {
+
+  /* return new ApolloClient({
+    uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint,
+    request: operation => {
       operation.setContext({
         fetchOptions: {
           credentials: "include"
         },
-        headers: headers
+        headers
       });
-    },
-    // local data
-    clientState: {
-      resolvers: {
-        /* Mutation: {
-          toggleCart(_, variables, { cache }) {
-            // read the cartOpen value from the cache
-            const { cartOpen } = cache.readQuery({
-              query: LOCAL_STATE_QUERY,
-            });
-            // Write the cart State to the opposite
-            const data = {
-              data: { cartOpen: !cartOpen },
-            };
-            cache.writeData(data);
-            return data;
-          },
-        }, */
-      },
-      defaults: {
-        /* cartOpen: false, */
-      }
     }
+  }); */
+  var request = function request(operation) {
+    operation.setContext({
+      fetchOptions: {
+        credentials: "include"
+      },
+      headers: headers
+    });
+  };
+
+  var requestLink = new apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"](function (operation, forward) {
+    return new apollo_link__WEBPACK_IMPORTED_MODULE_3__["Observable"](function (observer) {
+      var handle;
+
+      _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve(operation).then(function (oper) {
+        return request(oper);
+      }).then(function () {
+        handle = forward(operation).subscribe({
+          next: observer.next.bind(observer),
+          error: observer.error.bind(observer),
+          complete: observer.complete.bind(observer)
+        });
+      }).catch(observer.error.bind(observer));
+
+      return function () {
+        if (handle) handle.unsubscribe();
+      };
+    });
+  });
+  return new apollo_client__WEBPACK_IMPORTED_MODULE_2__["ApolloClient"]({
+    link: apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"].from([Object(apollo_link_error__WEBPACK_IMPORTED_MODULE_9__["onError"])(function (_ref2) {
+      var graphQLErrors = _ref2.graphQLErrors,
+          networkError = _ref2.networkError;
+      if (graphQLErrors) graphQLErrors.map(function (_ref3) {
+        var message = _ref3.message,
+            locations = _ref3.locations,
+            path = _ref3.path;
+        return console.log("[GraphQL error]: Message: ".concat(message, ", Location: ").concat(locations, ", Path: ").concat(path));
+      });
+      if (networkError) console.log("[Network error]: ".concat(networkError));
+    }), requestLink, Object(apollo_upload_client__WEBPACK_IMPORTED_MODULE_10__["createUploadLink"])({
+      uri:  true ? _config__WEBPACK_IMPORTED_MODULE_6__["endpoint"] : undefined
+    })
+    /* new HttpLink({
+      uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint,
+      //credentials: "same-origin"
+    }) */
+    ]),
+    cache: new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_7__["InMemoryCache"]()
   });
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (next_with_apollo__WEBPACK_IMPORTED_MODULE_0___default()(createClient));
+/* harmony default export */ __webpack_exports__["default"] = (next_with_apollo__WEBPACK_IMPORTED_MODULE_1___default()(createClient));
 
 /***/ }),
 
@@ -1777,278 +1817,6 @@ var unitlessKeys = {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (unitlessKeys);
-
-
-/***/ }),
-
-/***/ "./node_modules/apollo-boost/lib/bundle.esm.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/apollo-boost/lib/bundle.esm.js ***!
-  \*****************************************************/
-/*! exports provided: ApolloClient, ObservableQuery, NetworkStatus, isApolloError, ApolloError, FetchType, Observable, getOperationName, createOperation, makePromise, toPromise, fromPromise, fromError, empty, from, split, concat, ApolloLink, execute, InMemoryCache, defaultDataIdFromObject, StoreReader, assertIdValue, WriteError, enhanceErrorWithDocument, StoreWriter, HeuristicFragmentMatcher, IntrospectionFragmentMatcher, ObjectCache, defaultNormalizedCacheFactory, HttpLink, gql, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var apollo_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-client */ "./node_modules/apollo-client/bundle.esm.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApolloClient", function() { return apollo_client__WEBPACK_IMPORTED_MODULE_1__["ApolloClient"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ObservableQuery", function() { return apollo_client__WEBPACK_IMPORTED_MODULE_1__["ObservableQuery"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NetworkStatus", function() { return apollo_client__WEBPACK_IMPORTED_MODULE_1__["NetworkStatus"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isApolloError", function() { return apollo_client__WEBPACK_IMPORTED_MODULE_1__["isApolloError"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApolloError", function() { return apollo_client__WEBPACK_IMPORTED_MODULE_1__["ApolloError"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FetchType", function() { return apollo_client__WEBPACK_IMPORTED_MODULE_1__["FetchType"]; });
-
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link/lib/bundle.esm.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Observable", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["Observable"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getOperationName", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["getOperationName"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createOperation", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["createOperation"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "makePromise", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["makePromise"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "toPromise", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["toPromise"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fromPromise", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["fromPromise"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "fromError", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["fromError"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "empty", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["empty"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "from", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["from"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "split", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["split"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "concat", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["concat"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApolloLink", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["ApolloLink"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "execute", function() { return apollo_link__WEBPACK_IMPORTED_MODULE_2__["execute"]; });
-
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! apollo-cache-inmemory */ "./node_modules/apollo-cache-inmemory/lib/bundle.esm.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InMemoryCache", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["InMemoryCache"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "defaultDataIdFromObject", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["defaultDataIdFromObject"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StoreReader", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["StoreReader"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "assertIdValue", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["assertIdValue"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "WriteError", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["WriteError"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "enhanceErrorWithDocument", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["enhanceErrorWithDocument"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StoreWriter", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["StoreWriter"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeuristicFragmentMatcher", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["HeuristicFragmentMatcher"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IntrospectionFragmentMatcher", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["IntrospectionFragmentMatcher"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ObjectCache", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["ObjectCache"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "defaultNormalizedCacheFactory", function() { return apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["defaultNormalizedCacheFactory"]; });
-
-/* harmony import */ var apollo_link_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apollo-link-http */ "./node_modules/apollo-link-http/lib/bundle.esm.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HttpLink", function() { return apollo_link_http__WEBPACK_IMPORTED_MODULE_4__["HttpLink"]; });
-
-/* harmony import */ var apollo_link_error__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! apollo-link-error */ "./node_modules/apollo-link-error/lib/bundle.esm.js");
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "gql", function() { return graphql_tag__WEBPACK_IMPORTED_MODULE_6___default.a; });
-/* harmony import */ var ts_invariant__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ts-invariant */ "./node_modules/apollo-boost/node_modules/ts-invariant/lib/invariant.esm.js");
-
-
-
-
-
-
-
-
-
-
-
-
-
-var PRESET_CONFIG_KEYS = [
-    'request',
-    'uri',
-    'credentials',
-    'headers',
-    'fetch',
-    'fetchOptions',
-    'clientState',
-    'onError',
-    'cacheRedirects',
-    'cache',
-    'name',
-    'version',
-    'resolvers',
-    'typeDefs',
-    'fragmentMatcher',
-];
-var DefaultClient = (function (_super) {
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(DefaultClient, _super);
-    function DefaultClient(config) {
-        if (config === void 0) { config = {}; }
-        var _this = this;
-        if (config) {
-            var diff = Object.keys(config).filter(function (key) { return PRESET_CONFIG_KEYS.indexOf(key) === -1; });
-            if (diff.length > 0) {
-                 false || ts_invariant__WEBPACK_IMPORTED_MODULE_7__["invariant"].warn('ApolloBoost was initialized with unsupported options: ' +
-                    ("" + diff.join(' ')));
-            }
-        }
-        var request = config.request, uri = config.uri, credentials = config.credentials, headers = config.headers, fetch = config.fetch, fetchOptions = config.fetchOptions, clientState = config.clientState, cacheRedirects = config.cacheRedirects, errorCallback = config.onError, name = config.name, version = config.version, resolvers = config.resolvers, typeDefs = config.typeDefs, fragmentMatcher = config.fragmentMatcher;
-        var cache = config.cache;
-         false ? undefined : Object(ts_invariant__WEBPACK_IMPORTED_MODULE_7__["invariant"])(!cache || !cacheRedirects, 'Incompatible cache configuration. If providing `cache` then ' +
-            'configure the provided instance with `cacheRedirects` instead.');
-        if (!cache) {
-            cache = cacheRedirects
-                ? new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["InMemoryCache"]({ cacheRedirects: cacheRedirects })
-                : new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_3__["InMemoryCache"]();
-        }
-        var errorLink = errorCallback
-            ? Object(apollo_link_error__WEBPACK_IMPORTED_MODULE_5__["onError"])(errorCallback)
-            : Object(apollo_link_error__WEBPACK_IMPORTED_MODULE_5__["onError"])(function (_a) {
-                var graphQLErrors = _a.graphQLErrors, networkError = _a.networkError;
-                if (graphQLErrors) {
-                    graphQLErrors.map(function (_a) {
-                        var message = _a.message, locations = _a.locations, path = _a.path;
-                        return  false || ts_invariant__WEBPACK_IMPORTED_MODULE_7__["invariant"].warn("[GraphQL error]: Message: " + message + ", Location: " +
-                            (locations + ", Path: " + path));
-                    });
-                }
-                if (networkError) {
-                     false || ts_invariant__WEBPACK_IMPORTED_MODULE_7__["invariant"].warn("[Network error]: " + networkError);
-                }
-            });
-        var requestHandler = request
-            ? new apollo_link__WEBPACK_IMPORTED_MODULE_2__["ApolloLink"](function (operation, forward) {
-                return new apollo_link__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
-                    var handle;
-                    Promise.resolve(operation)
-                        .then(function (oper) { return request(oper); })
-                        .then(function () {
-                        handle = forward(operation).subscribe({
-                            next: observer.next.bind(observer),
-                            error: observer.error.bind(observer),
-                            complete: observer.complete.bind(observer),
-                        });
-                    })
-                        .catch(observer.error.bind(observer));
-                    return function () {
-                        if (handle) {
-                            handle.unsubscribe();
-                        }
-                    };
-                });
-            })
-            : false;
-        var httpLink = new apollo_link_http__WEBPACK_IMPORTED_MODULE_4__["HttpLink"]({
-            uri: uri || '/graphql',
-            fetch: fetch,
-            fetchOptions: fetchOptions || {},
-            credentials: credentials || 'same-origin',
-            headers: headers || {},
-        });
-        var link = apollo_link__WEBPACK_IMPORTED_MODULE_2__["ApolloLink"].from([errorLink, requestHandler, httpLink].filter(function (x) { return !!x; }));
-        var activeResolvers = resolvers;
-        var activeTypeDefs = typeDefs;
-        var activeFragmentMatcher = fragmentMatcher;
-        if (clientState) {
-            if (clientState.defaults) {
-                cache.writeData({
-                    data: clientState.defaults,
-                });
-            }
-            activeResolvers = clientState.resolvers;
-            activeTypeDefs = clientState.typeDefs;
-            activeFragmentMatcher = clientState.fragmentMatcher;
-        }
-        _this = _super.call(this, {
-            cache: cache,
-            link: link,
-            name: name,
-            version: version,
-            resolvers: activeResolvers,
-            typeDefs: activeTypeDefs,
-            fragmentMatcher: activeFragmentMatcher,
-        }) || this;
-        return _this;
-    }
-    return DefaultClient;
-}(apollo_client__WEBPACK_IMPORTED_MODULE_1__["default"]));
-
-/* harmony default export */ __webpack_exports__["default"] = (DefaultClient);
-//# sourceMappingURL=bundle.esm.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/apollo-boost/node_modules/ts-invariant/lib/invariant.esm.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/apollo-boost/node_modules/ts-invariant/lib/invariant.esm.js ***!
-  \**********************************************************************************/
-/*! exports provided: default, InvariantError, invariant */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvariantError", function() { return InvariantError; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "invariant", function() { return invariant; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-
-
-var genericMessage = "Invariant Violation";
-var _a = Object.setPrototypeOf, setPrototypeOf = _a === void 0 ? function (obj, proto) {
-    obj.__proto__ = proto;
-    return obj;
-} : _a;
-var InvariantError = /** @class */ (function (_super) {
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(InvariantError, _super);
-    function InvariantError(message) {
-        if (message === void 0) { message = genericMessage; }
-        var _this = _super.call(this, message) || this;
-        _this.framesToPop = 1;
-        _this.name = genericMessage;
-        setPrototypeOf(_this, InvariantError.prototype);
-        return _this;
-    }
-    return InvariantError;
-}(Error));
-function invariant(condition, message) {
-    if (!condition) {
-        throw new InvariantError(message);
-    }
-}
-(function (invariant) {
-    function warn() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        return console.warn.apply(console, args);
-    }
-    invariant.warn = warn;
-    function error() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        return console.error.apply(console, args);
-    }
-    invariant.error = error;
-})(invariant || (invariant = {}));
-var invariant$1 = invariant;
-
-/* harmony default export */ __webpack_exports__["default"] = (invariant$1);
-
 
 
 /***/ }),
@@ -5771,45 +5539,43 @@ var DedupLink = (function (_super) {
             return forward(operation);
         }
         var key = operation.toKey();
-        var cleanup = function (operationKey) {
-            _this.inFlightRequestObservables.delete(operationKey);
-            var prev = _this.subscribers.get(operationKey);
-            return prev;
-        };
         if (!this.inFlightRequestObservables.get(key)) {
             var singleObserver_1 = forward(operation);
             var subscription_1;
             var sharedObserver = new apollo_link__WEBPACK_IMPORTED_MODULE_1__["Observable"](function (observer) {
-                var prev = _this.subscribers.get(key);
-                if (!prev)
-                    prev = { next: [], error: [], complete: [] };
-                _this.subscribers.set(key, {
-                    next: prev.next.concat([observer.next.bind(observer)]),
-                    error: prev.error.concat([observer.error.bind(observer)]),
-                    complete: prev.complete.concat([observer.complete.bind(observer)]),
-                });
+                if (!_this.subscribers.has(key))
+                    _this.subscribers.set(key, new Set());
+                _this.subscribers.get(key).add(observer);
                 if (!subscription_1) {
                     subscription_1 = singleObserver_1.subscribe({
                         next: function (result) {
-                            var previous = cleanup(key);
+                            var subscribers = _this.subscribers.get(key);
                             _this.subscribers.delete(key);
-                            if (previous) {
-                                previous.next.forEach(function (next) { return next(result); });
-                                previous.complete.forEach(function (complete) { return complete(); });
+                            _this.inFlightRequestObservables.delete(key);
+                            if (subscribers) {
+                                subscribers.forEach(function (obs) { return obs.next(result); });
+                                subscribers.forEach(function (obs) { return obs.complete(); });
                             }
                         },
                         error: function (error) {
-                            var previous = cleanup(key);
+                            var subscribers = _this.subscribers.get(key);
                             _this.subscribers.delete(key);
-                            if (previous)
-                                previous.error.forEach(function (err) { return err(error); });
+                            _this.inFlightRequestObservables.delete(key);
+                            if (subscribers) {
+                                subscribers.forEach(function (obs) { return obs.error(error); });
+                            }
                         },
                     });
                 }
                 return function () {
-                    if (subscription_1)
-                        subscription_1.unsubscribe();
-                    _this.inFlightRequestObservables.delete(key);
+                    if (_this.subscribers.has(key)) {
+                        _this.subscribers.get(key).delete(observer);
+                        if (_this.subscribers.get(key).size === 0) {
+                            _this.inFlightRequestObservables.delete(key);
+                            if (subscription_1)
+                                subscription_1.unsubscribe();
+                        }
+                    }
                 };
             });
             this.inFlightRequestObservables.set(key, sharedObserver);
@@ -5841,7 +5607,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var onError = function (errorHandler) {
+function onError(errorHandler) {
     return new apollo_link__WEBPACK_IMPORTED_MODULE_1__["ApolloLink"](function (operation, forward) {
         return new apollo_link__WEBPACK_IMPORTED_MODULE_1__["Observable"](function (observer) {
             var sub;
@@ -5906,7 +5672,7 @@ var onError = function (errorHandler) {
             };
         });
     });
-};
+}
 var ErrorLink = (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ErrorLink, _super);
     function ErrorLink(errorHandler) {
@@ -5926,173 +5692,10 @@ var ErrorLink = (function (_super) {
 
 /***/ }),
 
-/***/ "./node_modules/apollo-link-http/lib/bundle.esm.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/apollo-link-http/lib/bundle.esm.js ***!
-  \*********************************************************/
-/*! exports provided: createHttpLink, HttpLink */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createHttpLink", function() { return createHttpLink; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpLink", function() { return HttpLink; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link-http/node_modules/apollo-link/lib/bundle.esm.js");
-/* harmony import */ var apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-link-http-common */ "./node_modules/apollo-link-http/node_modules/apollo-link-http-common/lib/bundle.esm.js");
-
-
-
-
-var createHttpLink = function (linkOptions) {
-    if (linkOptions === void 0) { linkOptions = {}; }
-    var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, fetcher = linkOptions.fetch, includeExtensions = linkOptions.includeExtensions, useGETForQueries = linkOptions.useGETForQueries, requestOptions = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"])(linkOptions, ["uri", "fetch", "includeExtensions", "useGETForQueries"]);
-    Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["checkFetcher"])(fetcher);
-    if (!fetcher) {
-        fetcher = fetch;
-    }
-    var linkConfig = {
-        http: { includeExtensions: includeExtensions },
-        options: requestOptions.fetchOptions,
-        credentials: requestOptions.credentials,
-        headers: requestOptions.headers,
-    };
-    return new apollo_link__WEBPACK_IMPORTED_MODULE_1__["ApolloLink"](function (operation) {
-        var chosenURI = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["selectURI"])(operation, uri);
-        var context = operation.getContext();
-        var clientAwarenessHeaders = {};
-        if (context.clientAwareness) {
-            var _a = context.clientAwareness, name_1 = _a.name, version = _a.version;
-            if (name_1) {
-                clientAwarenessHeaders['apollographql-client-name'] = name_1;
-            }
-            if (version) {
-                clientAwarenessHeaders['apollographql-client-version'] = version;
-            }
-        }
-        var contextHeaders = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"])({}, clientAwarenessHeaders, context.headers);
-        var contextConfig = {
-            http: context.http,
-            options: context.fetchOptions,
-            credentials: context.credentials,
-            headers: contextHeaders,
-        };
-        var _b = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["selectHttpOptionsAndBody"])(operation, apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["fallbackHttpConfig"], linkConfig, contextConfig), options = _b.options, body = _b.body;
-        var controller;
-        if (!options.signal) {
-            var _c = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["createSignalIfSupported"])(), _controller = _c.controller, signal = _c.signal;
-            controller = _controller;
-            if (controller)
-                options.signal = signal;
-        }
-        var definitionIsMutation = function (d) {
-            return d.kind === 'OperationDefinition' && d.operation === 'mutation';
-        };
-        if (useGETForQueries &&
-            !operation.query.definitions.some(definitionIsMutation)) {
-            options.method = 'GET';
-        }
-        if (options.method === 'GET') {
-            var _d = rewriteURIForGET(chosenURI, body), newURI = _d.newURI, parseError = _d.parseError;
-            if (parseError) {
-                return Object(apollo_link__WEBPACK_IMPORTED_MODULE_1__["fromError"])(parseError);
-            }
-            chosenURI = newURI;
-        }
-        else {
-            try {
-                options.body = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["serializeFetchParameter"])(body, 'Payload');
-            }
-            catch (parseError) {
-                return Object(apollo_link__WEBPACK_IMPORTED_MODULE_1__["fromError"])(parseError);
-            }
-        }
-        return new apollo_link__WEBPACK_IMPORTED_MODULE_1__["Observable"](function (observer) {
-            fetcher(chosenURI, options)
-                .then(function (response) {
-                operation.setContext({ response: response });
-                return response;
-            })
-                .then(Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["parseAndCheckHttpResponse"])(operation))
-                .then(function (result) {
-                observer.next(result);
-                observer.complete();
-                return result;
-            })
-                .catch(function (err) {
-                if (err.name === 'AbortError')
-                    return;
-                if (err.result && err.result.errors && err.result.data) {
-                    observer.next(err.result);
-                }
-                observer.error(err);
-            });
-            return function () {
-                if (controller)
-                    controller.abort();
-            };
-        });
-    });
-};
-function rewriteURIForGET(chosenURI, body) {
-    var queryParams = [];
-    var addQueryParam = function (key, value) {
-        queryParams.push(key + "=" + encodeURIComponent(value));
-    };
-    if ('query' in body) {
-        addQueryParam('query', body.query);
-    }
-    if (body.operationName) {
-        addQueryParam('operationName', body.operationName);
-    }
-    if (body.variables) {
-        var serializedVariables = void 0;
-        try {
-            serializedVariables = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["serializeFetchParameter"])(body.variables, 'Variables map');
-        }
-        catch (parseError) {
-            return { parseError: parseError };
-        }
-        addQueryParam('variables', serializedVariables);
-    }
-    if (body.extensions) {
-        var serializedExtensions = void 0;
-        try {
-            serializedExtensions = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["serializeFetchParameter"])(body.extensions, 'Extensions map');
-        }
-        catch (parseError) {
-            return { parseError: parseError };
-        }
-        addQueryParam('extensions', serializedExtensions);
-    }
-    var fragment = '', preFragment = chosenURI;
-    var fragmentStart = chosenURI.indexOf('#');
-    if (fragmentStart !== -1) {
-        fragment = chosenURI.substr(fragmentStart);
-        preFragment = chosenURI.substr(0, fragmentStart);
-    }
-    var queryParamsPrefix = preFragment.indexOf('?') === -1 ? '?' : '&';
-    var newURI = preFragment + queryParamsPrefix + queryParams.join('&') + fragment;
-    return { newURI: newURI };
-}
-var HttpLink = (function (_super) {
-    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(HttpLink, _super);
-    function HttpLink(opts) {
-        return _super.call(this, createHttpLink(opts).request) || this;
-    }
-    return HttpLink;
-}(apollo_link__WEBPACK_IMPORTED_MODULE_1__["ApolloLink"]));
-
-
-//# sourceMappingURL=bundle.esm.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/apollo-link-http/node_modules/apollo-link-http-common/lib/bundle.esm.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/apollo-link-http/node_modules/apollo-link-http-common/lib/bundle.esm.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/apollo-link-http-common/lib/bundle.esm.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/apollo-link-http-common/lib/bundle.esm.js ***!
+  \****************************************************************/
 /*! exports provided: fallbackHttpConfig, throwServerError, parseAndCheckHttpResponse, checkFetcher, createSignalIfSupported, selectHttpOptionsAndBody, serializeFetchParameter, selectURI */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6238,247 +5841,163 @@ var selectURI = function (operation, fallbackURI) {
 
 /***/ }),
 
-/***/ "./node_modules/apollo-link-http/node_modules/apollo-link/lib/bundle.esm.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/apollo-link-http/node_modules/apollo-link/lib/bundle.esm.js ***!
-  \**********************************************************************************/
-/*! exports provided: Observable, getOperationName, createOperation, makePromise, toPromise, fromPromise, fromError, empty, from, split, concat, ApolloLink, execute */
+/***/ "./node_modules/apollo-link-http/lib/bundle.esm.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/apollo-link-http/lib/bundle.esm.js ***!
+  \*********************************************************/
+/*! exports provided: createHttpLink, HttpLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createOperation", function() { return createOperation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "makePromise", function() { return makePromise; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toPromise", function() { return toPromise; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromPromise", function() { return fromPromise; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fromError", function() { return fromError; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "empty", function() { return empty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "from", function() { return from; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "split", function() { return split; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "concat", function() { return concat; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApolloLink", function() { return ApolloLink; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "execute", function() { return execute; });
-/* harmony import */ var zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zen-observable-ts */ "./node_modules/apollo-link-http/node_modules/zen-observable-ts/lib/bundle.esm.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Observable", function() { return zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-/* harmony import */ var ts_invariant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ts-invariant */ "./node_modules/ts-invariant/lib/invariant.esm.js");
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var graphql_language_printer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! graphql/language/printer */ "./node_modules/graphql/language/printer.mjs");
-/* harmony import */ var apollo_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! apollo-utilities */ "./node_modules/apollo-utilities/lib/bundle.esm.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getOperationName", function() { return apollo_utilities__WEBPACK_IMPORTED_MODULE_4__["getOperationName"]; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createHttpLink", function() { return createHttpLink; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpLink", function() { return HttpLink; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var apollo_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link/lib/bundle.esm.js");
+/* harmony import */ var apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apollo-link-http-common */ "./node_modules/apollo-link-http-common/lib/bundle.esm.js");
 
 
 
 
-
-
-
-
-
-function validateOperation(operation) {
-    var OPERATION_FIELDS = [
-        'query',
-        'operationName',
-        'variables',
-        'extensions',
-        'context',
-    ];
-    for (var _i = 0, _a = Object.keys(operation); _i < _a.length; _i++) {
-        var key = _a[_i];
-        if (OPERATION_FIELDS.indexOf(key) < 0) {
-            throw  false ? undefined : new ts_invariant__WEBPACK_IMPORTED_MODULE_1__["InvariantError"]("illegal argument: " + key);
-        }
+var createHttpLink = function (linkOptions) {
+    if (linkOptions === void 0) { linkOptions = {}; }
+    var _a = linkOptions.uri, uri = _a === void 0 ? '/graphql' : _a, fetcher = linkOptions.fetch, includeExtensions = linkOptions.includeExtensions, useGETForQueries = linkOptions.useGETForQueries, requestOptions = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"])(linkOptions, ["uri", "fetch", "includeExtensions", "useGETForQueries"]);
+    Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["checkFetcher"])(fetcher);
+    if (!fetcher) {
+        fetcher = fetch;
     }
-    return operation;
-}
-var LinkError = (function (_super) {
-    Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__extends"])(LinkError, _super);
-    function LinkError(message, link) {
-        var _this = _super.call(this, message) || this;
-        _this.link = link;
-        return _this;
-    }
-    return LinkError;
-}(Error));
-function isTerminating(link) {
-    return link.request.length <= 1;
-}
-function toPromise(observable) {
-    var completed = false;
-    return new Promise(function (resolve, reject) {
-        observable.subscribe({
-            next: function (data) {
-                if (completed) {
-                     false || ts_invariant__WEBPACK_IMPORTED_MODULE_1__["invariant"].warn("Promise Wrapper does not support multiple results from Observable");
-                }
-                else {
-                    completed = true;
-                    resolve(data);
-                }
-            },
-            error: reject,
-        });
-    });
-}
-var makePromise = toPromise;
-function fromPromise(promise) {
-    return new zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"](function (observer) {
-        promise
-            .then(function (value) {
-            observer.next(value);
-            observer.complete();
-        })
-            .catch(observer.error.bind(observer));
-    });
-}
-function fromError(errorValue) {
-    return new zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"](function (observer) {
-        observer.error(errorValue);
-    });
-}
-function transformOperation(operation) {
-    var transformedOperation = {
-        variables: operation.variables || {},
-        extensions: operation.extensions || {},
-        operationName: operation.operationName,
-        query: operation.query,
+    var linkConfig = {
+        http: { includeExtensions: includeExtensions },
+        options: requestOptions.fetchOptions,
+        credentials: requestOptions.credentials,
+        headers: requestOptions.headers,
     };
-    if (!transformedOperation.operationName) {
-        transformedOperation.operationName =
-            typeof transformedOperation.query !== 'string'
-                ? Object(apollo_utilities__WEBPACK_IMPORTED_MODULE_4__["getOperationName"])(transformedOperation.query)
-                : '';
-    }
-    return transformedOperation;
-}
-function createOperation(starting, operation) {
-    var context = Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__assign"])({}, starting);
-    var setContext = function (next) {
-        if (typeof next === 'function') {
-            context = Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__assign"])({}, context, next(context));
+    return new apollo_link__WEBPACK_IMPORTED_MODULE_1__["ApolloLink"](function (operation) {
+        var chosenURI = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["selectURI"])(operation, uri);
+        var context = operation.getContext();
+        var clientAwarenessHeaders = {};
+        if (context.clientAwareness) {
+            var _a = context.clientAwareness, name_1 = _a.name, version = _a.version;
+            if (name_1) {
+                clientAwarenessHeaders['apollographql-client-name'] = name_1;
+            }
+            if (version) {
+                clientAwarenessHeaders['apollographql-client-version'] = version;
+            }
+        }
+        var contextHeaders = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"])({}, clientAwarenessHeaders, context.headers);
+        var contextConfig = {
+            http: context.http,
+            options: context.fetchOptions,
+            credentials: context.credentials,
+            headers: contextHeaders,
+        };
+        var _b = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["selectHttpOptionsAndBody"])(operation, apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["fallbackHttpConfig"], linkConfig, contextConfig), options = _b.options, body = _b.body;
+        var controller;
+        if (!options.signal) {
+            var _c = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["createSignalIfSupported"])(), _controller = _c.controller, signal = _c.signal;
+            controller = _controller;
+            if (controller)
+                options.signal = signal;
+        }
+        var definitionIsMutation = function (d) {
+            return d.kind === 'OperationDefinition' && d.operation === 'mutation';
+        };
+        if (useGETForQueries &&
+            !operation.query.definitions.some(definitionIsMutation)) {
+            options.method = 'GET';
+        }
+        if (options.method === 'GET') {
+            var _d = rewriteURIForGET(chosenURI, body), newURI = _d.newURI, parseError = _d.parseError;
+            if (parseError) {
+                return Object(apollo_link__WEBPACK_IMPORTED_MODULE_1__["fromError"])(parseError);
+            }
+            chosenURI = newURI;
         }
         else {
-            context = Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__assign"])({}, context, next);
+            try {
+                options.body = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["serializeFetchParameter"])(body, 'Payload');
+            }
+            catch (parseError) {
+                return Object(apollo_link__WEBPACK_IMPORTED_MODULE_1__["fromError"])(parseError);
+            }
         }
-    };
-    var getContext = function () { return (Object(tslib__WEBPACK_IMPORTED_MODULE_2__["__assign"])({}, context)); };
-    Object.defineProperty(operation, 'setContext', {
-        enumerable: false,
-        value: setContext,
+        return new apollo_link__WEBPACK_IMPORTED_MODULE_1__["Observable"](function (observer) {
+            fetcher(chosenURI, options)
+                .then(function (response) {
+                operation.setContext({ response: response });
+                return response;
+            })
+                .then(Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["parseAndCheckHttpResponse"])(operation))
+                .then(function (result) {
+                observer.next(result);
+                observer.complete();
+                return result;
+            })
+                .catch(function (err) {
+                if (err.name === 'AbortError')
+                    return;
+                if (err.result && err.result.errors && err.result.data) {
+                    observer.next(err.result);
+                }
+                observer.error(err);
+            });
+            return function () {
+                if (controller)
+                    controller.abort();
+            };
+        });
     });
-    Object.defineProperty(operation, 'getContext', {
-        enumerable: false,
-        value: getContext,
-    });
-    Object.defineProperty(operation, 'toKey', {
-        enumerable: false,
-        value: function () { return getKey(operation); },
-    });
-    return operation;
-}
-function getKey(operation) {
-    return Object(graphql_language_printer__WEBPACK_IMPORTED_MODULE_3__["print"])(operation.query) + "|" + JSON.stringify(operation.variables) + "|" + operation.operationName;
-}
-
-function passthrough(op, forward) {
-    return forward ? forward(op) : zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
-}
-function toLink(handler) {
-    return typeof handler === 'function' ? new ApolloLink(handler) : handler;
-}
-function empty() {
-    return new ApolloLink(function () { return zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of(); });
-}
-function from(links) {
-    if (links.length === 0)
-        return empty();
-    return links.map(toLink).reduce(function (x, y) { return x.concat(y); });
-}
-function split(test, left, right) {
-    var leftLink = toLink(left);
-    var rightLink = toLink(right || new ApolloLink(passthrough));
-    if (isTerminating(leftLink) && isTerminating(rightLink)) {
-        return new ApolloLink(function (operation) {
-            return test(operation)
-                ? leftLink.request(operation) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of()
-                : rightLink.request(operation) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
-        });
-    }
-    else {
-        return new ApolloLink(function (operation, forward) {
-            return test(operation)
-                ? leftLink.request(operation, forward) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of()
-                : rightLink.request(operation, forward) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
-        });
-    }
-}
-var concat = function (first, second) {
-    var firstLink = toLink(first);
-    if (isTerminating(firstLink)) {
-         false || ts_invariant__WEBPACK_IMPORTED_MODULE_1__["invariant"].warn(new LinkError("You are calling concat on a terminating link, which will have no effect", firstLink));
-        return firstLink;
-    }
-    var nextLink = toLink(second);
-    if (isTerminating(nextLink)) {
-        return new ApolloLink(function (operation) {
-            return firstLink.request(operation, function (op) { return nextLink.request(op) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of(); }) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
-        });
-    }
-    else {
-        return new ApolloLink(function (operation, forward) {
-            return (firstLink.request(operation, function (op) {
-                return nextLink.request(op, forward) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of();
-            }) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of());
-        });
-    }
 };
-var ApolloLink = (function () {
-    function ApolloLink(request) {
-        if (request)
-            this.request = request;
+function rewriteURIForGET(chosenURI, body) {
+    var queryParams = [];
+    var addQueryParam = function (key, value) {
+        queryParams.push(key + "=" + encodeURIComponent(value));
+    };
+    if ('query' in body) {
+        addQueryParam('query', body.query);
     }
-    ApolloLink.prototype.split = function (test, left, right) {
-        return this.concat(split(test, left, right || new ApolloLink(passthrough)));
-    };
-    ApolloLink.prototype.concat = function (next) {
-        return concat(this, next);
-    };
-    ApolloLink.prototype.request = function (operation, forward) {
-        throw  false ? undefined : new ts_invariant__WEBPACK_IMPORTED_MODULE_1__["InvariantError"]('request is not implemented');
-    };
-    ApolloLink.empty = empty;
-    ApolloLink.from = from;
-    ApolloLink.split = split;
-    ApolloLink.execute = execute;
-    return ApolloLink;
-}());
-function execute(link, operation) {
-    return (link.request(createOperation(operation.context, transformOperation(validateOperation(operation)))) || zen_observable_ts__WEBPACK_IMPORTED_MODULE_0__["default"].of());
+    if (body.operationName) {
+        addQueryParam('operationName', body.operationName);
+    }
+    if (body.variables) {
+        var serializedVariables = void 0;
+        try {
+            serializedVariables = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["serializeFetchParameter"])(body.variables, 'Variables map');
+        }
+        catch (parseError) {
+            return { parseError: parseError };
+        }
+        addQueryParam('variables', serializedVariables);
+    }
+    if (body.extensions) {
+        var serializedExtensions = void 0;
+        try {
+            serializedExtensions = Object(apollo_link_http_common__WEBPACK_IMPORTED_MODULE_2__["serializeFetchParameter"])(body.extensions, 'Extensions map');
+        }
+        catch (parseError) {
+            return { parseError: parseError };
+        }
+        addQueryParam('extensions', serializedExtensions);
+    }
+    var fragment = '', preFragment = chosenURI;
+    var fragmentStart = chosenURI.indexOf('#');
+    if (fragmentStart !== -1) {
+        fragment = chosenURI.substr(fragmentStart);
+        preFragment = chosenURI.substr(0, fragmentStart);
+    }
+    var queryParamsPrefix = preFragment.indexOf('?') === -1 ? '?' : '&';
+    var newURI = preFragment + queryParamsPrefix + queryParams.join('&') + fragment;
+    return { newURI: newURI };
 }
+var HttpLink = (function (_super) {
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(HttpLink, _super);
+    function HttpLink(opts) {
+        return _super.call(this, createHttpLink(opts).request) || this;
+    }
+    return HttpLink;
+}(apollo_link__WEBPACK_IMPORTED_MODULE_1__["ApolloLink"]));
 
-
-//# sourceMappingURL=bundle.esm.js.map
-
-
-/***/ }),
-
-/***/ "./node_modules/apollo-link-http/node_modules/zen-observable-ts/lib/bundle.esm.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/apollo-link-http/node_modules/zen-observable-ts/lib/bundle.esm.js ***!
-  \****************************************************************************************/
-/*! exports provided: default, Observable */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Observable", function() { return Observable; });
-/* harmony import */ var zen_observable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zen-observable */ "./node_modules/zen-observable/index.js");
-/* harmony import */ var zen_observable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(zen_observable__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var Observable = zen_observable__WEBPACK_IMPORTED_MODULE_0___default.a;
-
-/* harmony default export */ __webpack_exports__["default"] = (Observable);
 
 //# sourceMappingURL=bundle.esm.js.map
 
@@ -6994,6 +6513,129 @@ function execute(link, operation) {
 
 
 //# sourceMappingURL=bundle.esm.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/apollo-upload-client/lib/index.js":
+/*!********************************************************!*\
+  !*** ./node_modules/apollo-upload-client/lib/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _require = __webpack_require__(/*! apollo-link */ "./node_modules/apollo-link/lib/bundle.esm.js"),
+  ApolloLink = _require.ApolloLink,
+  Observable = _require.Observable
+
+var _require2 = __webpack_require__(/*! apollo-link-http-common */ "./node_modules/apollo-link-http-common/lib/bundle.esm.js"),
+  selectURI = _require2.selectURI,
+  selectHttpOptionsAndBody = _require2.selectHttpOptionsAndBody,
+  fallbackHttpConfig = _require2.fallbackHttpConfig,
+  serializeFetchParameter = _require2.serializeFetchParameter,
+  createSignalIfSupported = _require2.createSignalIfSupported,
+  parseAndCheckHttpResponse = _require2.parseAndCheckHttpResponse
+
+var _require3 = __webpack_require__(/*! extract-files */ "./node_modules/extract-files/lib/index.mjs"),
+  extractFiles = _require3.extractFiles,
+  ReactNativeFile = _require3.ReactNativeFile
+
+exports.ReactNativeFile = ReactNativeFile
+
+exports.createUploadLink = function(_temp) {
+  var _ref = _temp === void 0 ? {} : _temp,
+    _ref$uri = _ref.uri,
+    fetchUri = _ref$uri === void 0 ? '/graphql' : _ref$uri,
+    _ref$fetch = _ref.fetch,
+    linkFetch = _ref$fetch === void 0 ? fetch : _ref$fetch,
+    fetchOptions = _ref.fetchOptions,
+    credentials = _ref.credentials,
+    headers = _ref.headers,
+    includeExtensions = _ref.includeExtensions
+
+  var linkConfig = {
+    http: {
+      includeExtensions: includeExtensions
+    },
+    options: fetchOptions,
+    credentials: credentials,
+    headers: headers
+  }
+  return new ApolloLink(function(operation) {
+    var uri = selectURI(operation, fetchUri)
+    var context = operation.getContext()
+    var contextConfig = {
+      http: context.http,
+      options: context.fetchOptions,
+      credentials: context.credentials,
+      headers: context.headers
+    }
+
+    var _selectHttpOptionsAnd = selectHttpOptionsAndBody(
+        operation,
+        fallbackHttpConfig,
+        linkConfig,
+        contextConfig
+      ),
+      options = _selectHttpOptionsAnd.options,
+      body = _selectHttpOptionsAnd.body
+
+    var _extractFiles = extractFiles(body),
+      clone = _extractFiles.clone,
+      files = _extractFiles.files
+
+    var payload = serializeFetchParameter(clone, 'Payload')
+
+    if (files.size) {
+      delete options.headers['content-type']
+      var form = new FormData()
+      form.append('operations', payload)
+      var map = {}
+      var i = 0
+      files.forEach(function(paths) {
+        map[++i] = paths
+      })
+      form.append('map', JSON.stringify(map))
+      i = 0
+      files.forEach(function(paths, file) {
+        form.append(++i, file, file.name)
+      })
+      options.body = form
+    } else options.body = payload
+
+    return new Observable(function(observer) {
+      var _createSignalIfSuppor = createSignalIfSupported(),
+        controller = _createSignalIfSuppor.controller,
+        signal = _createSignalIfSuppor.signal
+
+      if (controller) options.signal = signal
+      linkFetch(uri, options)
+        .then(function(response) {
+          operation.setContext({
+            response: response
+          })
+          return response
+        })
+        .then(parseAndCheckHttpResponse(operation))
+        .then(function(result) {
+          observer.next(result)
+          observer.complete()
+        })
+        .catch(function(error) {
+          if (error.name === 'AbortError') return
+          if (error.result && error.result.errors && error.result.data)
+            observer.next(error.result)
+          observer.error(error)
+        })
+      return function() {
+        if (controller) controller.abort()
+      }
+    })
+  })
+}
 
 
 /***/ }),
@@ -12302,6 +11944,115 @@ EventEmitter.EventEmitter = EventEmitter;
 if (true) {
   module.exports = EventEmitter;
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/extract-files/lib/ReactNativeFile.mjs":
+/*!************************************************************!*\
+  !*** ./node_modules/extract-files/lib/ReactNativeFile.mjs ***!
+  \************************************************************/
+/*! exports provided: ReactNativeFile */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReactNativeFile", function() { return ReactNativeFile; });
+var ReactNativeFile = function ReactNativeFile(_ref) {
+  var uri = _ref.uri,
+    name = _ref.name,
+    type = _ref.type
+  this.uri = uri
+  this.name = name
+  this.type = type
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/extract-files/lib/extractFiles.mjs":
+/*!*********************************************************!*\
+  !*** ./node_modules/extract-files/lib/extractFiles.mjs ***!
+  \*********************************************************/
+/*! exports provided: extractFiles */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "extractFiles", function() { return extractFiles; });
+/* harmony import */ var _ReactNativeFile__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReactNativeFile */ "./node_modules/extract-files/lib/ReactNativeFile.mjs");
+
+function extractFiles(value, path) {
+  if (path === void 0) {
+    path = ''
+  }
+
+  var clone
+  var files = new Map()
+
+  function addFile(paths, file) {
+    var storedPaths = files.get(file)
+    if (storedPaths) storedPaths.push.apply(storedPaths, paths)
+    else files.set(file, paths)
+  }
+
+  if (
+    (typeof File !== 'undefined' && value instanceof File) ||
+    (typeof Blob !== 'undefined' && value instanceof Blob) ||
+    value instanceof _ReactNativeFile__WEBPACK_IMPORTED_MODULE_0__["ReactNativeFile"]
+  ) {
+    clone = null
+    addFile([path], value)
+  } else {
+    var prefix = path ? path + '.' : ''
+    if (typeof FileList !== 'undefined' && value instanceof FileList)
+      clone = Array.prototype.map.call(value, function(file, i) {
+        addFile(['' + prefix + i], file)
+        return null
+      })
+    else if (Array.isArray(value))
+      clone = value.map(function(child, i) {
+        var result = extractFiles(child, '' + prefix + i)
+        result.files.forEach(addFile)
+        return result.clone
+      })
+    else if (value && value.constructor === Object) {
+      clone = {}
+
+      for (var i in value) {
+        var result = extractFiles(value[i], '' + prefix + i)
+        result.files.forEach(addFile)
+        clone[i] = result.clone
+      }
+    } else clone = value
+  }
+
+  return {
+    clone: clone,
+    files: files
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/extract-files/lib/index.mjs":
+/*!**************************************************!*\
+  !*** ./node_modules/extract-files/lib/index.mjs ***!
+  \**************************************************/
+/*! exports provided: extractFiles, ReactNativeFile */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _extractFiles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./extractFiles */ "./node_modules/extract-files/lib/extractFiles.mjs");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "extractFiles", function() { return _extractFiles__WEBPACK_IMPORTED_MODULE_0__["extractFiles"]; });
+
+/* harmony import */ var _ReactNativeFile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReactNativeFile */ "./node_modules/extract-files/lib/ReactNativeFile.mjs");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ReactNativeFile", function() { return _ReactNativeFile__WEBPACK_IMPORTED_MODULE_1__["ReactNativeFile"]; });
+
+
+
 
 
 /***/ }),

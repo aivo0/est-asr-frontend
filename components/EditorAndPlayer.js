@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
 import Transcriber from "./Transcriber";
-import { html, speakerArray } from "../lib/loadTranscription";
+import loadHtml from "../lib/loadTranscription";
 
 const Editor = dynamic(() => import("./Editor"), {
   ssr: false
@@ -24,24 +24,27 @@ const StyledPlayer = styled.div`
 const PageContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
-  height: 100vh;
 `;
 
 const EditorContainer = styled.div`
   margin-bottom: 200px;
+  background: white;
+  box-shadow: ${props => props.theme.bs};
 `;
 
-function EditorAndPlayer() {
+function EditorAndPlayer({ text }) {
   const player = useRef(null);
   const editor = useRef(null);
   useEffect(() => {
     console.log(player);
     console.log(editor);
   });
+  //console.log(text);
+  const { generatedHtml, speakerArray } = loadHtml(text).html;
   return (
     <PageContainer>
       <EditorContainer>
-        <Editor html={html} speakers={speakerArray} ref={editor} />
+        <Editor html={generatedHtml} speakers={speakerArray} ref={editor} />
       </EditorContainer>
       <StyledPlayer>
         <Player

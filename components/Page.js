@@ -8,9 +8,10 @@ const theme = {
   black: "#393939",
   grey: "#3A3A3A",
   lightgrey: "#E1E1E1",
+  backgroundGrey: "#f7f7f7",
   offWhite: "#EDEDED",
   maxWidth: "1000px",
-  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)"
+  bs: "0 12px 12px 12px rgba(0, 0, 0, 0.09)"
 };
 
 const StyledPage = styled.div`
@@ -31,6 +32,12 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
+  @font-face {
+      font-family: "Montserrat" !important;
+      src: url("/static/monserrat.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+    }
   html {
     box-sizing: border-box;
     font-size: 10px;
@@ -61,7 +68,7 @@ export default class Page extends Component {
             <GlobalStyle />
             <Meta />
             <Header />
-            <Inner>{this.props.children}</Inner>
+            <div>{this.props.children}</div>
           </StyledPage>
         </>
       </ThemeProvider>
