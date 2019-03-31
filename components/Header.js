@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Icon } from "evergreen-ui";
 import NProgress from "nprogress";
 import Link from "next/link";
 import Router from "next/router";
@@ -17,7 +18,6 @@ Router.onRouteChangeError = () => {
 const Logo = styled.h1`
   font-family: "Monserrat";
   font-size: 4rem;
-  margin-left: 1rem;
   margin-right: 1rem;
   position: relative;
   z-index: 2;
@@ -33,6 +33,11 @@ const Logo = styled.h1`
     margin: 0;
     text-align: center;
   }
+`;
+
+const InnerContainer = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const StyledHeader = styled.header`
@@ -54,7 +59,10 @@ const Header = () => (
     <div className="bar">
       <Logo>
         <Link href="/">
-          <a>Heli tekstiks</a>
+          <InnerContainer>
+            <Icon icon="pulse" size={50} color="danger" marginLeft={10} />
+            <a>Heli tekstiks</a>
+          </InnerContainer>
         </Link>
       </Logo>
       <Nav />

@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 import { throwServerError } from "apollo-link-http-common";
 import styled from "styled-components";
 import Head from "next/head";
+import "react-quill/dist/quill.snow.css";
 
 import Error from "./ErrorMessage";
 import EditorAndPlayer from "./EditorAndPlayer";
@@ -42,7 +43,7 @@ class Transcriber extends Component {
               {file.initialTranscription ? (
                 <>
                   <Head>
-                    <title> Heli tekstiks | {file.title} </title>
+                    <title> Heli tekstiks | {file.filename} </title>
                   </Head>
                   <EditorAndPlayer text={file.initialTranscription} />
                 </>

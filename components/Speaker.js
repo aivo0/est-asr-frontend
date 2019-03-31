@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import Dropdown from "./Dropdown";
+import Rename from "./Rename";
 
 const StyledSpeakers = styled.div`
   display: flex;
   align-items: center;
+  z-index: 10;
   a {
     margin-left: 10px;
   }
@@ -15,14 +17,16 @@ const StyledHr = styled.hr`
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 `;
 
-const Speaker = (id, node) => (
-  <>
-    <StyledSpeakers data-id={id.id}>
-      <Dropdown initialSpeaker={id.id} />
-      <a href="">Muuda nime</a>
-    </StyledSpeakers>
-    <StyledHr />
-  </>
-);
+function Speaker(props) {
+  return (
+    <>
+      <StyledSpeakers>
+        <Dropdown initial={props.initial} />
+        <Rename speaker={"test"} />
+      </StyledSpeakers>
+      <StyledHr />
+    </>
+  );
+}
 
 export default Speaker;

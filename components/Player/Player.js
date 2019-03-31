@@ -53,10 +53,113 @@ const getRegions = (editorState, entityType = null) => {
   return regions;
 };
 
-function Player(props, ref) {
+const highlightWord = playerRef => {
+  if (window.myEditorRef && window.myEditorRef.getContents) {
+    // check (probably) the same word that was hightlighted before
+    /* if (
+      text[lastHighlightIndex].attributes &&
+      text[lastHighlightIndex].attributes.start
+      ) {
+        if (
+          parseFloat(text[lastHighlightIndex].attributes.start) <= progress &&
+          parseFloat(text[lastHighlightIndex].attributes.end) >= progress
+          ) {
+          } else {
+          }
+        }
+        window.myEditorRef.formatText(0, 100, {
+          color: "rgb(0, 0, 255)"
+        }); */
+    const text = window.myEditorRef.getText();
+    const progress = playerRef.getCurrentTime();
+    const duration = playerRef.getDuration();
+    const playing = playerRef.isPlaying();
+    const progressPercentage = progress / duration;
+    const editorLength = window.myEditorRef.getLength();
+    let estimate = Math.round(progressPercentage * editorLength);
+    const avgCharLen = duration / editorLength;
+    let done = false;
+    let jumped = false;
+    let steps = 0;
+    let add = true;
+    console.group("New word");
+    while (!done) {
+      const [leaf, offset] = window.myEditorRef.getLeaf(estimate);
+      if (!leaf) break;
+      const startIndex = estimate - offset;
+      const endIndex = startIndex + (leaf.text ? leaf.text.length : 1);
+      console.log("Node start - end", startIndex, endIndex);
+      if (
+        leaf.domNode &&
+        leaf.domNode.parentNode &&
+        leaf.domNode.parentNode.attributes &&
+        leaf.domNode.parentNode.attributes.start &&
+        leaf.domNode.parentNode.attributes.end
+      ) {
+        const start = parseFloat(
+          leaf.domNode.parentNode.attributes.start.value
+        );
+        const end = parseFloat(leaf.domNode.parentNode.attributes.end.value);
+        console.log("start, end, progress:", start, end, progress);
+        // Estimate start is before the player progress
+        if (start <= progress) {
+          if (end >= progress) {
+            done = true;
+            steps++;
+          } else if (!jumped && progress - end > 1) {
+            const jump = Math.round((progress - start) / avgCharLen);
+            jump > 0 ? (estimate = endIndex + jump) : (estimate = endIndex + 1);
+            steps++;
+            //jumped = true;
+            add = true;
+            console.log("JUMP right", jump);
+          } else {
+            estimate = endIndex + 1;
+            steps++;
+            add = true;
+          }
+        }
+        // Estimate start is after the player progress
+        else {
+          if (!jumped && start - progress > 1) {
+            const jump = Math.round((start - progress) / avgCharLen);
+            jump > 0
+              ? (estimate = startIndex - jump)
+              : (estimate = startIndex - 1);
+            steps++;
+            //jumped = true;
+            add = false;
+            console.log("JUMP left", jump);
+          } else {
+            estimate = startIndex - 1;
+            steps++;
+            add = false;
+          }
+        }
+      } else {
+        add ? (estimate = endIndex + 1) : (estimate = startIndex - 1);
+      }
+      console.log("Estimate index", estimate);
+      if (done) {
+        if (window.myEditorRef.myLastHighlightedNode) {
+          window.myEditorRef.myLastHighlightedNode.className = "";
+        }
+        window.myEditorRef.myLastHighlightedNode = leaf.domNode.parentNode;
+        leaf.domNode.parentNode.className = "highlighted";
+      }
+      if (estimate > editorLength || estimate < 1 || steps > 20) done = true;
+      // End of while loop
+    }
+    console.log(steps);
+    console.groupEnd();
+  }
+};
+
+function Player(prtext, ref) {
   const wavesurfer = useRef(null);
   const seekTo = pos => {
-    wavesurfer.current.play(pos);
+    if (wavesurfer.current.getDuration() >= pos)
+      wavesurfer.current.seekAndCenter(pos / wavesurfer.current.getDuration());
   };
   const play = () => {
     wavesurfer.current.play();
@@ -81,8 +184,9 @@ function Player(props, ref) {
 
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
-
   const [isReady, setIsReady] = useState(false);
+
+  let lastNode = undefined;
   useEffect(() => {
     wavesurfer.current = WaveSurfer.create({
       container: waveRef.current,
@@ -92,6 +196,7 @@ function Player(props, ref) {
       bargap: 1,
       barWidth: 3,
       normalize: true,
+      height: 80,
       //partialRender: true,
       responsive: true,
       scrollParent: true,
@@ -112,20 +217,18 @@ function Player(props, ref) {
       ]
     });
 
-    wavesurfer.current.load(
-      "https://res.cloudinary.com/dqiro9i65/video/private/s--gMEum9xT--/v1552826537/SampleAudio_0.4mb_kjgaf6.mp3"
-    );
+    wavesurfer.current.load("/static/sample.mp3");
     wavesurfer.current.on("ready", function() {
-      //wavesurfer.current.zoom(120);
+      wavesurfer.current.zoom(10);
 
       /* wavesurfer.current.clearRegions();
         getRegions(editorState, "WORD").forEach(region =>
           wavesurfer.current.addRegion(region)
         ); */
-      console.log("Player ready");
+      //console.log("Player ready");
       window.myWaveSurferPlayer = {};
       window.myWaveSurferPlayer.seekTo = seekTo;
-      console.log(window.myWaveSurferPlayer.seekTo);
+      //console.log(window.myWaveSurferPlayer.seekTo);
       setIsReady(true);
     });
 
@@ -135,6 +238,9 @@ function Player(props, ref) {
     wavesurfer.current.on("play", function() {
       setPlaying(true);
     });
+    wavesurfer.current.on("audioprocess", () =>
+      highlightWord(wavesurfer.current)
+    );
     /* wavesurfer.current.on("audioprocess", function(time) {
         getProgress(time);
       }); */
@@ -145,9 +251,9 @@ function Player(props, ref) {
       console.log(value);
     });
 
-    /* return function cleanup() {
-      wavesurfer.destroy();
-    }; */
+    return function cleanup() {
+      wavesurfer.current.destroy();
+    };
   }, []);
   // Regioonide lisamiseks
   /* useEffect(() => {

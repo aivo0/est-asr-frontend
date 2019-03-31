@@ -12,41 +12,55 @@ function handleClick(e) {
   //console.log(getOffset(e.target).left, getOffset(e.target).top);
   if (window.myWaveSurferPlayer) {
     window.myWaveSurferPlayer.startTime = parseFloat(
-      e.target.getAttribute("href")
+      e.target.getAttribute("start")
     );
-    console.log(window.myWaveSurferPlayer.startTime);
     if (window.myWaveSurferPlayer.seekTo) {
       window.myWaveSurferPlayer.seekTo(window.myWaveSurferPlayer.startTime);
     }
   }
 }
 
-class WordBlot extends Inline {
-  static create(id, start, end) {
+/* class WordBlot extends Inline {
+  static create(value) {
     let node = super.create();
-    node.setAttribute("href", id);
-    node.setAttribute("data-start", start);
-    node.setAttribute("data-end", end);
-    node.setAttribute("data-mode", "link");
     node.addEventListener("click", handleClick, false);
-    //node.addEventListener("mouseleave", handleMouseLeave, false);
-    node.setAttribute("target", "_blank");
     return node;
-  }
-
-  static formats(node) {
-    return node.getAttribute("href");
   }
 }
 WordBlot.blotName = "word";
 WordBlot.tagName = "span";
-Quill.register(WordBlot);
+Quill.register(WordBlot); */
+
+const Parchment = Quill.import("parchment");
+const Start = new Parchment.Attributor.Attribute("start", "start", {
+  scope: Parchment.Scope.INLINE
+});
+Quill.register(Start, true);
+const End = new Parchment.Attributor.Attribute("end", "end", {
+  scope: Parchment.Scope.INLINE
+});
+Quill.register(End, true);
+const Confidence = new Parchment.Attributor.Attribute(
+  "confidence",
+  "confidence",
+  {
+    scope: Parchment.Scope.INLINE
+  }
+);
+Quill.register(Confidence, true);
+
+/* const Parchment = Quill.import("parchment");
+var boxAttributor = new Parchment.Attributor.Class("box", "line", {
+  scope: Parchment.Scope.INLINE,
+  whitelist: ["solid", "double", "dotted"]
+});
+Quill.register(boxAttributor); */
 
 class SpeakerBlot extends BlockEmbed {
   static create(id) {
     let node = super.create();
     node.dataset.id = id;
-    ReactDOM.render(<Speaker id={id} />, node);
+    ReactDOM.render(<Speaker initial={id} />, node);
     return node;
   }
   static value(domNode) {
@@ -57,13 +71,47 @@ SpeakerBlot.blotName = "speaker";
 SpeakerBlot.tagName = "speaker";
 Quill.register(SpeakerBlot);
 
+var Delta = Quill.import("delta");
+
+const delta = new Delta([
+  { insert: { speaker: "Aivo" } },
+  {
+    insert: "Gandalf",
+    attributes: {
+      background: "#facccc",
+      start: 0.7,
+      end: 1.2,
+      confidence: 0.9
+    }
+  },
+  {
+    insert: "test ",
+    attributes: {
+      end: "wtf"
+    }
+  },
+  {
+    insert: "rääkis",
+    attributes: {
+      word: { start: 2, end: 3, confidence: 0.8 },
+      bold: true
+    }
+  },
+  { insert: "\n" },
+  {
+    insert: "välja",
+    attributes: { word: { start: 4, end: 5, confidence: 0.8 } }
+  }
+]);
+console.log(delta);
+
 class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text:
-        /* "<speaker id='1234'>Kõneleja</speaker><p>test</p>"  */
-        this.props.html
+      //text: new Delta(text)
+      /* "<speaker id='1234'>Kõneleja</speaker><p>test</p>"  */
+      /* this.props.html */
     }; // You can also pass a Quill Delta here
     this.handleChange = this.handleChange.bind(this);
     this.quillRef = null; // Quill instance
@@ -71,13 +119,28 @@ class Editor extends React.Component {
   }
   componentDidMount() {
     this.attachQuillRefs();
+    window.myEditorRef = this.quillRef;
+    const words = new Map();
     document
       .querySelector(".ql-speaker")
       .addEventListener("click", e => this.insertText, false);
+    Array.from(document.querySelectorAll("span[start]")).forEach(el => {
+      const start = parseFloat(el.getAttribute("start")) * 100;
+      const end = parseFloat(el.getAttribute("end")) * 100;
+      for (let i = start;  i<=end; i++) {
+        words.set(i, el);
+      }
+      return el.addEventListener("click", handleClick, false)}
+    );
+    window.myEditorRef.words = words;
   }
 
   componentDidUpdate() {
     this.attachQuillRefs();
+
+  }
+  componentWillUnmount() {
+    window.myEditorRef = undefined;
   }
 
   attachQuillRefs = () => {
@@ -108,6 +171,9 @@ class Editor extends React.Component {
         { indent: "-1" },
         { indent: "+1" }
       ],
+      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+      [{ font: [] }],
+      [{ align: [] }],
       ["image", "link"],
       ["speaker"]
     ]
@@ -123,15 +189,22 @@ class Editor extends React.Component {
     "list",
     "bullet",
     "indent",
-    "word",
+    //"word",
     "image",
     "speaker",
-    "link"
+    "link",
+    "color",
+    "font",
+    "background",
+    "align",
+    "start",
+    "end",
+    "confidence"
   ];
 
   handleChange(content, delta, source, editor) {
-    this.setState({ text: content });
-    //console.log(editor.getContents().ops.length);
+    //this.setState({ text: content });
+    console.log(editor.getContents());
   }
 
   render() {
@@ -139,7 +212,7 @@ class Editor extends React.Component {
       <>
         <ReactQuill
           className={this.props.className}
-          value={this.state.text}
+          defaultValue={new Delta(this.props.html)}
           onChange={this.handleChange}
           modules={this.modules}
           formats={this.formats}
@@ -163,13 +236,18 @@ const StyledEditor = styled(Editor)`
   }
   p {
     margin-bottom: 12px !important;
-    margin-left: 10px !important;
+    color: #6f747b;
+    font-size: 1.4rem;
   }
   a {
-    color: ${props => props.theme.lightgrey} !important;
+    color: hsl(0, 0%, 80%) !important;
   }
-  ::selection {
-    background: #f2594b;
+  p::selection,
+  span::selection, div::selection {
+    background: rgb(235, 214, 255); !important;
+  }
+  .highlighted {
+    background-color: rgb(235, 214, 255);
   }
 `;
 

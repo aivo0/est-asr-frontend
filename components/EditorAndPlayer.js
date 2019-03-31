@@ -27,7 +27,7 @@ const PageContainer = styled.div`
 `;
 
 const EditorContainer = styled.div`
-  margin-bottom: 200px;
+  margin-bottom: 150px;
   background: white;
   box-shadow: ${props => props.theme.bs};
 `;
@@ -39,12 +39,11 @@ function EditorAndPlayer({ text }) {
     console.log(player);
     console.log(editor);
   });
-  //console.log(text);
-  const { generatedHtml, speakerArray } = loadHtml(text).html;
+  const { html, speakerArray } = loadHtml(text);
   return (
     <PageContainer>
       <EditorContainer>
-        <Editor html={generatedHtml} speakers={speakerArray} ref={editor} />
+        <Editor html={html} speakers={speakerArray} ref={editor} />
       </EditorContainer>
       <StyledPlayer>
         <Player

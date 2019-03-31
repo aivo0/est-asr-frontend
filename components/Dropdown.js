@@ -6,8 +6,10 @@ const createOption = label => ({
   label,
   value: label.toLowerCase().replace(/\W/g, "")
 });
-
-const speakerOptions = []; //speakerArray.map(createOption);
+const speakerOptions = [
+  { label: "Aivo", value: "aivo" },
+  { label: "Olev", value: "olev" }
+]; //speakerArray.map(createOption);
 
 const customStyles = {
   container: (provided, state) => ({
@@ -23,7 +25,10 @@ const customStyles = {
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
     const transition = "opacity 300ms";
-    return { ...provided, opacity, transition };
+    const color = "#f75d5d";
+    const fontWeight = "bold";
+    const fontFamily = "radnika_next";
+    return { ...provided, opacity, transition, color, fontWeight };
   }
 };
 
@@ -31,7 +36,7 @@ class CreatableSingle extends Component {
   state = {
     isLoading: false,
     options: speakerOptions,
-    value: createOption(this.props.initialSpeaker)
+    value: this.props.initial === "" ? "" : createOption(this.props.initial)
   };
   handleChange = (newValue, actionMeta) => {
     console.group("Value Changed");
@@ -58,7 +63,6 @@ class CreatableSingle extends Component {
   };
   render() {
     const { isLoading, options, value } = this.state;
-
     return (
       <CreatableSelect
         isClearable

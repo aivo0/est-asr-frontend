@@ -5,7 +5,8 @@ import styled from "styled-components";
 const StyledControls = styled.div`
   display: flex;
   justify-content: flex-end;
-
+  border-top: 2px solid rgba(23, 42, 58, 0.1);
+  padding-top: 2px;
   .controls-middle {
     display: flex;
     justify-content: center;
@@ -34,7 +35,7 @@ function PlayerControls(props) {
           icon="fast-backward"
           title="5 sekundit tagasi"
           onClick={onBackward}
-          height={50}
+          height={40}
           marginRight={16}
         />
         {playing ? (
@@ -42,7 +43,7 @@ function PlayerControls(props) {
             icon="pause"
             title="Peata"
             onClick={onPause}
-            height={50}
+            height={40}
             marginRight={16}
           />
         ) : (
@@ -50,7 +51,7 @@ function PlayerControls(props) {
             icon="play"
             title="Mängi"
             onClick={onPlay}
-            height={50}
+            height={40}
             marginRight={16}
           />
         )}
@@ -58,7 +59,7 @@ function PlayerControls(props) {
           icon="fast-forward"
           title="5 sekundit edasi"
           onClick={onForward}
-          height={50}
+          height={40}
           marginRight={16}
         />
       </div>
@@ -68,7 +69,7 @@ function PlayerControls(props) {
           title="Heli tagasi"
           icon="volume-off"
           onClick={toggleMute}
-          height={50}
+          height={40}
           marginRight={16}
         />
       ) : (
@@ -77,7 +78,7 @@ function PlayerControls(props) {
           icon="volume-up"
           title="Vaigista heli"
           onClick={toggleMute}
-          height={50}
+          height={40}
           marginRight={16}
         />
       )}
