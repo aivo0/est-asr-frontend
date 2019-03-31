@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Dropdown from "./Dropdown";
 import Rename from "./Rename";
+import React, {useRef} from "react"
 
 const StyledSpeakers = styled.div`
   display: flex;
@@ -18,10 +19,12 @@ const StyledHr = styled.hr`
 `;
 
 function Speaker(props) {
+  const dropdown = useRef(null);
+  window.mySpeakerDropdowns.push(dropdown);
   return (
     <>
       <StyledSpeakers>
-        <Dropdown initial={props.initial} />
+        <Dropdown initial={props.initial} ref={dropdown} />
         <Rename speaker={"test"} />
       </StyledSpeakers>
       <StyledHr />

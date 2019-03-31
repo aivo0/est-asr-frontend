@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
-import Transcriber from "./Transcriber";
 import loadHtml from "../lib/loadTranscription";
 
 const Editor = dynamic(() => import("./Editor"), {

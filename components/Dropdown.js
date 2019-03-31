@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 //import { speakerArray } from "../lib/loadTranscription";
 import CreatableSelect from "react-select/lib/Creatable";
+import createOption from "../lib/createOption"
 
-const createOption = label => ({
-  label,
-  value: label.toLowerCase().replace(/\W/g, "")
-});
-const speakerOptions = [
-  { label: "Aivo", value: "aivo" },
-  { label: "Olev", value: "olev" }
-]; //speakerArray.map(createOption);
+const speakerOptions = window.mySpeakerArray;
 
 const customStyles = {
   container: (provided, state) => ({
@@ -47,19 +41,17 @@ class CreatableSingle extends Component {
   };
   handleCreate = inputValue => {
     this.setState({ isLoading: true });
-    console.group("Option created");
-    console.log("Wait a moment...");
-    setTimeout(() => {
       const { options } = this.state;
       const newOption = createOption(inputValue);
       console.log(newOption);
       console.groupEnd();
+      const newOptions = [...options, newOption]
+      window.mySpeakerArray = options;
+      window.mySpeakerDropdowns.map(ref => ref.current.setState({options: newOptions}))
       this.setState({
         isLoading: false,
-        options: [...options, newOption],
         value: newOption
       });
-    }, 1000);
   };
   render() {
     const { isLoading, options, value } = this.state;
@@ -82,3 +74,4 @@ class CreatableSingle extends Component {
 }
 
 export default CreatableSingle;
+export {createOption};

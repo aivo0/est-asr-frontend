@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 let BlockEmbed = Quill.import("blots/block/embed");
 let Inline = Quill.import("blots/inline");
 import Speaker from "./Speaker";
+import createOption from "../lib/createOption";
 
 function handleClick(e) {
   //console.log(getOffset(e.target).left, getOffset(e.target).top);
@@ -116,6 +117,8 @@ class Editor extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.quillRef = null; // Quill instance
     this.reactQuillRef = null; // ReactQuill component
+    window.mySpeakerDropdowns = [];
+    window.mySpeakerArray = this.props.speakers.map(createOption);
   }
   componentDidMount() {
     this.attachQuillRefs();
@@ -125,8 +128,8 @@ class Editor extends React.Component {
       .querySelector(".ql-speaker")
       .addEventListener("click", e => this.insertText, false);
     Array.from(document.querySelectorAll("span[start]")).forEach(el => {
-      const start = parseFloat(el.getAttribute("start")) * 100;
-      const end = parseFloat(el.getAttribute("end")) * 100;
+      const start = Math.round(parseFloat(el.getAttribute("start")) * 100);
+      const end = Math.round(parseFloat(el.getAttribute("end")) * 100);
       for (let i = start;  i<=end; i++) {
         words.set(i, el);
       }

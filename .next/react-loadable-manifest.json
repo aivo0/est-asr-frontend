@@ -51,20 +51,6 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
-  "@babel/runtime-corejs2/core-js/parse-float": [
-    {
-      "id": "./node_modules/@babel/runtime-corejs2/core-js/parse-float.js",
-      "name": "./node_modules/@babel/runtime-corejs2/core-js/parse-float.js",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/@babel/runtime-corejs2/core-js/parse-float.js",
-      "name": "./node_modules/@babel/runtime-corejs2/core-js/parse-float.js",
-      "file": "static/chunks/3.js",
-      "publicPath": "static/chunks/3.js"
-    }
-  ],
   "./arrayWithHoles": [
     {
       "id": "./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithHoles.js",
@@ -85,7 +71,7 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
-  "./defineProperty": [
+  "@babel/runtime-corejs2/helpers/esm/defineProperty": [
     {
       "id": "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js",
       "name": "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js",
@@ -401,62 +387,6 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
-  "core-js/library/fn/parse-float": [
-    {
-      "id": "./node_modules/core-js/library/fn/parse-float.js",
-      "name": "./node_modules/core-js/library/fn/parse-float.js",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/fn/parse-float.js",
-      "name": "./node_modules/core-js/library/fn/parse-float.js",
-      "file": "static/chunks/3.js",
-      "publicPath": "static/chunks/3.js"
-    }
-  ],
-  "./_parse-float": [
-    {
-      "id": "./node_modules/core-js/library/modules/_parse-float.js",
-      "name": "./node_modules/core-js/library/modules/_parse-float.js",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/_parse-float.js",
-      "name": "./node_modules/core-js/library/modules/_parse-float.js",
-      "file": "static/chunks/3.js",
-      "publicPath": "static/chunks/3.js"
-    }
-  ],
-  "./_string-trim": [
-    {
-      "id": "./node_modules/core-js/library/modules/_string-trim.js",
-      "name": "./node_modules/core-js/library/modules/_string-trim.js",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/_string-trim.js",
-      "name": "./node_modules/core-js/library/modules/_string-trim.js",
-      "file": "static/chunks/3.js",
-      "publicPath": "static/chunks/3.js"
-    }
-  ],
-  "./_string-ws": [
-    {
-      "id": "./node_modules/core-js/library/modules/_string-ws.js",
-      "name": "./node_modules/core-js/library/modules/_string-ws.js",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/_string-ws.js",
-      "name": "./node_modules/core-js/library/modules/_string-ws.js",
-      "file": "static/chunks/3.js",
-      "publicPath": "static/chunks/3.js"
-    }
-  ],
   "../../modules/es6.object.get-own-property-descriptor": [
     {
       "id": "./node_modules/core-js/library/modules/es6.object.get-own-property-descriptor.js",
@@ -467,20 +397,6 @@
     {
       "id": "./node_modules/core-js/library/modules/es6.object.get-own-property-descriptor.js",
       "name": "./node_modules/core-js/library/modules/es6.object.get-own-property-descriptor.js",
-      "file": "static/chunks/3.js",
-      "publicPath": "static/chunks/3.js"
-    }
-  ],
-  "../modules/es6.parse-float": [
-    {
-      "id": "./node_modules/core-js/library/modules/es6.parse-float.js",
-      "name": "./node_modules/core-js/library/modules/es6.parse-float.js",
-      "file": "static/chunks/1.js",
-      "publicPath": "static/chunks/1.js"
-    },
-    {
-      "id": "./node_modules/core-js/library/modules/es6.parse-float.js",
-      "name": "./node_modules/core-js/library/modules/es6.parse-float.js",
       "file": "static/chunks/3.js",
       "publicPath": "static/chunks/3.js"
     }
@@ -3115,6 +3031,22 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
+  "../lib/createOption": [
+    {
+      "id": "./lib/createOption.js",
+      "name": "./lib/createOption.js",
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
+    }
+  ],
+  "@babel/runtime-corejs2/core-js/parse-float": [
+    {
+      "id": "./node_modules/@babel/runtime-corejs2/core-js/parse-float.js",
+      "name": "./node_modules/@babel/runtime-corejs2/core-js/parse-float.js",
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
+    }
+  ],
   "../../core-js/reflect/get": [
     {
       "id": "./node_modules/@babel/runtime-corejs2/core-js/reflect/get.js",
@@ -3163,10 +3095,50 @@
       "publicPath": "static/chunks/3.js"
     }
   ],
+  "core-js/library/fn/parse-float": [
+    {
+      "id": "./node_modules/core-js/library/fn/parse-float.js",
+      "name": "./node_modules/core-js/library/fn/parse-float.js",
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
+    }
+  ],
   "core-js/library/fn/reflect/get": [
     {
       "id": "./node_modules/core-js/library/fn/reflect/get.js",
       "name": "./node_modules/core-js/library/fn/reflect/get.js",
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
+    }
+  ],
+  "./_parse-float": [
+    {
+      "id": "./node_modules/core-js/library/modules/_parse-float.js",
+      "name": "./node_modules/core-js/library/modules/_parse-float.js",
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
+    }
+  ],
+  "./_string-trim": [
+    {
+      "id": "./node_modules/core-js/library/modules/_string-trim.js",
+      "name": "./node_modules/core-js/library/modules/_string-trim.js",
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
+    }
+  ],
+  "./_string-ws": [
+    {
+      "id": "./node_modules/core-js/library/modules/_string-ws.js",
+      "name": "./node_modules/core-js/library/modules/_string-ws.js",
+      "file": "static/chunks/3.js",
+      "publicPath": "static/chunks/3.js"
+    }
+  ],
+  "../modules/es6.parse-float": [
+    {
+      "id": "./node_modules/core-js/library/modules/es6.parse-float.js",
+      "name": "./node_modules/core-js/library/modules/es6.parse-float.js",
       "file": "static/chunks/3.js",
       "publicPath": "static/chunks/3.js"
     }
