@@ -9,7 +9,7 @@ const Inner = styled.div`
 
 const Text = props => (
   <Inner>
-    <Transcriber id={props.query.id} />
+    <Transcriber id={props.query.id} duration={props.query.duration} />
   </Inner>
 );
 

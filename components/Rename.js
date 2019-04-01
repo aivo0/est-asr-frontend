@@ -7,7 +7,11 @@ const Container = styled.div``;
 
 const StyledInput = styled.input`
   margin-left: 5px;
-  height: 35px;
+  height: 32px;
+`;
+
+const StyledA = styled.a`
+  cursor: pointer;
 `;
 
 function Rename({ dropdown }) {
@@ -67,7 +71,7 @@ function Rename({ dropdown }) {
           </Button>
         </>
       ) : (
-        <a onClick={toggleEditing}>Nimeta ümber</a>
+        <StyledA onClick={toggleEditing}>Nimeta ümber</StyledA>
       )}
     </Container>
   );

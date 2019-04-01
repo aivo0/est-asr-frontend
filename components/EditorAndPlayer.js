@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
 import loadHtml from "../lib/loadTranscription";
+//import "react-quill/dist/quill.snow.css";
+import { endpoint } from "../config";
 
 const Editor = dynamic(() => import("./Editor"), {
   ssr: false
@@ -31,13 +33,12 @@ const EditorContainer = styled.div`
   box-shadow: ${props => props.theme.bs};
 `;
 
-function EditorAndPlayer({ text }) {
+function EditorAndPlayer({ text, path /* , subscribeToFile */ }) {
   const player = useRef(null);
   const editor = useRef(null);
-  useEffect(() => {
-    console.log(player);
-    console.log(editor);
-  });
+  /* useEffect(() => {
+    subscribeToFile();
+  }, []); */
   const { html, speakerArray } = loadHtml(text);
   return (
     <PageContainer>
@@ -46,7 +47,7 @@ function EditorAndPlayer({ text }) {
       </EditorContainer>
       <StyledPlayer>
         <Player
-          url="https://res.cloudinary.com/dqiro9i65/video/private/s--Q7UDVa_C--/v1552824543/SampleAudio_0.4mb_wcgj7p.mp3"
+          url={`${endpoint}/uploads?path=${path}`}
           //onRegionChange
           //seek
           ref={player}

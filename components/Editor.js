@@ -229,11 +229,18 @@ const StyledEditor = styled.div`
   }
   p::selection,
   span::selection, div::selection {
-    background: rgb(235, 214, 255); !important;
+    background: rgb(235, 214, 255) !important;
   }
   .highlighted {
     background-color: rgb(235, 214, 255);
   }
+  .highlighted:after {
+    content: attr(rel);
+    position: absolute;
+    top: 22px;
+    right: 12px;
+  }
+}
 `;
 
 export default Editor;

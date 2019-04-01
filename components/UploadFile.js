@@ -10,6 +10,7 @@ const UPLOAD_FILE_MUTATION = gql`
   mutation singleUpload($file: Upload!) {
     singleUpload(file: $file) {
       id
+      duration
     }
   }
 `;
@@ -36,14 +37,13 @@ class UploadFile extends Component {
               e.preventDefault();
               // call the mutation
               const res = await singleUpload();
-              console.log(res);
-              /* Router.push({
+              Router.push({
                 pathname: "/text",
                 query: {
-                  id: res.data.singleUpload.id,
-                  duration: this.state.duration
+                  id: res.data.singleUpload.id
+                  //duration: res.data.singleUpload.duration
                 }
-              }); */
+              });
             }}
           >
             <Error error={error} />

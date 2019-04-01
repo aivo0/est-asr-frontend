@@ -9,6 +9,8 @@ const FILES_BY_USER = gql`
     filesByUser {
       id
       filename
+      duration
+      uploadedAt
       textTitle
       state
     }
@@ -32,11 +34,16 @@ class Files extends Component {
   render() {
     return (
       <Center>
-        <Query query={FILES_BY_USER} fetchPolicy="network-only">
-          {({ data, error, loading }) => {
+        <Query query={FILES_BY_USER} pollInterval={60000}>
+          {({ data, error, loading, stopPolling }) => {
             if (loading) return <p>Laen...</p>;
             if (error) return <p>Viga failide laadimisel: {error.message}</p>;
-            //console.log(data);
+            if (
+              data.filesByUser.filter(file => file.state !== "READY").length ===
+              0
+            ) {
+              stopPolling();
+            }
             return (
               <FilesList>
                 {data.filesByUser.map(file => (

@@ -541,19 +541,26 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-apollo */ "react-apollo");
-/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! graphql-tag */ "graphql-tag");
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./User */ "./components/User.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-apollo */ "react-apollo");
+/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! graphql-tag */ "graphql-tag");
+/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./User */ "./components/User.js");
+
+
 
 var _jsxFileName = "C:\\thesis\\client\\components\\Signout.js";
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  mutation SIGN_OUT_MUTATION {\n    signout {\n      message\n    }\n  }\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_2__["default"])(["\n  mutation SIGN_OUT_MUTATION {\n    signout {\n      message\n    }\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -566,25 +573,56 @@ function _templateObject() {
 
 
 
-var SIGN_OUT_MUTATION = graphql_tag__WEBPACK_IMPORTED_MODULE_3___default()(_templateObject());
+
+var SIGN_OUT_MUTATION = graphql_tag__WEBPACK_IMPORTED_MODULE_5___default()(_templateObject());
 
 var Signout = function Signout(props) {
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_2__["Mutation"], {
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_4__["Mutation"], {
     mutation: SIGN_OUT_MUTATION,
     refetchQueries: [{
-      query: _User__WEBPACK_IMPORTED_MODULE_4__["CURRENT_USER_QUERY"]
+      query: _User__WEBPACK_IMPORTED_MODULE_7__["CURRENT_USER_QUERY"]
     }],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 16
     },
     __self: this
   }, function (signout) {
-    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
-      onClick: signout,
+    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("button", {
+      onClick:
+      /*#__PURE__*/
+      function () {
+        var _ref = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
+        /*#__PURE__*/
+        _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(e) {
+          return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  e.preventDefault();
+                  _context.next = 3;
+                  return signout();
+
+                case 3:
+                  next_router__WEBPACK_IMPORTED_MODULE_6___default.a.push({
+                    pathname: "/"
+                  });
+
+                case 4:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        }));
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }(),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 21
       },
       __self: this
     }, "Logi v\xE4lja");
@@ -741,21 +779,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var wsLink =  false ? undefined : function () {
+  console.log("SSR");
+};
 
 function createClient(_ref) {
   var headers = _ref.headers;
 
-  /* return new ApolloClient({
-    uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint,
-    request: operation => {
-      operation.setContext({
-        fetchOptions: {
-          credentials: "include"
-        },
-        headers
-      });
-    }
-  }); */
   var request = function request(operation) {
     operation.setContext({
       fetchOptions: {
@@ -784,20 +814,35 @@ function createClient(_ref) {
       };
     });
   });
+  var uploadLink = Object(apollo_upload_client__WEBPACK_IMPORTED_MODULE_10__["createUploadLink"])({
+    uri:  true ? _config__WEBPACK_IMPORTED_MODULE_6__["endpoint"] : undefined
+  });
+  var link = Object(apollo_link__WEBPACK_IMPORTED_MODULE_3__["split"])( // split based on operation type
+  function (_ref2) {
+    var query = _ref2.query;
+
+    var _getMainDefinition = Object(apollo_utilities__WEBPACK_IMPORTED_MODULE_5__["getMainDefinition"])(query),
+        kind = _getMainDefinition.kind,
+        operation = _getMainDefinition.operation;
+
+    return kind === "OperationDefinition" && operation === "subscription";
+  }, wsLink, uploadLink);
   return new apollo_client__WEBPACK_IMPORTED_MODULE_2__["ApolloClient"]({
-    link: apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"].from([Object(apollo_link_error__WEBPACK_IMPORTED_MODULE_9__["onError"])(function (_ref2) {
-      var graphQLErrors = _ref2.graphQLErrors,
-          networkError = _ref2.networkError;
-      if (graphQLErrors) graphQLErrors.map(function (_ref3) {
-        var message = _ref3.message,
-            locations = _ref3.locations,
-            path = _ref3.path;
+    link: apollo_link__WEBPACK_IMPORTED_MODULE_3__["ApolloLink"].from([Object(apollo_link_error__WEBPACK_IMPORTED_MODULE_9__["onError"])(function (_ref3) {
+      var graphQLErrors = _ref3.graphQLErrors,
+          networkError = _ref3.networkError;
+      if (graphQLErrors) graphQLErrors.map(function (_ref4) {
+        var message = _ref4.message,
+            locations = _ref4.locations,
+            path = _ref4.path;
         return console.log("[GraphQL error]: Message: ".concat(message, ", Location: ").concat(locations, ", Path: ").concat(path));
       });
       if (networkError) console.log("[Network error]: ".concat(networkError));
-    }), requestLink, Object(apollo_upload_client__WEBPACK_IMPORTED_MODULE_10__["createUploadLink"])({
-      uri:  true ? _config__WEBPACK_IMPORTED_MODULE_6__["endpoint"] : undefined
-    })
+    }), requestLink, link
+    /* createUploadLink({
+      uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint
+    }) */
+
     /* new HttpLink({
       uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint,
       //credentials: "same-origin"
