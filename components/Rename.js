@@ -1,16 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import { Button } from "evergreen-ui";
+import createOption from "../lib/createOption";
 
 const Container = styled.div``;
 
-function Rename(props) {
+const StyledInput = styled.input`
+  margin-left: 5px;
+  height: 35px;
+`;
+
+function Rename({ dropdown }) {
+  const input = useRef(null);
   const [editing, setEditing] = useState(false);
+  const [value, setValue] = useState("");
   const toggleEditing = () => setEditing(!editing);
+  const cancelHandler = () => setEditing(false);
+  useEffect(() => {
+    if (input.current) {
+      input.current.focus();
+    }
+  });
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(input.current.value);
+    const newOption = createOption(input.current.value);
+    const oldLabel = dropdown.current.state.value.label;
+    window.mySpeakerDropdowns.forEach(ref => {
+      const currentLabel = ref.current.state.value.label;
+      const oldOptions = ref.current.state.options;
+      const newOptions = [];
+      oldOptions.forEach(el => {
+        if (el.label !== oldLabel) {
+          newOptions.push(el);
+        }
+      });
+      newOptions.push(newOption);
+      const newState = { options: newOptions };
+      if (currentLabel === oldLabel) {
+        newState.value = newOption;
+      }
+      ref.current.setState(newState);
+      console.log(newState);
+    });
+    setEditing(false);
+  };
   return (
     <Container>
-      <a onClick={toggleEditing} href="">
-        Nimeta ümber
-      </a>
+      {editing ? (
+        <>
+          <label>
+            <StyledInput
+              name="text-input-name"
+              placeholder="Uus nimetus"
+              defaultValue={dropdown.current.state.value.label}
+              //onBlur={blurHandler}
+              ref={input}
+            />
+          </label>
+          <Button type="submit" marginLeft={5} onClick={handleSubmit}>
+            Salvesta
+          </Button>
+          <Button marginLeft={5} appearance="minimal" onClick={cancelHandler}>
+            Tühista
+          </Button>
+        </>
+      ) : (
+        <a onClick={toggleEditing}>Nimeta ümber</a>
+      )}
     </Container>
   );
 }

@@ -6,6 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 let BlockEmbed = Quill.import("blots/block/embed");
 let Inline = Quill.import("blots/inline");
+var Delta = Quill.import("delta");
 import Speaker from "./Speaker";
 import createOption from "../lib/createOption";
 
@@ -72,40 +73,6 @@ SpeakerBlot.blotName = "speaker";
 SpeakerBlot.tagName = "speaker";
 Quill.register(SpeakerBlot);
 
-var Delta = Quill.import("delta");
-
-const delta = new Delta([
-  { insert: { speaker: "Aivo" } },
-  {
-    insert: "Gandalf",
-    attributes: {
-      background: "#facccc",
-      start: 0.7,
-      end: 1.2,
-      confidence: 0.9
-    }
-  },
-  {
-    insert: "test ",
-    attributes: {
-      end: "wtf"
-    }
-  },
-  {
-    insert: "rääkis",
-    attributes: {
-      word: { start: 2, end: 3, confidence: 0.8 },
-      bold: true
-    }
-  },
-  { insert: "\n" },
-  {
-    insert: "välja",
-    attributes: { word: { start: 4, end: 5, confidence: 0.8 } }
-  }
-]);
-console.log(delta);
-
 class Editor extends React.Component {
   constructor(props) {
     super(props);
@@ -124,23 +91,21 @@ class Editor extends React.Component {
     this.attachQuillRefs();
     window.myEditorRef = this.quillRef;
     const words = new Map();
-    document
-      .querySelector(".ql-speaker")
-      .addEventListener("click", e => this.insertText, false);
+    document.querySelector(".ql-speaker").textContent = "Kõneleja";
+    //.addEventListener("click", e => insertStar, false);
     Array.from(document.querySelectorAll("span[start]")).forEach(el => {
       const start = Math.round(parseFloat(el.getAttribute("start")) * 100);
       const end = Math.round(parseFloat(el.getAttribute("end")) * 100);
-      for (let i = start;  i<=end; i++) {
+      for (let i = start; i <= end; i++) {
         words.set(i, el);
       }
-      return el.addEventListener("click", handleClick, false)}
-    );
+      return el.addEventListener("click", handleClick, false);
+    });
     window.myEditorRef.words = words;
   }
 
   componentDidUpdate() {
     this.attachQuillRefs();
-
   }
   componentWillUnmount() {
     window.myEditorRef = undefined;
@@ -205,6 +170,18 @@ class Editor extends React.Component {
     "confidence"
   ];
 
+  /* modules = {
+    toolbar: {
+      container: "#toolbar",
+      handlers: {
+        insertStar: insertStar
+      }
+    },
+    clipboard: {
+      matchVisual: false,
+    }
+  }; */
+
   handleChange(content, delta, source, editor) {
     //this.setState({ text: content });
     console.log(editor.getContents());
@@ -212,7 +189,7 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <>
+      <StyledEditor>
         <ReactQuill
           className={this.props.className}
           defaultValue={new Delta(this.props.html)}
@@ -224,18 +201,23 @@ class Editor extends React.Component {
           }}
           placeholder="Kui kõne on töödeldud, siis ilmub siia kõne transkriptsioon."
         />
-      </>
+      </StyledEditor>
     );
   }
 }
 
-const StyledEditor = styled(Editor)`
+const StyledEditor = styled.div`
   .ql-toolbar {
     position: -webkit-sticky; // required for Safari ??
     position: sticky;
     top: 0;
     background-color: white;
     z-index: 1;
+  }
+  .ql-speaker {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
   }
   p {
     margin-bottom: 12px !important;
@@ -254,4 +236,4 @@ const StyledEditor = styled(Editor)`
   }
 `;
 
-export default StyledEditor;
+export default Editor;

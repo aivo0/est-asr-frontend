@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 //import { speakerArray } from "../lib/loadTranscription";
 import CreatableSelect from "react-select/lib/Creatable";
-import createOption from "../lib/createOption"
-
-const speakerOptions = window.mySpeakerArray;
+import createOption from "../lib/createOption";
 
 const customStyles = {
   container: (provided, state) => ({
@@ -29,29 +27,27 @@ const customStyles = {
 class CreatableSingle extends Component {
   state = {
     isLoading: false,
-    options: speakerOptions,
+    options: window.mySpeakerArray,
     value: this.props.initial === "" ? "" : createOption(this.props.initial)
   };
   handleChange = (newValue, actionMeta) => {
-    console.group("Value Changed");
-    console.log(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
     this.setState({ value: newValue });
   };
   handleCreate = inputValue => {
     this.setState({ isLoading: true });
-      const { options } = this.state;
-      const newOption = createOption(inputValue);
-      console.log(newOption);
-      console.groupEnd();
-      const newOptions = [...options, newOption]
-      window.mySpeakerArray = options;
-      window.mySpeakerDropdowns.map(ref => ref.current.setState({options: newOptions}))
-      this.setState({
-        isLoading: false,
-        value: newOption
-      });
+    const { options } = this.state;
+    const newOption = createOption(inputValue);
+    console.log(newOption);
+    console.groupEnd();
+    const newOptions = [...options, newOption];
+    window.mySpeakerArray = options;
+    window.mySpeakerDropdowns.map(ref =>
+      ref.current.setState({ options: newOptions })
+    );
+    this.setState({
+      isLoading: false,
+      value: newOption
+    });
   };
   render() {
     const { isLoading, options, value } = this.state;
@@ -74,4 +70,4 @@ class CreatableSingle extends Component {
 }
 
 export default CreatableSingle;
-export {createOption};
+export { createOption };

@@ -28,6 +28,7 @@ const Logo = styled.h1`
     color: ${props => props.theme.black};
     text-underline-position: uppercase;
     text-decoration: none;
+    cursor: pointer;
   }
   @media (max-width: 600px) {
     margin: 0;
