@@ -38,6 +38,7 @@ class Files extends Component {
           {({ data, error, loading, stopPolling }) => {
             if (loading) return <p>Laen...</p>;
             if (error) return <p>Viga failide laadimisel: {error.message}</p>;
+            // Disable polling when all files are in the READY state
             if (
               data.filesByUser.filter(file => file.state !== "READY").length ===
               0

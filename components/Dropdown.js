@@ -6,7 +6,7 @@ import createOption from "../lib/createOption";
 const customStyles = {
   container: (provided, state) => ({
     ...provided,
-    width: "250px",
+    width: "230px",
     fontSize: "15px",
     height: "32px"
   }),
@@ -17,10 +17,10 @@ const customStyles = {
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1;
     const transition = "opacity 300ms";
-    const color = "#f75d5d";
+    //const color = "#f75d5d";
     const fontWeight = "bold";
     const fontFamily = "radnika_next";
-    return { ...provided, opacity, transition, color, fontWeight };
+    return { ...provided, opacity, transition, /* color, */ fontWeight };
   }
 };
 
@@ -64,6 +64,7 @@ class CreatableSingle extends Component {
         loadingMessage="Laeb kõnelejaid"
         noOptionsMessage="Lisa ise kõneleja"
         placeholder="Vali kõneleja või lisa uus"
+        isSearchable={true}
       />
     );
   }

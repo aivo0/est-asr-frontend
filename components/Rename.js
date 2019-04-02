@@ -1,23 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import { Button } from "evergreen-ui";
+import { Button, Icon } from "evergreen-ui";
 import createOption from "../lib/createOption";
 
-const Container = styled.div``;
+const Container = styled.div`
+  cursor: pointer;
+`;
 
 const StyledInput = styled.input`
   margin-left: 5px;
-  height: 32px;
-`;
-
-const StyledA = styled.a`
-  cursor: pointer;
+  height: 30px;
 `;
 
 function Rename({ dropdown }) {
   const input = useRef(null);
   const [editing, setEditing] = useState(false);
-  const [value, setValue] = useState("");
   const toggleEditing = () => setEditing(!editing);
   const cancelHandler = () => setEditing(false);
   useEffect(() => {
@@ -59,7 +56,6 @@ function Rename({ dropdown }) {
               name="text-input-name"
               placeholder="Uus nimetus"
               defaultValue={dropdown.current.state.value.label}
-              //onBlur={blurHandler}
               ref={input}
             />
           </label>
@@ -71,7 +67,12 @@ function Rename({ dropdown }) {
           </Button>
         </>
       ) : (
-        <StyledA onClick={toggleEditing}>Nimeta ümber</StyledA>
+        <Icon
+          icon="edit"
+          color="disabled"
+          onClick={toggleEditing}
+          marginTop={10}
+        />
       )}
     </Container>
   );

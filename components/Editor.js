@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 import React from "react";
 import ReactDOM from "react-dom";
+import { Button, Icon } from "evergreen-ui";
 let BlockEmbed = Quill.import("blots/block/embed");
 let Inline = Quill.import("blots/inline");
 var Delta = Quill.import("delta");
@@ -91,7 +92,32 @@ class Editor extends React.Component {
     this.attachQuillRefs();
     window.myEditorRef = this.quillRef;
     const words = new Map();
-    document.querySelector(".ql-speaker").textContent = "Kõneleja";
+    //document.querySelector(".ql-speaker").textContent = "Kõneleja";
+    ReactDOM.render(
+      <Icon
+        marginLeft={5}
+        height={25}
+        icon="new-person"
+        //appearance="primary"
+        //intent="success"
+      />,
+      document.querySelector(".ql-speaker")
+    );
+    const exportButton = document.createElement("div");
+    exportButton.setAttribute("id", "export-button");
+    document.querySelector(".ql-toolbar").appendChild(exportButton);
+    ReactDOM.render(
+      <Button
+        marginLeft={5}
+        height={25}
+        iconBefore="download"
+        //appearance="primary"
+        //intent="success"
+      >
+        Lae alla
+      </Button>,
+      exportButton
+    );
     //.addEventListener("click", e => insertStar, false);
     Array.from(document.querySelectorAll("span[start]")).forEach(el => {
       const start = Math.round(parseFloat(el.getAttribute("start")) * 100);
@@ -131,6 +157,7 @@ class Editor extends React.Component {
 
   modules = {
     toolbar: [
+      ["speaker"],
       [{ header: [1, 2, 3, false] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
       [
@@ -142,8 +169,7 @@ class Editor extends React.Component {
       [{ color: [] }, { background: [] }], // dropdown with defaults from theme
       [{ font: [] }],
       [{ align: [] }],
-      ["image", "link"],
-      ["speaker"]
+      ["image", "link"]
     ]
   };
 
@@ -213,34 +239,98 @@ const StyledEditor = styled.div`
     top: 0;
     background-color: white;
     z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
   }
-  .ql-speaker {
+  #export-button > button {
+    height: 25px;
+    width: auto;
+    padding: 0 16px 0 16px;
+  }
+  .ql-speaker > button {
     font-family: Helvetica, Arial, sans-serif;
     font-weight: normal;
     font-size: 14px;
+    width: auto !important;
+    height: 25px !important;
+    padding: 0 0 0 10px !important;
+    align-self: flex-start;
   }
   p {
     margin-bottom: 12px !important;
     color: #6f747b;
     font-size: 1.4rem;
   }
-  a {
+  /* a {
     color: hsl(0, 0%, 80%) !important;
-  }
+  } */
   p::selection,
-  span::selection, div::selection {
+  span::selection,
+  div::selection {
     background: rgb(235, 214, 255) !important;
+  }
+  .css-d8oujb,
+  .css-1ep9fjw {
+    display: none;
   }
   .highlighted {
     background-color: rgb(235, 214, 255);
   }
-  .highlighted:after {
-    content: attr(rel);
-    position: absolute;
-    top: 22px;
-    right: 12px;
+  span[confidence] {
+    display: inline-block; /*bug fix*/
+    position: relative;
+    text-decoration: none;
   }
-}
+  span[confidence]:after {
+    content: attr(confidence);
+    position: absolute;
+    bottom: 130%;
+    left: 20%;
+    background: #ff3019;
+    padding: 5px 15px;
+    color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  span[confidence]:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 20px solid #ff3019;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    opacity: 0;
+    left: 30%;
+    bottom: 90%;
+  }
+  span[confidence]:hover:after {
+    bottom: 100%;
+  }
+  span[confidence]:hover:before {
+    bottom: 70%;
+  }
+  span[confidence]:hover:after,
+  span[confidence]:hover:before {
+    opacity: 1;
+  }
 `;
 
 export default Editor;
