@@ -1,15 +1,27 @@
 // This cannot be server-rendered because quill library accesses the Document object directly!
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 import React from "react";
 import ReactDOM from "react-dom";
-import { Button, Icon } from "evergreen-ui";
+import { Button, Icon, toaster } from "evergreen-ui";
+import debounce from "lodash/debounce";
 let BlockEmbed = Quill.import("blots/block/embed");
-let Inline = Quill.import("blots/inline");
+//let Inline = Quill.import("blots/inline");
 var Delta = Quill.import("delta");
 import Speaker from "./Speaker";
 import createOption from "../lib/createOption";
+import { endpoint, prodEndpoint } from "../config";
+
+const UPDATE_FILE_TEXT_MUTATION = gql`
+  mutation UPDATE_FILE_TEXT_MUTATION($id: ID!, $initialTranscription: String) {
+    updateFileTextText(id: $id, initialTranscription: $initialTranscription) {
+      message
+    }
+  }
+`;
 
 function handleClick(e) {
   //console.log(getOffset(e.target).left, getOffset(e.target).top);
@@ -22,6 +34,18 @@ function handleClick(e) {
     }
   }
 }
+
+const saveChanges = text => {
+  toaster.success("Salvestatud!", {
+    duration: 2,
+    id: "saved-toast"
+  });
+  console.log("Salvestan", text);
+};
+const debouncedSave = debounce(saveChanges, 15000, {
+  leading: false,
+  trailing: true
+});
 
 /* class WordBlot extends Inline {
   static create(value) {
@@ -78,6 +102,7 @@ class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loaded: false
       //text: new Delta(text)
       /* "<speaker id='1234'>Kõneleja</speaker><p>test</p>"  */
       /* this.props.html */
@@ -128,6 +153,7 @@ class Editor extends React.Component {
       return el.addEventListener("click", handleClick, false);
     });
     window.myEditorRef.words = words;
+    this.setState({ loaded: true });
   }
 
   componentDidUpdate() {
@@ -158,7 +184,7 @@ class Editor extends React.Component {
   modules = {
     toolbar: [
       ["speaker"],
-      [{ header: [1, 2, 3, false] }],
+      //[{ header: [1, 2, 3, false] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
       [
         { list: "ordered" },
@@ -196,38 +222,67 @@ class Editor extends React.Component {
     "confidence"
   ];
 
-  /* modules = {
-    toolbar: {
-      container: "#toolbar",
-      handlers: {
-        insertStar: insertStar
-      }
-    },
-    clipboard: {
-      matchVisual: false,
+  handleChange = async (
+    content,
+    delta,
+    source,
+    editor,
+    updateFileTextMutation
+  ) => {
+    if (this.state.loaded) {
+      const res = await fetch(
+        (process.env.NODE_ENV === "development" ? endpoint : prodEndpoint) +
+          `/transcript?id=${this.props.id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(editor.getContents())
+        }
+      );
+      console.log(res);
+      /* const res = await updateFileTextMutation({
+        variables: {
+          id: this.props.fileId,
+          initialTranscription: JSON.stringify(editor.getContents())
+        }
+      }); */
+      console.log("Updated!!");
+      debouncedSave(editor.getContents());
     }
-  }; */
-
-  handleChange(content, delta, source, editor) {
-    //this.setState({ text: content });
-    console.log(editor.getContents());
-  }
+  };
 
   render() {
+    const defaultVal = this.props.delta
+      ? this.props.delta
+      : new Delta(this.props.html);
     return (
-      <StyledEditor>
-        <ReactQuill
-          className={this.props.className}
-          defaultValue={new Delta(this.props.html)}
-          onChange={this.handleChange}
-          modules={this.modules}
-          formats={this.formats}
-          ref={el => {
-            this.reactQuillRef = el;
-          }}
-          placeholder="Kui kõne on töödeldud, siis ilmub siia kõne transkriptsioon."
-        />
-      </StyledEditor>
+      <Mutation mutation={UPDATE_FILE_TEXT_MUTATION}>
+        {(updateFileText, { loading, error }) => (
+          <StyledEditor>
+            <ReactQuill
+              className={this.props.className}
+              defaultValue={defaultVal}
+              onChange={(content, delta, source, editor) =>
+                this.handleChange(
+                  content,
+                  delta,
+                  source,
+                  editor,
+                  updateFileText
+                )
+              }
+              modules={this.modules}
+              formats={this.formats}
+              ref={el => {
+                this.reactQuillRef = el;
+              }}
+              placeholder="Kui kõne on töödeldud, siis ilmub siia kõne transkriptsioon."
+            />
+          </StyledEditor>
+        )}
+      </Mutation>
     );
   }
 }
@@ -288,7 +343,7 @@ const StyledEditor = styled.div`
     position: absolute;
     bottom: 130%;
     left: 20%;
-    background: #ff3019;
+    background: ${props => props.theme.black};
     padding: 5px 15px;
     color: white;
     -webkit-border-radius: 10px;
@@ -309,7 +364,7 @@ const StyledEditor = styled.div`
     position: absolute;
     width: 0;
     height: 0;
-    border-top: 20px solid #ff3019;
+    border-top: 20px solid ${props => props.theme.black};
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
     -webkit-transition: all 0.5s ease;

@@ -17,6 +17,9 @@ const Nav = () => (
               <Link href="/files">
                 <a>Failid</a>
               </Link>
+              <Link href="/demo">
+                <a>Demo</a>
+              </Link>
               <Link href="/me">
                 <a>Konto</a>
               </Link>

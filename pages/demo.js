@@ -1,16 +1,16 @@
-import Transcriber from "../components/Transcriber";
+import DemoComponent from "../components/Demo";
 import styled from "styled-components";
 
 const Inner = styled.div`
-  max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   padding: 2rem;
+  background: ${props => props.theme.backgroundGrey};
 `;
 
-const Text = props => (
+const Demo = props => (
   <Inner>
-    <Transcriber id="5c8afd6902743900072791d9" />
+    <DemoComponent id="5c9768e5857aba000713cde4" />
   </Inner>
 );
 
-export default Text;
+export default Demo;

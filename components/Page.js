@@ -57,6 +57,9 @@ export const GlobalStyle = createGlobalStyle`
     color: ${theme.black};
   }
   button {  font-family: 'radnika_next'; }
+  div[data-evergreen-toaster-container] {
+    line-height: 1;
+  }
 `;
 
 export default class Page extends Component {
