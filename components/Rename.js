@@ -25,7 +25,6 @@ function Rename({ dropdown }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(input.current.value);
     const newOption = createOption(input.current.value);
     const oldLabel = dropdown.current.state.value.label;
     window.mySpeakerDropdowns.forEach(ref => {
@@ -43,7 +42,6 @@ function Rename({ dropdown }) {
         newState.value = newOption;
       }
       ref.current.setState(newState);
-      console.log(newState);
     });
     setEditing(false);
   };

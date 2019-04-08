@@ -15,9 +15,9 @@ import Speaker from "./Speaker";
 import createOption from "../lib/createOption";
 import { endpoint, prodEndpoint } from "../config";
 
-const UPDATE_FILE_TEXT_MUTATION = gql`
-  mutation UPDATE_FILE_TEXT_MUTATION($id: ID!, $initialTranscription: String) {
-    updateFileTextText(id: $id, initialTranscription: $initialTranscription) {
+const UPDATE_FILE_SPEAKERS_MUTATION = gql`
+  mutation UPDATE_FILE_SPEAKERS_MUTATION($id: ID!, $speakers: [String]) {
+    updateFileSpeakers(id: $id, speakers: $speakers) {
       message
     }
   }
@@ -34,18 +34,6 @@ function handleClick(e) {
     }
   }
 }
-
-const saveChanges = text => {
-  toaster.success("Salvestatud!", {
-    duration: 2,
-    id: "saved-toast"
-  });
-  console.log("Salvestan", text);
-};
-const debouncedSave = debounce(saveChanges, 15000, {
-  leading: false,
-  trailing: true
-});
 
 /* class WordBlot extends Inline {
   static create(value) {
@@ -222,34 +210,44 @@ class Editor extends React.Component {
     "confidence"
   ];
 
-  handleChange = async (
+  saveChanges = async (text, updateFileSpeakersMutation) => {
+    const res = await fetch(
+      (process.env.NODE_ENV === "development" ? endpoint : prodEndpoint) +
+        `/transcript?id=${this.props.id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(text)
+      }
+    );
+    //console.log(res);
+    const res2 = await updateFileSpeakersMutation({
+      variables: {
+        id: this.props.id,
+        speakers: window.mySpeakerArray.map(sp => sp.label)
+      }
+    });
+    toaster.success("Salvestatud!", {
+      duration: 2,
+      id: "saved-toast"
+    });
+  };
+  debouncedSave = debounce(this.saveChanges, 15000, {
+    leading: false,
+    trailing: true
+  });
+
+  handleChange = (
     content,
     delta,
     source,
     editor,
-    updateFileTextMutation
+    updateFileSpeakersMutation
   ) => {
-    if (this.state.loaded) {
-      const res = await fetch(
-        (process.env.NODE_ENV === "development" ? endpoint : prodEndpoint) +
-          `/transcript?id=${this.props.id}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(editor.getContents())
-        }
-      );
-      console.log(res);
-      /* const res = await updateFileTextMutation({
-        variables: {
-          id: this.props.fileId,
-          initialTranscription: JSON.stringify(editor.getContents())
-        }
-      }); */
-      console.log("Updated!!");
-      debouncedSave(editor.getContents());
+    if (this.state.loaded && !this.props.demo) {
+      this.debouncedSave(editor.getContents(), updateFileSpeakersMutation);
     }
   };
 
@@ -258,8 +256,8 @@ class Editor extends React.Component {
       ? this.props.delta
       : new Delta(this.props.html);
     return (
-      <Mutation mutation={UPDATE_FILE_TEXT_MUTATION}>
-        {(updateFileText, { loading, error }) => (
+      <Mutation mutation={UPDATE_FILE_SPEAKERS_MUTATION}>
+        {(updateFileSpeakers, { loading, error }) => (
           <StyledEditor>
             <ReactQuill
               className={this.props.className}
@@ -270,7 +268,7 @@ class Editor extends React.Component {
                   delta,
                   source,
                   editor,
-                  updateFileText
+                  updateFileSpeakers
                 )
               }
               modules={this.modules}

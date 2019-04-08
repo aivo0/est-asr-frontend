@@ -54,19 +54,22 @@ const getRegions = (editorState, entityType = null) => {
 };
 
 const highlightWord = playerRef => {
-  if (window.myEditorRef && window.myEditorRef.getContents && window.myEditorRef.words) {
-    const progress = Math.round( playerRef.getCurrentTime() * 100);
-    const node = window.myEditorRef.words.get(progress)
+  if (
+    window.myEditorRef &&
+    window.myEditorRef.getContents &&
+    window.myEditorRef.words
+  ) {
+    const progress = Math.round(playerRef.getCurrentTime() * 100);
+    const node = window.myEditorRef.words.get(progress);
     if (node) {
       if (window.myEditorRef.lastHighlighted) {
         if (window.myEditorRef.lastHighlighted !== node) {
-          window.myEditorRef.lastHighlighted.setAttribute("class", null)
-          node.setAttribute("class", "highlighted")
+          window.myEditorRef.lastHighlighted.setAttribute("class", null);
+          node.setAttribute("class", "highlighted");
           window.myEditorRef.lastHighlighted = node;
         }
-      }
-      else {
-        node.setAttribute("class", "highlighted")
+      } else {
+        node.setAttribute("class", "highlighted");
         window.myEditorRef.lastHighlighted = node;
       }
     }
@@ -185,7 +188,6 @@ function Player(prtext, ref) {
   }); */
   const waveRef = useRef(null);
   const waveTimelineRef = useRef(null);
-  console.log("Player render");
   return (
     <div className="player-container">
       <PlayerControls

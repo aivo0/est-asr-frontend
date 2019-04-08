@@ -23,6 +23,7 @@ const DEMO_QUERY = gql`
       initialTranscription
       textTitle
       path
+      speakers
     }
   }
 `;
@@ -45,6 +46,8 @@ function Demo(props) {
                 text={file.initialTranscription}
                 path={file.path.substring(2)}
                 fileId={props.id}
+                speakers={file.speakers}
+                demo
               />
             </>
           </DemoStyles>

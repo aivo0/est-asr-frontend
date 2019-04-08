@@ -5,12 +5,17 @@ import gql from "graphql-tag";
 import Router from "next/router";
 import Form from "./styles/Form";
 import Error from "./ErrorMessage";
+import { FILES_BY_USER } from "./Files";
 
 const UPLOAD_FILE_MUTATION = gql`
   mutation singleUpload($file: Upload!) {
     singleUpload(file: $file) {
       id
+      filename
       duration
+      uploadedAt
+      textTitle
+      state
     }
   }
 `;
@@ -25,10 +30,24 @@ class UploadFile extends Component {
     const file = files[0];
     this.setState({ file });
   };
+  update = (cache, payload) => {
+    // manually update the cache on the client, so it matches the server
+    // 1. Read the cache for the files we want
+    const data = cache.readQuery({ query: FILES_BY_USER });
+    //console.log(data.filesByUser, payload);
+    // 2. Filter the deleted file out of the page
+    data.filesByUser = data.filesByUser.concat(payload.data.singleUpload);
+    // 3. Put the files back!
+    cache.writeQuery({ query: FILES_BY_USER, data });
+  };
 
   render() {
     return (
-      <Mutation mutation={UPLOAD_FILE_MUTATION} variables={this.state}>
+      <Mutation
+        mutation={UPLOAD_FILE_MUTATION}
+        variables={this.state}
+        update={this.update}
+      >
         {(singleUpload, { loading, error }) => (
           <Form
             data-test="form"

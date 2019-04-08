@@ -33,30 +33,37 @@ const EditorContainer = styled.div`
   box-shadow: ${props => props.theme.bs};
 `;
 
-function EditorAndPlayer({ text, path, id /* , subscribeToFile */ }) {
+function EditorAndPlayer({
+  text,
+  path,
+  id,
+  speakers,
+  demo /* , subscribeToFile */
+}) {
   const player = useRef(null);
   const editor = useRef(null);
   /* useEffect(() => {
     subscribeToFile();
   }, []); */
-  let speakerArray = [];
-  let html = undefined;
+  let htmlContent = undefined;
   let delta = undefined;
   if (text.startsWith('{"ops":', 0)) {
-    console.log("DELTA");
     delta = JSON.parse(text);
   } else {
-    let { html, speakerArray } = loadHtml(text);
+    const { html, speakerArray } = loadHtml(text);
+    htmlContent = html;
+    speakers = speakerArray;
   }
   return (
     <PageContainer>
       <EditorContainer>
         <Editor
-          html={html}
+          html={htmlContent}
           delta={delta}
-          speakers={speakerArray}
+          speakers={speakers}
           ref={editor}
           id={id}
+          demo={demo}
         />
       </EditorContainer>
       <StyledPlayer>

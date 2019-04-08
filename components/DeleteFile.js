@@ -16,7 +16,7 @@ class DeleteFile extends Component {
     // manually update the cache on the client, so it matches the server
     // 1. Read the cache for the files we want
     const data = cache.readQuery({ query: FILES_BY_USER });
-    console.log(data.filesByUser, payload);
+    //console.log(data.filesByUser, payload);
     // 2. Filter the deleted file out of the page
     data.filesByUser = data.filesByUser.filter(
       file => file.id !== payload.data.deleteFile.id

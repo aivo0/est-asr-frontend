@@ -26,6 +26,7 @@ const FILE_QUERY = gql`
       textTitle
       path
       state
+      speakers
     }
   }
 `;
@@ -67,6 +68,7 @@ function Transcriber(props) {
                   text={file.initialTranscription}
                   path={file.path.substring(2)}
                   id={props.id}
+                  speakers={file.speakers}
                 />
               </>
             ) : (
@@ -90,43 +92,5 @@ function Transcriber(props) {
     </Query>
   );
 }
-
-/* const CommentsPageWithData = ({ params }) => (
-  <Query
-    query={COMMENT_QUERY}
-    variables={{ repoName: `${params.org}/${params.repoName}` }}
-  >
-    {result => <CommentsPage {...result} />}
-  </Query>
-);
-const CommentsPageWithData = ({ params }) => (
-  <Query
-    query={COMMENT_QUERY}
-    variables={{ repoName: `${params.org}/${params.repoName}` }}
-  >
-    {({ subscribeToMore, ...result }) => (
-      <CommentsPage
-        {...result}
-        subscribeToNewComments={() =>
-          subscribeToMore({
-            document: COMMENTS_SUBSCRIPTION,
-            variables: { repoName: params.repoName },
-            updateQuery: (prev, { subscriptionData }) => {
-              if (!subscriptionData.data) return prev;
-              const newFeedItem = subscriptionData.data.commentAdded;
-
-              return Object.assign({}, prev, {
-                entry: {
-                  comments: [newFeedItem, ...prev.entry.comments]
-                }
-              });
-            }
-          })
-        }
-      />
-    )}
-  </Query>
-);
- */
 
 export default Transcriber;
