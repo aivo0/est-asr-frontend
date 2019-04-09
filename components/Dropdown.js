@@ -19,7 +19,7 @@ const customStyles = {
     const transition = "opacity 300ms";
     //const color = "#f75d5d";
     const fontWeight = "bold";
-    const fontFamily = "radnika_next";
+    const fontFamily = "open_sans";
     return { ...provided, opacity, transition, /* color, */ fontWeight };
   }
 };

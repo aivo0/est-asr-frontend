@@ -10,7 +10,7 @@ const theme = {
   lightgrey: "#E1E1E1",
   backgroundGrey: "#f7f7f7",
   offWhite: "#EDEDED",
-  maxWidth: "1000px",
+  maxWidth: "900px",
   bs: "0 12px 12px 12px rgba(0, 0, 0, 0.09)"
 };
 
@@ -27,17 +27,11 @@ const Inner = styled.div`
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: 'radnika_next';
-    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
+    font-family: 'open_sans';
+    src: url('/static/OpenSans-Regular.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
   }
-  @font-face {
-      font-family: "Montserrat" !important;
-      src: url("/static/monserrat.woff2") format("woff2");
-      font-weight: normal;
-      font-style: normal;
-    }
   html {
     box-sizing: border-box;
     font-size: 10px;
@@ -48,15 +42,16 @@ export const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: normal;
     line-height: 2;
-    font-family: 'radnika_next';
+    font-family: 'open_sans';
   }
   a {
     text-decoration: none;
     color: ${theme.black};
   }
-  button {  font-family: 'radnika_next'; }
+  button {  font-family: 'open_sans'; }
   div[data-evergreen-toaster-container] {
     line-height: 1;
   }

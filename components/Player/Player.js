@@ -138,7 +138,7 @@ function Player(prtext, ref) {
       ]
     });
 
-    wavesurfer.current.load("/static/sample.mp3");
+    wavesurfer.current.load("/static/Päevakaja 06.04.mp3");
     wavesurfer.current.on("ready", function() {
       wavesurfer.current.zoom(10);
 

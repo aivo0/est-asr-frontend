@@ -5,6 +5,7 @@ const Inner = styled.div`
   margin: 0 auto;
   padding: 2rem;
   background: ${props => props.theme.backgroundGrey};
+  min-height: 80vh;
 `;
 
 const Demo = props => (

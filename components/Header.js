@@ -30,7 +30,7 @@ const Logo = styled.h1`
     text-decoration: none;
     cursor: pointer;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     margin: 0;
     text-align: center;
   }
@@ -48,7 +48,7 @@ const StyledHeader = styled.header`
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: stretch;
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       grid-template-columns: 1fr;
       justify-content: center;
     }

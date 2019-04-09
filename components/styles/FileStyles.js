@@ -15,7 +15,7 @@ const Item = styled.div`
   p {
     font-size: 12px;
     line-height: 2;
-    font-weight: 300;
+    font-weight: bold;
     flex-grow: 1;
     padding: 0 3rem;
     font-size: 1.5rem;
@@ -29,11 +29,13 @@ const Item = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
     background: ${props => props.theme.lightgrey};
+
     & > * {
       background: white;
+      cursor: pointer;
       border: 0;
-      font-family: "radnika_next";
-      font-size: 1rem;
+      font-family: "open_sans";
+      font-weight: bold;
       padding: 1rem;
     }
   }

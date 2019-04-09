@@ -139,7 +139,7 @@ next_router__WEBPACK_IMPORTED_MODULE_5___default.a.onRouteChangeError = function
 var Logo = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.h1.withConfig({
   displayName: "Header__Logo",
   componentId: "sc-2x8yqs-0"
-})(["font-family:\"Monserrat\";font-size:4rem;margin-right:1rem;position:relative;z-index:2;margin-block-start:0;margin-block-end:0;a{padding:0.5rem 1rem;color:", ";text-underline-position:uppercase;text-decoration:none;cursor:pointer;}@media (max-width:600px){margin:0;text-align:center;}"], function (props) {
+})(["font-family:\"Monserrat\";font-size:4rem;margin-right:1rem;position:relative;z-index:2;margin-block-start:0;margin-block-end:0;a{padding:0.5rem 1rem;color:", ";text-underline-position:uppercase;text-decoration:none;cursor:pointer;}@media (max-width:700px){margin:0;text-align:center;}"], function (props) {
   return props.theme.black;
 });
 var InnerContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
@@ -149,7 +149,7 @@ var InnerContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.di
 var StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.header.withConfig({
   displayName: "Header__StyledHeader",
   componentId: "sc-2x8yqs-2"
-})([".bar{border-bottom:2px solid rgba(23,42,58,0.1);display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:600px){grid-template-columns:1fr;justify-content:center;}}"]);
+})([".bar{border-bottom:2px solid rgba(23,42,58,0.1);display:grid;grid-template-columns:auto 1fr;justify-content:space-between;align-items:stretch;@media (max-width:700px){grid-template-columns:1fr;justify-content:center;}}"]);
 
 var Header = function Header() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledHeader, {
@@ -446,7 +446,7 @@ __webpack_require__.r(__webpack_exports__);
 var _jsxFileName = "C:\\thesis\\client\\components\\Page.js";
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n  @font-face {\n    font-family: 'radnika_next';\n    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');\n    font-weight: normal;\n    font-style: normal;\n  }\n  @font-face {\n      font-family: \"Montserrat\" !important;\n      src: url(\"/static/monserrat.woff2\") format(\"woff2\");\n      font-weight: normal;\n      font-style: normal;\n    }\n  html {\n    box-sizing: border-box;\n    font-size: 10px;\n  }\n  *, *:before, *:after {\n    box-sizing: inherit;\n  }\n  body {\n    padding: 0;\n    margin: 0;\n    font-size: 1.5rem;\n    line-height: 2;\n    font-family: 'radnika_next';\n  }\n  a {\n    text-decoration: none;\n    color: ", ";\n  }\n  button {  font-family: 'radnika_next'; }\n  div[data-evergreen-toaster-container] {\n    line-height: 1;\n  }\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n  @font-face {\n    font-family: 'open_sans';\n    src: url('/static/OpenSans-Regular.ttf') format('ttf');\n    font-weight: normal;\n    font-style: normal;\n  }\n  html {\n    box-sizing: border-box;\n    font-size: 10px;\n  }\n  *, *:before, *:after {\n    box-sizing: inherit;\n  }\n  body {\n    padding: 0;\n    margin: 0;\n    font-size: 2rem;\n    font-weight: normal;\n    line-height: 2;\n    font-family: 'open_sans';\n  }\n  a {\n    text-decoration: none;\n    color: ", ";\n  }\n  button {  font-family: 'open_sans'; }\n  div[data-evergreen-toaster-container] {\n    line-height: 1;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -466,7 +466,7 @@ var theme = {
   lightgrey: "#E1E1E1",
   backgroundGrey: "#f7f7f7",
   offWhite: "#EDEDED",
-  maxWidth: "1000px",
+  maxWidth: "900px",
   bs: "0 12px 12px 12px rgba(0, 0, 0, 0.09)"
 };
 var StyledPage = styled_components__WEBPACK_IMPORTED_MODULE_7___default.a.div.withConfig({
@@ -501,37 +501,37 @@ function (_Component) {
         theme: theme,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 63
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(StyledPage, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 70
+          lineNumber: 65
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(GlobalStyle, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 66
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Meta__WEBPACK_IMPORTED_MODULE_9__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72
+          lineNumber: 67
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_8__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73
+          lineNumber: 68
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74
+          lineNumber: 69
         },
         __self: this
       }, this.props.children))));
