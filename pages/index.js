@@ -39,6 +39,7 @@ const AlignLeft = styled.div`
   min-width: 350px;
   @media (max-width: 930px) {
     grid-column-end: 4;
+    min-width: 300px;
   }
 `;
 
@@ -49,6 +50,7 @@ const AlignRight = styled.div`
   min-width: 350px;
   @media (max-width: 930px) {
     grid-column-start: 2;
+    min-width: 300px;
   }
 `;
 
@@ -71,6 +73,7 @@ const EditorImg = styled.img`
   grid-column-end: 4;
   @media (max-width: 930px) {
     grid-column-start: 2;
+    width: 100%;
   }
   width: 450px;
 `;

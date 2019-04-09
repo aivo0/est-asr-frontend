@@ -39,6 +39,7 @@ const Logo = styled.h1`
 const InnerContainer = styled.div`
   display: flex;
   align-items: center;
+  max-height: 90px;
 `;
 
 const StyledHeader = styled.header`

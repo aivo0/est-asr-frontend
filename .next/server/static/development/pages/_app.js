@@ -145,7 +145,7 @@ var Logo = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.h1.withConfi
 var InnerContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "Header__InnerContainer",
   componentId: "sc-2x8yqs-1"
-})(["display:flex;align-items:center;"]);
+})(["display:flex;align-items:center;max-height:90px;"]);
 var StyledHeader = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.header.withConfig({
   displayName: "Header__StyledHeader",
   componentId: "sc-2x8yqs-2"
@@ -155,33 +155,33 @@ var Header = function Header() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 60
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 61
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Logo, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 62
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 63
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(InnerContainer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 64
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(evergreen_ui__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
@@ -191,19 +191,19 @@ var Header = function Header() {
     marginLeft: 10,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 65
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 66
     },
     __self: this
   }, "Heli tekstiks")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Nav__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 70
     },
     __self: this
   })));
@@ -745,7 +745,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "endpoint", function() { return endpoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prodEndpoint", function() { return prodEndpoint; });
 var endpoint = "http://localhost:4444";
-var prodEndpoint = "https://heli-prod-a6561c4892.herokuapp.com";
+var prodEndpoint = "https://heli-yoga-prod.herokuapp.com/";
 /* export const wssEndpoint = `ws://localhost:4000`;
 export const prodWssEndpoint = `wss://heli-yoga-prod.herokuapp.com/`; */
 
