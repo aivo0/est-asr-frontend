@@ -9,7 +9,7 @@
     "start": "next start",
     "test": "NODE_ENV=test jest --watch",
     "test-win": "SET NODE_ENV=test&& jest --watch",
-    "heroku-postbuild": "next build"
+    "now-build": "next build"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",

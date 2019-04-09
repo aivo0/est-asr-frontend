@@ -6,7 +6,7 @@ import Link from "next/link";
 const Inner = styled.div`
   margin-top: 20px;
   display: grid;
-  grid-template-columns: minmax(10px, 1fr) 4fr 4fr minmax(10px, 1fr);
+  grid-template-columns: minmax(10px, 1fr) 5fr 5fr minmax(10px, 1fr);
   grid-template-rows: auto auto auto auto auto;
   grid-column-gap: 50px;
   grid-row-gap: 20px;
@@ -78,8 +78,8 @@ const EditorImg = styled.img`
 const Home = props => (
   <Inner>
     <AlignLeft>
-      <h1>Heli teksti kujule</h1>
-      <p>Kiire tasuta tekstiline transkriptsioon oma helisalvestisest</p>
+      <h1>Transkriptsioon oma helisalvestisest</h1>
+      <p>Heli töödeldakse automaatselt. Teksti aitavad täiedada:</p>
       <ul>
         <div>
           <Icon icon="headset" color="disabled" marginRight={15} size={30} />
@@ -87,7 +87,7 @@ const Home = props => (
         </div>
         <div>
           <Icon icon="people" color="success" marginRight={15} size={30} />
-          <span>Kõnelejate automaatne eristamine</span>
+          <span>Automaatselt tuvastatud erinevad kõnelejad</span>
         </div>
         <div>
           <Icon icon="edit" marginRight={15} size={30} />
@@ -100,9 +100,7 @@ const Home = props => (
             marginRight={15}
             size={30}
           />
-          <span>
-            Hoiusta helifaile ja valmis tekste siin või ekspordi failina
-          </span>
+          <span>Valmis teksti saab ka failina eksportida</span>
         </div>
       </ul>
     </AlignLeft>
@@ -114,8 +112,8 @@ const Home = props => (
       <img src="/static/confidence.png" />
     </AlignLeft>
     <AlignRight>
-      <p>Kõnelejate nimetamine</p>
-      <img src="/static/speaker-selection.png" />
+      <p>Kõnelejate valimine ja ümber nimetamine</p>
+      <img src="/static/speaker_selection.png" />
     </AlignRight>
     <Middle>
       <Link href="/signup">
