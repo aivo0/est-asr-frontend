@@ -33,7 +33,7 @@ const Inner = styled.div`
 `;
 
 const AlignLeft = styled.div`
-  justify-self: start;
+  justify-self: center;
   grid-column-start: 2;
   grid-column-end: 3;
   min-width: 350px;
@@ -43,7 +43,7 @@ const AlignLeft = styled.div`
 `;
 
 const AlignRight = styled.div`
-  justify-self: start;
+  justify-self: center;
   grid-column-start: 3;
   grid-column-end: 4;
   min-width: 350px;
@@ -79,19 +79,22 @@ const Home = props => (
   <Inner>
     <AlignLeft>
       <h1>Transkriptsioon oma helisalvestisest</h1>
-      <p>Heli töödeldakse automaatselt. Teksti aitavad täiedada:</p>
+      <p>Heli töödeldakse algoritmi abil. Teksti täiendamisel on siin abiks:</p>
       <ul>
         <div>
           <Icon icon="headset" color="disabled" marginRight={15} size={30} />
           <span>Integreeritud helimängija</span>
         </div>
         <div>
-          <Icon icon="people" color="success" marginRight={15} size={30} />
-          <span>Automaatselt tuvastatud erinevad kõnelejad</span>
-        </div>
-        <div>
           <Icon icon="edit" marginRight={15} size={30} />
           <span>Lihtne tekstiredaktor</span>
+        </div>
+        <div>
+          <Icon icon="people" color="success" marginRight={15} size={30} />
+          <span>
+            Kõnelejatega tekstiplokid. Kõnelejate vahetumise tuvastab algoritm
+            automaatselt
+          </span>
         </div>
         <div>
           <Icon
