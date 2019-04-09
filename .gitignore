@@ -1,7 +1,6 @@
+.next/
+.build/
 node_modules
 static
 *.env
 config.js
-*.log
-.next/
-.build/
