@@ -11,11 +11,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/files": [
+    "/text": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/text": [
+    "/files": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

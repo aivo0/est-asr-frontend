@@ -747,9 +747,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wssEndpoint", function() { return wssEndpoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prodWssEndpoint", function() { return prodWssEndpoint; });
 var endpoint = "http://localhost:4000";
-var prodEndpoint = "http://localhost:4000";
+var prodEndpoint = "https://heli-yoga-prod.herokuapp.com/";
 var wssEndpoint = "ws://localhost:4000";
-var prodWssEndpoint = "ws://localhost:4000";
+var prodWssEndpoint = "wss://heli-yoga-prod.herokuapp.com/";
 
 /***/ }),
 
