@@ -1,5 +1,7 @@
 import DemoComponent from "../components/Demo";
 import styled from "styled-components";
+import demoPeaks from "../lib/demoPeaks";
+import { demoContent, demoSpeakers } from "../lib/demoContent";
 
 const Inner = styled.div`
   margin: 0 auto;
@@ -10,7 +12,12 @@ const Inner = styled.div`
 
 const Demo = props => (
   <Inner>
-    <DemoComponent id="5c9768e5857aba000713cde4" />
+    <DemoComponent
+      id="5c9768e5857aba000713cde4"
+      demoPeaks={demoPeaks}
+      demoContent={demoContent}
+      demoSpeakers={demoSpeakers}
+    />
   </Inner>
 );
 

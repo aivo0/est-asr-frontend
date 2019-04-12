@@ -1,17 +1,11 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  forwardRef,
-  useImperativeHandle
-} from "react";
+import React, { useEffect, useState, useRef, forwardRef } from "react";
 import WaveSurfer from "wavesurfer.js";
 import TimelinePlugin from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min.js";
-import RegionsPlugin from "wavesurfer.js/dist/plugin/wavesurfer.regions.min.js";
+//import RegionsPlugin from "wavesurfer.js/dist/plugin/wavesurfer.regions.min.js";
 
 import PlayerControls from "./PlayerControls";
 
-const createRegions = entities => {
+/* const createRegions = entities => {
   entities.map(entity => ({
     start: entity.entityData.start,
     end: entity.entityData.end,
@@ -51,7 +45,7 @@ const getRegions = (editorState, entityType = null) => {
     );
   });
   return regions;
-};
+}; */
 
 const highlightWord = playerRef => {
   if (
@@ -76,7 +70,8 @@ const highlightWord = playerRef => {
   }
 };
 
-function Player(prtext, ref) {
+function Player(props) {
+  const { demoPath, url, demoPeaks, ref } = props;
   const wavesurfer = useRef(null);
   const seekTo = pos => {
     if (wavesurfer.current.getDuration() >= pos)
@@ -111,6 +106,7 @@ function Player(prtext, ref) {
   useEffect(() => {
     wavesurfer.current = WaveSurfer.create({
       container: waveRef.current,
+      backend: "MediaElement",
       waveColor: "violet",
       progressColor: "purple",
       autoCenter: true,
@@ -138,10 +134,13 @@ function Player(prtext, ref) {
       ]
     });
 
-    wavesurfer.current.load("/static/Päevakaja 06.04.mp3");
+    wavesurfer.current.load(
+      demoPath ? demoPath : "/static/Päevakaja 06.04.mp3",
+      demoPeaks,
+      "metadata"
+    );
     wavesurfer.current.on("ready", function() {
       wavesurfer.current.zoom(10);
-
       /* wavesurfer.current.clearRegions();
         getRegions(editorState, "WORD").forEach(region =>
           wavesurfer.current.addRegion(region)
@@ -205,4 +204,4 @@ function Player(prtext, ref) {
   );
 }
 
-export default (Player = forwardRef(Player));
+export default Player; //(Player = forwardRef(Player));

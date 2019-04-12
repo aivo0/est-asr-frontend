@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
-//import { throwServerError } from "apollo-link-http-common";
+import React from "react";
 import styled from "styled-components";
 import Head from "next/head";
-import Error from "./ErrorMessage";
 import EditorAndPlayer from "./EditorAndPlayer";
 
 const DemoStyles = styled.div`
@@ -15,45 +11,22 @@ const DemoStyles = styled.div`
   min-height: 600px;
 `;
 
-const DEMO_QUERY = gql`
-  query DEMO_QUERY {
-    demo {
-      id
-      filename
-      initialTranscription
-      textTitle
-      path
-      speakers
-    }
-  }
-`;
-
-function Demo(props) {
+function Demo({ demoPeaks, demoSpeakers, demoContent }) {
   return (
-    <Query query={DEMO_QUERY}>
-      {({ error, loading, data }) => {
-        if (error) return <Error error={error} />;
-        if (loading) return <p>Laeb...</p>;
-        if (!data.demo) return <p>Ühenduse viga, palun proovi uuesti.</p>;
-        const file = data.demo;
-        return (
-          <DemoStyles>
-            <>
-              <Head>
-                <title> Heli tekstiks | {file.filename} </title>
-              </Head>
-              <EditorAndPlayer
-                text={file.initialTranscription}
-                path={file.path.substring(2)}
-                fileId={props.id}
-                speakers={file.speakers}
-                demo
-              />
-            </>
-          </DemoStyles>
-        );
-      }}
-    </Query>
+    <DemoStyles>
+      <>
+        <Head>
+          <title> Heli tekstiks | Päevakaja 06.04 </title>
+        </Head>
+        <EditorAndPlayer
+          text={demoContent}
+          demoPeaks={demoPeaks}
+          path={"/static/Päevakaja 06.04.mp3"}
+          speakers={demoSpeakers}
+          demo
+        />
+      </>
+    </DemoStyles>
   );
 }
 

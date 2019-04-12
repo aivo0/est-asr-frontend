@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
 import loadHtml from "../lib/loadTranscription";
-//import "react-quill/dist/quill.snow.css";
 import { endpoint } from "../config";
 
 const Editor = dynamic(() => import("./Editor"), {
@@ -35,9 +34,11 @@ const EditorContainer = styled.div`
 
 function EditorAndPlayer({
   text,
-  path,
+  demoPath,
   id,
   speakers,
+  demoPeaks,
+  path,
   demo /* , subscribeToFile */
 }) {
   const player = useRef(null);
@@ -47,7 +48,9 @@ function EditorAndPlayer({
   }, []); */
   let htmlContent = undefined;
   let delta = undefined;
-  if (text.startsWith('{"ops":', 0)) {
+  if (demo) {
+    delta = text;
+  } else if (text.startsWith('{"ops":', 0)) {
     delta = JSON.parse(text);
   } else {
     const { html, speakerArray } = loadHtml(text);
@@ -71,6 +74,8 @@ function EditorAndPlayer({
           url={`${endpoint}/uploads?path=${path}`}
           //onRegionChange
           //seek
+          demoPeaks={demoPeaks}
+          demoPath={demoPath}
           ref={player}
           //getProgress={getProgress}
           //regions={regions}
