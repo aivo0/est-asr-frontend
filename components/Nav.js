@@ -28,10 +28,10 @@ const Nav = () => (
           )}
           {!me && (
             <>
-              <Link prefetch href="/demo">
+              <Link href="/demo">
                 <a>Demo</a>
               </Link>
-              <Link prefetch href="/signup">
+              <Link href="/signup">
                 <a>Logi sisse</a>
               </Link>
             </>
