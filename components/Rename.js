@@ -27,21 +27,33 @@ function Rename({ dropdown }) {
     e.preventDefault();
     const newOption = createOption(input.current.value);
     const oldLabel = dropdown.current.state.value.label;
+    const index = window.myEditorRef.getSelection().index;
+    window.myEditorRef.updateContents(
+      new window.myDeltaRef().retain(index - 1).delete(1) // Speaker is deleted
+    );
+    window.myEditorRef.insertEmbed(
+      index - 1,
+      "speaker",
+      input.current.value,
+      "user"
+    );
     window.mySpeakerDropdowns.forEach(ref => {
-      const currentLabel = ref.current.state.value.label;
-      const oldOptions = ref.current.state.options;
-      const newOptions = [];
-      oldOptions.forEach(el => {
-        if (el.label !== oldLabel) {
-          newOptions.push(el);
+      if (ref.current) {
+        const currentLabel = ref.current.state.value.label;
+        const oldOptions = ref.current.state.options;
+        const newOptions = [];
+        oldOptions.forEach(el => {
+          if (el.label !== oldLabel) {
+            newOptions.push(el);
+          }
+        });
+        newOptions.push(newOption);
+        const newState = { options: newOptions };
+        if (currentLabel === oldLabel) {
+          newState.value = newOption;
         }
-      });
-      newOptions.push(newOption);
-      const newState = { options: newOptions };
-      if (currentLabel === oldLabel) {
-        newState.value = newOption;
+        ref.current.setState(newState);
       }
-      ref.current.setState(newState);
     });
     setEditing(false);
   };

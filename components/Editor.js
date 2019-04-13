@@ -72,10 +72,10 @@ var boxAttributor = new Parchment.Attributor.Class("box", "line", {
 Quill.register(boxAttributor); */
 
 class SpeakerBlot extends BlockEmbed {
-  static create(id) {
+  static create(id, start, end) {
     let node = super.create();
     node.dataset.id = id;
-    ReactDOM.render(<Speaker initial={id} />, node);
+    ReactDOM.render(<Speaker initial={id} node={node} />, node);
     return node;
   }
   static value(domNode) {
@@ -104,6 +104,7 @@ class Editor extends React.Component {
   componentDidMount() {
     this.attachQuillRefs();
     window.myEditorRef = this.quillRef;
+    window.myDeltaRef = Delta;
     const words = new Map();
     //document.querySelector(".ql-speaker").textContent = "Kõneleja";
     ReactDOM.render(

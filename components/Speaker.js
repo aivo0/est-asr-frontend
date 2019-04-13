@@ -24,7 +24,7 @@ function Speaker(props) {
   return (
     <>
       <StyledSpeakers>
-        <Dropdown initial={props.initial} ref={dropdown} />
+        <Dropdown initial={props.initial} ref={dropdown} node={props.node} />
         <Rename dropdown={dropdown} />
       </StyledSpeakers>
       <StyledHr />

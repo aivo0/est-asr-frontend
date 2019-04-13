@@ -24,30 +24,56 @@ const customStyles = {
   }
 };
 
-class CreatableSingle extends Component {
+class Dropdown extends Component {
+  value = this.props.initial === "" ? "" : createOption(this.props.initial);
   state = {
     isLoading: false,
     options: window.mySpeakerArray,
-    value: this.props.initial === "" ? "" : createOption(this.props.initial)
+    value: this.value
   };
+  componentDidMount() {
+    if (
+      this.value !== "" &&
+      window.mySpeakerArray.findIndex(el => el.label === this.value.label) ===
+        -1
+    ) {
+      window.mySpeakerArray = window.mySpeakerArray.concat(this.value);
+      window.mySpeakerDropdowns.forEach(function(ref) {
+        if (ref.current) {
+          ref.current.setState({ options: window.mySpeakerArray });
+        }
+      });
+    }
+  }
   handleChange = (newValue, actionMeta) => {
-    this.setState({ value: newValue });
+    /* this.setState({ value: newValue }); */
+    const label = newValue ? newValue.label : "";
+    const index = window.myEditorRef.getSelection().index;
+    window.myEditorRef.updateContents(
+      new window.myDeltaRef().retain(index).delete(1) // Speaker is deleted
+    );
+    window.myEditorRef.insertEmbed(index, "speaker", label, "user");
   };
   handleCreate = inputValue => {
     this.setState({ isLoading: true });
     const { options } = this.state;
     const newOption = createOption(inputValue);
-    console.log(newOption);
-    console.groupEnd();
     const newOptions = [...options, newOption];
     window.mySpeakerArray = options;
-    window.mySpeakerDropdowns.map(ref =>
-      ref.current.setState({ options: newOptions })
-    );
+    window.mySpeakerDropdowns.forEach(function(ref) {
+      if (ref.current) {
+        ref.current.setState({ options: newOptions });
+      }
+    });
     this.setState({
       isLoading: false,
       value: newOption
     });
+    const index = window.myEditorRef.getSelection().index;
+    window.myEditorRef.updateContents(
+      new window.myDeltaRef().retain(index).delete(1) // Speaker is deleted
+    );
+    window.myEditorRef.insertEmbed(index, "speaker", inputValue, "user");
   };
   render() {
     const { isLoading, options, value } = this.state;
@@ -70,5 +96,4 @@ class CreatableSingle extends Component {
   }
 }
 
-export default CreatableSingle;
-export { createOption };
+export default Dropdown;

@@ -61,10 +61,6 @@ const Middle = styled.div`
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 30px;
-  button {
-    margin-left: 25px;
-    margin-right: 25px;
-  }
 `;
 
 const EditorImg = styled.img`
@@ -124,12 +120,19 @@ const Home = props => (
     </AlignRight>
     <Middle>
       <Link href="/signup">
-        <Button height={48} appearance="primary" intent="success">
+        <Button
+          height={48}
+          appearance="primary"
+          intent="success"
+          marginRight={20}
+        >
           Loo konto
         </Button>
       </Link>
       <Link href="/demo">
-        <Button height={48}>Vaata demo</Button>
+        <Button height={48} marginLeft={20}>
+          Vaata demo
+        </Button>
       </Link>
     </Middle>
   </Inner>
