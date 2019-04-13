@@ -62,7 +62,7 @@ function Transcriber(props) {
             {file.initialTranscription ? (
               <>
                 <Head>
-                  <title> Heli tekstiks | {file.filename} </title>
+                  <title>Tekstiks | {file.filename} </title>
                 </Head>
                 <EditorAndPlayer
                   text={file.initialTranscription}

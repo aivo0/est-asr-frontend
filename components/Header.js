@@ -63,7 +63,7 @@ const Header = () => (
         <Link href="/">
           <InnerContainer>
             <Icon icon="pulse" size={50} color="danger" marginLeft={10} />
-            <a>Heli tekstiks</a>
+            <a>Tekstiks</a>
           </InnerContainer>
         </Link>
       </Logo>

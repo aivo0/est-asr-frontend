@@ -16,7 +16,7 @@ function Demo({ demoPeaks, demoSpeakers, demoContent }) {
     <DemoStyles>
       <>
         <Head>
-          <title> Heli tekstiks | Päevakaja 06.04 </title>
+          <title>Tekstiks | Päevakaja 06.04 </title>
         </Head>
         <EditorAndPlayer
           text={demoContent}
