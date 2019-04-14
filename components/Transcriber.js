@@ -84,6 +84,12 @@ function Transcriber(props) {
                 ) : null}
 
                 <p>Lehte uuendatakse automaatselt!</p>
+                <EditorAndPlayer
+                  text=""
+                  path={file.path.substring(2)}
+                  id={props.id}
+                  speakers={[]}
+                />
               </>
             )}
           </TranscriberStyles>

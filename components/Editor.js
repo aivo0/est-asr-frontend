@@ -102,6 +102,26 @@ class Editor extends React.Component {
     window.mySpeakerArray = this.props.speakers.map(createOption);
   }
   componentDidMount() {
+    document.querySelectorAll(".ql-color-picker").forEach(function(node) {
+      node.addEventListener("click", e => overrideYReset());
+    });
+    const scroll = { pos: 0 };
+    const handler = e => {
+      e.preventDefault();
+      window.scrollTo({
+        top: scroll.pos,
+        left: 0
+        /* behavior: "smooth" */
+      });
+    };
+    const overrideYReset = () => {
+      scroll.pos = window.scrollY;
+      document.querySelectorAll(".ql-picker-item").forEach(function(node) {
+        node.removeEventListener("click", handler);
+        node.addEventListener("click", handler);
+      });
+    };
+
     this.attachQuillRefs();
     window.myEditorRef = this.quillRef;
     window.myDeltaRef = Delta;
@@ -288,7 +308,7 @@ class Editor extends React.Component {
 
 const StyledEditor = styled.div`
   .ql-toolbar {
-    position: -webkit-sticky; // required for Safari ??
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     background-color: white;
@@ -327,7 +347,7 @@ const StyledEditor = styled.div`
   }
   .css-d8oujb,
   .css-1ep9fjw {
-    display: none;
+    visibility: hidden;
   }
   .highlighted {
     background-color: rgb(235, 214, 255);

@@ -27,6 +27,7 @@ const PageContainer = styled.div`
 `;
 
 const EditorContainer = styled.div`
+  min-height: 400px;
   margin-bottom: 150px;
   background: white;
   box-shadow: ${props => props.theme.bs};
