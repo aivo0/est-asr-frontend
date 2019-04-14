@@ -98,9 +98,11 @@ class Editor extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.quillRef = null; // Quill instance
     this.reactQuillRef = null; // ReactQuill component
+    this.observer = null;
     window.mySpeakerDropdowns = [];
     window.mySpeakerArray = this.props.speakers.map(createOption);
   }
+
   componentDidMount() {
     document.querySelectorAll(".ql-color-picker").forEach(function(node) {
       node.addEventListener("click", e => overrideYReset());
@@ -153,15 +155,60 @@ class Editor extends React.Component {
       exportButton
     );
     //.addEventListener("click", e => insertStar, false);
-    Array.from(document.querySelectorAll("span[start]")).forEach(el => {
+    /* Array.from( */
+    document.querySelectorAll("span[start]").forEach(el => {
       const start = Math.round(parseFloat(el.getAttribute("start")) * 100);
       const end = Math.round(parseFloat(el.getAttribute("end")) * 100);
       for (let i = start; i <= end; i++) {
         words.set(i, el);
       }
-      return el.addEventListener("click", handleClick, false);
+      el.addEventListener("click", handleClick);
     });
     window.myEditorRef.words = words;
+
+    const observedNode = document.querySelector(".ql-editor");
+    // Options for the observer (which mutations to observe)
+    var config = {
+      childList: true,
+      subtree: true
+    };
+
+    // Callback function to execute when mutations are observed
+    var callback = function(mutationsList, observer) {
+      for (var mutation of mutationsList) {
+        if (
+          mutation.type == "childList" &&
+          mutation.addedNodes.length > 0 &&
+          mutation.target.nodeName === "P"
+        ) {
+          mutation.addedNodes.forEach(node => {
+            if (
+              node.nodeName === "SPAN" &&
+              node.attributes.start &&
+              node.attributes.end
+            ) {
+              const start = Math.round(
+                parseFloat(node.getAttribute("start")) * 100
+              );
+              const end = Math.round(
+                parseFloat(node.getAttribute("end")) * 100
+              );
+              for (let i = start; i <= end; i++) {
+                window.myEditorRef.words.set(i, node);
+              }
+              node.addEventListener("click", handleClick, false);
+            }
+          });
+        }
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    this.observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    this.observer.observe(observedNode, config);
+
     this.setState({ loaded: true });
   }
 
@@ -170,6 +217,7 @@ class Editor extends React.Component {
   }
   componentWillUnmount() {
     window.myEditorRef = undefined;
+    this.observer.disconnect();
   }
 
   attachQuillRefs = () => {
@@ -243,7 +291,6 @@ class Editor extends React.Component {
         body: JSON.stringify(text)
       }
     );
-    //console.log(res);
     const res2 = await updateFileSpeakersMutation({
       variables: {
         id: this.props.id,
