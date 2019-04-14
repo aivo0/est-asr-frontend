@@ -241,16 +241,16 @@ class Editor extends React.Component {
   modules = {
     toolbar: [
       ["speaker"],
-      //[{ header: [1, 2, 3, false] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike" /* , "blockquote" */],
       [
         { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" }
+        { list: "bullet" }
+        /* { indent: "-1" },
+        { indent: "+1" } */
       ],
       [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-      [{ font: [] }],
+      /* [{ font: [] }], */
       [{ align: [] }],
       ["image", "link"]
     ]
@@ -266,7 +266,6 @@ class Editor extends React.Component {
     "list",
     "bullet",
     "indent",
-    //"word",
     "image",
     "speaker",
     "link",
@@ -390,14 +389,14 @@ const StyledEditor = styled.div`
   p::selection,
   span::selection,
   div::selection {
-    background: rgb(235, 214, 255) !important;
+    background: rgb(249, 204, 249) !important;
   }
   .css-d8oujb,
   .css-1ep9fjw {
     visibility: hidden;
   }
   .highlighted {
-    background-color: rgb(235, 214, 255);
+    background-color: rgb(249, 204, 249);
   }
   span[confidence] {
     display: inline-block; /*bug fix*/
