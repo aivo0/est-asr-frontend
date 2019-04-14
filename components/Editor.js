@@ -104,8 +104,36 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
+    // Override Speaker insert
+    const speakerButton = document.querySelector(".ql-speaker");
+    const newSpeakerButton = speakerButton.cloneNode(true);
+    speakerButton.parentNode.replaceChild(newSpeakerButton, speakerButton);
+    newSpeakerButton.addEventListener("click", e => {
+      e.preventDefault();
+      const index = window.myEditorRef.getSelection();
+      if (index) {
+        window.myEditorRef.insertEmbed(index.index - 1, "speaker", "", "user");
+      }
+    });
+
+    // Chrome scroll bug workarounds
     document.querySelectorAll(".ql-color-picker").forEach(function(node) {
-      node.addEventListener("click", e => overrideYReset());
+      node.addEventListener("click", e =>
+        overrideYReset(".ql-color-picker .ql-picker-item")
+      );
+    });
+    document.querySelectorAll(".ql-header").forEach(function(node) {
+      node.addEventListener("click", e =>
+        overrideYReset(".ql-header .ql-picker-item")
+      );
+    });
+    document.querySelectorAll(".ql-link").forEach(function(node) {
+      node.addEventListener("click", e => overrideYReset(".ql-action"));
+    });
+    document.querySelectorAll(".ql-align").forEach(function(node) {
+      node.addEventListener("click", e =>
+        overrideYReset(".ql-align .ql-picker-item")
+      );
     });
     const scroll = { pos: 0 };
     const handler = e => {
@@ -116,9 +144,9 @@ class Editor extends React.Component {
         /* behavior: "smooth" */
       });
     };
-    const overrideYReset = () => {
+    const overrideYReset = selector => {
       scroll.pos = window.scrollY;
-      document.querySelectorAll(".ql-picker-item").forEach(function(node) {
+      document.querySelectorAll(selector).forEach(function(node) {
         node.removeEventListener("click", handler);
         node.addEventListener("click", handler);
       });
