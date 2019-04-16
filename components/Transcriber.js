@@ -86,7 +86,7 @@ function Transcriber(props) {
                 <p>Lehte uuendatakse automaatselt!</p>
                 <EditorAndPlayer
                   text=""
-                  path={file.path.substring(2)}
+                  path={file.path}
                   id={props.id}
                   speakers={[]}
                 />
