@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
 import loadHtml from "../lib/loadTranscription";
-import { endpoint } from "../config";
+import { endpoint, prodEndpoint } from "../config";
 
 const Editor = dynamic(() => import("./Editor"), {
   ssr: false
@@ -19,6 +19,7 @@ const StyledPlayer = styled.div`
   background-color: white;
   overflow: hidden;
   height: auto;
+  padding-bottom: 3px;
 `;
 
 const PageContainer = styled.div`
@@ -72,7 +73,9 @@ function EditorAndPlayer({
       </EditorContainer>
       <StyledPlayer>
         <Player
-          url={`${endpoint}/uploads?path=${path}`}
+          url={`${
+            process.env.NODE_ENV === "development" ? endpoint : prodEndpoint
+          }/uploads?path=${path}`}
           //onRegionChange
           //seek
           demoPeaks={demoPeaks}

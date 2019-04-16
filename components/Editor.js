@@ -35,6 +35,33 @@ function handleClick(e) {
   }
 }
 
+const downloadHandler = (delta, author, title) => {
+  const res = fetch(
+    (process.env.NODE_ENV === "development" ? endpoint : prodEndpoint) +
+      `/download`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(delta)
+    }
+  )
+    .then(response => {
+      return response.blob();
+    })
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "transkriptsioon.docx";
+      document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+      a.click();
+      a.remove(); //afterwards we remove the element again
+    })
+    .catch(e => console.log(e));
+};
+
 /* class WordBlot extends Inline {
   static create(value) {
     let node = super.create();
@@ -175,6 +202,9 @@ class Editor extends React.Component {
         marginLeft={5}
         height={25}
         iconBefore="download"
+        onClick={() =>
+          downloadHandler(window.myEditorRef.editor.getDelta(), "", "")
+        }
         //appearance="primary"
         //intent="success"
       >
@@ -381,6 +411,9 @@ class Editor extends React.Component {
 }
 
 const StyledEditor = styled.div`
+  .ql-container {
+    min-height: 400px;
+  }
   .ql-toolbar {
     position: -webkit-sticky;
     position: sticky;

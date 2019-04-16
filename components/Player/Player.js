@@ -106,7 +106,7 @@ function Player(props) {
   useEffect(() => {
     wavesurfer.current = WaveSurfer.create({
       container: waveRef.current,
-      backend: "MediaElement",
+      backend: demoPath ? "MediaElement" : "WebAudio",
       waveColor: "violet",
       progressColor: "purple",
       autoCenter: true,
@@ -133,12 +133,9 @@ function Player(props) {
         })
       ]
     });
-
-    wavesurfer.current.load(
-      demoPath ? demoPath : "/static/Päevakaja 06.04.mp3",
-      demoPeaks,
-      "metadata"
-    );
+    demoPath
+      ? wavesurfer.current.load(demoPath, demoPeaks, "metadata")
+      : wavesurfer.current.load(url);
     wavesurfer.current.on("ready", function() {
       wavesurfer.current.zoom(10);
       /* wavesurfer.current.clearRegions();
