@@ -108,7 +108,7 @@ const Home = props => (
       </ul>
     </AlignLeft>
 
-    <EditorImg src="/static/editor50.png" alt="Tekstiredaktori kvuatõmmis" />
+    <EditorImg src="/static/editor50.png" alt="Tekstiredaktori kuvatõmmis" />
 
     <AlignLeft>
       <p>Info algoritmi ebakindlusest, et vigu oleks lihtsam leida</p>

@@ -21,7 +21,7 @@ function Demo({ demoPeaks, demoSpeakers, demoContent }) {
         <EditorAndPlayer
           text={demoContent}
           demoPeaks={demoPeaks}
-          path={"/static/Päevakaja 06.04.mp3"}
+          demoPath={"/static/Päevakaja 06.04.mp3"}
           speakers={demoSpeakers}
           demo
         />
