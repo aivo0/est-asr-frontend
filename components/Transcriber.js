@@ -66,7 +66,7 @@ function Transcriber(props) {
                 </Head>
                 <EditorAndPlayer
                   text={file.initialTranscription}
-                  path={file.path.substring(2)}
+                  path={`/uploads/${file.filename}`}
                   id={props.id}
                   speakers={file.speakers}
                 />
