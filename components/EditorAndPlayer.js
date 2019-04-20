@@ -83,6 +83,7 @@ function EditorAndPlayer({
           demoPeaks={demoPeaks}
           demoPath={demoPath}
           ref={player}
+          demo={demo}
           //getProgress={getProgress}
           //regions={regions}
         />

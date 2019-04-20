@@ -9,11 +9,15 @@ import PlayerControls from "./PlayerControls";
 
 const Waveform = styled.div`
   .wavesurfer-region {
-    border-color: #96939b;
+    border-color: #b2b0b6;
     border-style: solid;
     border-width: 0 1px 0;
     opacity: 0.3;
   }
+`;
+const WaveformLoader = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const highlightWord = playerRef => {
@@ -40,7 +44,7 @@ const highlightWord = playerRef => {
 };
 
 function Player(props) {
-  const { demoPath, url, demoPeaks, ref } = props;
+  const { demoPath, url, demoPeaks, ref, demo } = props;
   const wavesurfer = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -107,6 +111,7 @@ function Player(props) {
   };
   const toggleMute = () => {
     wavesurfer.current.toggleMute();
+    wavesurfer.current.exportPCM(2000, 5000);
   };
   const togglePlay = () => {
     wavesurfer.current.playPause();
@@ -119,11 +124,11 @@ function Player(props) {
     console.log("Updating regions");
   };
   const zoomOut = () => {
-    if (zoom >= 10) setZoom(zoom - 10);
+    if (zoom > 5) setZoom(zoom - 10);
     wavesurfer.current.zoom(zoom);
   };
   const zoomIn = () => {
-    if (zoom <= 200) setZoom(zoom + 10);
+    if (zoom < 205) setZoom(zoom + 10);
     wavesurfer.current.zoom(zoom);
   };
 
@@ -131,14 +136,14 @@ function Player(props) {
   useEffect(() => {
     wavesurfer.current = WaveSurfer.create({
       container: waveRef.current,
-      backend: demoPath ? "MediaElement" : "WebAudio",
+      backend: "MediaElement", //demoPath ? "MediaElement" : "WebAudio",
       waveColor: "violet",
       progressColor: "purple",
       autoCenter: true,
       /* bargap: 1,
       barWidth: 3, */
       normalize: true,
-      height: 80,
+      height: 0,
       //partialRender: true,
       responsive: true,
       scrollParent: true,
@@ -155,6 +160,7 @@ function Player(props) {
       ? wavesurfer.current.load(demoPath, demoPeaks, "metadata")
       : wavesurfer.current.load(url);
     wavesurfer.current.on("ready", function() {
+      wavesurfer.current.setHeight(80);
       wavesurfer.current.zoom(zoom);
 
       //console.log("Player ready");

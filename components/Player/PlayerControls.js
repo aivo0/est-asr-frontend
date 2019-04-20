@@ -80,7 +80,7 @@ function PlayerControls(props) {
           }
         >
           <IconButton
-            icon="cog"
+            icon="properties"
             title="helimängija seaded"
             height={30}
             marginRight={16}
