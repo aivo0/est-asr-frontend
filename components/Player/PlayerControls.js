@@ -1,5 +1,5 @@
 import React from "react";
-import { IconButton } from "evergreen-ui";
+import { IconButton, Popover, Menu, Position } from "evergreen-ui";
 import styled from "styled-components";
 
 const StyledControls = styled.div`
@@ -7,6 +7,12 @@ const StyledControls = styled.div`
   justify-content: flex-end;
   border-top: 2px solid rgba(23, 42, 58, 0.1);
   padding-top: 2px;
+  padding-bottom: 2px;
+  .controls-left {
+    display: flex;
+    margin-left: 16px;
+    align-items: center;
+  }
   .controls-middle {
     display: flex;
     justify-content: center;
@@ -26,10 +32,74 @@ function PlayerControls(props) {
     onForward,
     onBackward,
     toggleMute,
-    muted
+    zoomIn,
+    zoomOut,
+    toggleRegions,
+    hasRegions,
+    muted,
+    fasterSpeed,
+    slowerSpeed,
+    normalSpeed,
+    playbackSpeed
   } = props;
   return (
     <StyledControls>
+      <div className="controls-left">
+        <Popover
+          position={Position.TOP_RIGHT}
+          content={
+            <>
+              <Menu.Group>
+                <Menu>
+                  {playbackSpeed < 1.8 ? (
+                    <Menu.Item onSelect={() => fasterSpeed()}>
+                      🐇 Kiiremini - {playbackSpeed + 0.25}x
+                    </Menu.Item>
+                  ) : null}
+                  {playbackSpeed > 0.3 ? (
+                    <Menu.Item onSelect={() => slowerSpeed()}>
+                      🐌 Aeglasemalt - {playbackSpeed - 0.25}x
+                    </Menu.Item>
+                  ) : null}
+                  <Menu.Item onSelect={() => normalSpeed()}>
+                    ⏱ Normaalkiirusel - 1x
+                  </Menu.Item>
+                </Menu>
+              </Menu.Group>
+              <Menu.Divider />
+              <Menu.Group>
+                <Menu>
+                  <Menu.Item onSelect={() => toggleRegions()}>
+                    {hasRegions
+                      ? "📃Peida graafikult sõnad"
+                      : "📃 Kuva graafikul sõnu "}
+                  </Menu.Item>
+                </Menu>
+              </Menu.Group>
+            </>
+          }
+        >
+          <IconButton
+            icon="cog"
+            title="helimängija seaded"
+            height={30}
+            marginRight={16}
+          />
+        </Popover>
+        <IconButton
+          icon="zoom-in"
+          title="suurenda"
+          height={30}
+          marginRight={6}
+          onClick={zoomIn}
+        />
+        <IconButton
+          icon="zoom-out"
+          title="vähenda"
+          height={30}
+          onClick={zoomOut}
+        />
+      </div>
       <div className="controls-middle">
         <IconButton
           icon="fast-backward"

@@ -1,51 +1,20 @@
-import React, { useEffect, useState, useRef, forwardRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import WaveSurfer from "wavesurfer.js";
 import TimelinePlugin from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min.js";
-//import RegionsPlugin from "wavesurfer.js/dist/plugin/wavesurfer.regions.min.js";
+import parseRegions from "../../lib/parseRegions";
+import RegionsPlugin from "wavesurfer.js/dist/plugin/wavesurfer.regions.min.js";
+import styled from "styled-components";
 
 import PlayerControls from "./PlayerControls";
 
-const createRegions = entities => {
-  entities.map(entity => ({
-    start: entity.entityData.start,
-    end: entity.entityData.end,
-    drag: true,
-    resize: true
-  }));
-};
-/*
-const getRegions = (editorState, entityType = null) => {
-  const content = editorState.getCurrentContent();
-  const regions = [];
-  content.getBlocksAsArray().forEach(block => {
-    let selectedEntity = null;
-    block.findEntityRanges(
-      character => {
-        if (character.getEntity() !== null) {
-          const entity = content.getEntity(character.getEntity());
-          if (!entityType || (entityType && entity.getType() === entityType)) {
-            selectedEntity = {
-              start: content.getEntity(character.getEntity()).getData().start,
-              end: content.getEntity(character.getEntity()).getData().end,
-              drag: true,
-              resize: true,
-              data: {
-                entityKey: character.getEntity(),
-                blockKey: block.getKey()
-              }
-            };
-            return true;
-          }
-        }
-        return false;
-      },
-      () => {
-        regions.push({ ...selectedEntity });
-      }
-    );
-  });
-  return regions;
-}; */
+const Waveform = styled.div`
+  .wavesurfer-region {
+    border-color: #96939b;
+    border-style: solid;
+    border-width: 0 1px 0;
+    opacity: 0.3;
+  }
+`;
 
 const highlightWord = playerRef => {
   if (
@@ -73,6 +42,51 @@ const highlightWord = playerRef => {
 function Player(props) {
   const { demoPath, url, demoPeaks, ref } = props;
   const wavesurfer = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const [zoom, setZoom] = useState(10);
+  const [hasRegions, setHasRegions] = useState(false);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+
+  const fasterSpeed = () => {
+    if (wavesurfer.current) {
+      if (playbackSpeed <= 1.75) {
+        wavesurfer.current.setPlaybackRate(playbackSpeed + 0.25);
+        setPlaybackSpeed(playbackSpeed + 0.25);
+      }
+    }
+  };
+  const slowerSpeed = () => {
+    if (wavesurfer.current) {
+      if (playbackSpeed >= 0.5) {
+        wavesurfer.current.setPlaybackRate(playbackSpeed - 0.25);
+        setPlaybackSpeed(playbackSpeed - 0.25);
+      }
+    }
+  };
+  const normalSpeed = () => {
+    if (wavesurfer.current) {
+      setPlaybackSpeed(1);
+      wavesurfer.current.setPlaybackRate(1);
+    }
+  };
+  const toggleRegions = () => {
+    if (wavesurfer.current) {
+      wavesurfer.current.clearRegions();
+      if (window.myEditorRef && window.myEditorRef.editor) {
+        if (!hasRegions) {
+          parseRegions(window.myEditorRef.editor.getDelta()).forEach(region =>
+            wavesurfer.current.addRegion(region)
+          );
+          setHasRegions(true);
+        } else {
+          wavesurfer.current.clearRegions();
+          setHasRegions(false);
+        }
+      }
+    }
+  };
   const seekTo = pos => {
     if (wavesurfer.current.getDuration() >= pos)
       wavesurfer.current.seekAndCenter(pos / wavesurfer.current.getDuration());
@@ -104,10 +118,14 @@ function Player(props) {
       regions.forEach(region => wavesurfer.current.addRegion(region)); */
     console.log("Updating regions");
   };
-
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
-  const [isReady, setIsReady] = useState(false);
+  const zoomOut = () => {
+    if (zoom >= 10) setZoom(zoom - 10);
+    wavesurfer.current.zoom(zoom);
+  };
+  const zoomIn = () => {
+    if (zoom <= 200) setZoom(zoom + 10);
+    wavesurfer.current.zoom(zoom);
+  };
 
   let lastNode = undefined;
   useEffect(() => {
@@ -117,24 +135,17 @@ function Player(props) {
       waveColor: "violet",
       progressColor: "purple",
       autoCenter: true,
-      bargap: 1,
-      barWidth: 3,
+      /* bargap: 1,
+      barWidth: 3, */
       normalize: true,
       height: 80,
       //partialRender: true,
       responsive: true,
       scrollParent: true,
       plugins: [
-        /* RegionsPlugin.create({
-            regions: [
-              {
-                start: 1,
-                end: 3,
-                drag: true,
-                resize: true
-              }
-            ]
-          }), */
+        RegionsPlugin.create({
+          regions: []
+        }),
         TimelinePlugin.create({
           container: waveTimelineRef.current
         })
@@ -144,11 +155,8 @@ function Player(props) {
       ? wavesurfer.current.load(demoPath, demoPeaks, "metadata")
       : wavesurfer.current.load(url);
     wavesurfer.current.on("ready", function() {
-      wavesurfer.current.zoom(10);
-      /* wavesurfer.current.clearRegions();
-        getRegions(editorState, "WORD").forEach(region =>
-          wavesurfer.current.addRegion(region)
-        ); */
+      wavesurfer.current.zoom(zoom);
+
       //console.log("Player ready");
       window.myWaveSurferPlayer = {};
       window.myWaveSurferPlayer.seekTo = seekTo;
@@ -199,24 +207,13 @@ function Player(props) {
     wavesurfer.current.on("mute", function(value) {
       setMuted(value);
     });
-    wavesurfer.current.on("region-in", function(value) {
-      console.log(value);
-    });
+    wavesurfer.current.on("region-in", function(value) {});
 
     return function cleanup() {
       wavesurfer.current.destroy();
     };
   }, []);
-  // Regioonide lisamiseks
-  useEffect(() => {
-    console.log("clear regions", isReady);
-    if (isReady) {
-      wavesurfer.current.clearRegions();
-      getRegions(editorState, "WORD").forEach(region =>
-        wavesurfer.current.addRegion(region)
-      );
-    }
-  });
+
   const waveRef = useRef(null);
   const waveTimelineRef = useRef(null);
   return (
@@ -228,9 +225,17 @@ function Player(props) {
         onForward={seekForward}
         onBackward={seekBackward}
         toggleMute={toggleMute}
+        zoomIn={zoomIn}
+        zoomOut={zoomOut}
         muted={muted}
+        toggleRegions={toggleRegions}
+        hasRegions={hasRegions}
+        normalSpeed={normalSpeed}
+        fasterSpeed={fasterSpeed}
+        slowerSpeed={slowerSpeed}
+        playbackSpeed={playbackSpeed}
       />
-      <div id="waveform" ref={waveRef} />
+      <Waveform id="waveform" ref={waveRef} />
       <div id="wave-timeline" ref={waveTimelineRef} />
     </div>
   );
