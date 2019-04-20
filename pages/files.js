@@ -1,4 +1,4 @@
-import FilesComponent from "../components/Files";
+import Files from "../components/Files";
 import styled from "styled-components";
 
 const Inner = styled.div`
@@ -7,10 +7,10 @@ const Inner = styled.div`
   padding: 2rem;
 `;
 
-const Files = props => (
+const FilesPage = props => (
   <Inner>
-    <FilesComponent />
+    <Files />
   </Inner>
 );
 
-export default Files;
+export default FilesPage;

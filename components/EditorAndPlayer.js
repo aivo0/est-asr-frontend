@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import styled from "styled-components";
 import loadHtml from "../lib/loadTranscription";
 import { endpoint, prodEndpoint } from "../config";
+import parseSpeakers from "../lib/parseSpeakers";
 
 const Editor = dynamic(() => import("./Editor"), {
   ssr: false
@@ -41,20 +42,21 @@ function EditorAndPlayer({
   speakers,
   demoPeaks,
   path,
-  demo /* , subscribeToFile */
+  demo
 }) {
   const player = useRef(null);
   const editor = useRef(null);
-  /* useEffect(() => {
-    subscribeToFile();
-  }, []); */
   let htmlContent = undefined;
   let delta = undefined;
   if (demo) {
+    // Hardcoded Delta format
     delta = text;
   } else if (text.startsWith('{"ops":', 0)) {
+    // Delta format
     delta = JSON.parse(text);
+    speakers = parseSpeakers(delta);
   } else {
+    // Html
     const { html, speakerArray } = loadHtml(text);
     htmlContent = html;
     speakers = speakerArray;

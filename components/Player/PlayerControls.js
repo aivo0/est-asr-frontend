@@ -33,7 +33,7 @@ function PlayerControls(props) {
       <div className="controls-middle">
         <IconButton
           icon="fast-backward"
-          title="5 sekundit tagasi"
+          title="5s tagasi (Alt+1)"
           onClick={onBackward}
           height={40}
           marginRight={16}
@@ -41,7 +41,7 @@ function PlayerControls(props) {
         {playing ? (
           <IconButton
             icon="pause"
-            title="Peata"
+            title="Peata (Alt+2)"
             onClick={onPause}
             height={40}
             marginRight={16}
@@ -49,15 +49,16 @@ function PlayerControls(props) {
         ) : (
           <IconButton
             icon="play"
-            title="Mängi"
+            title="Mängi (Alt+2)"
             onClick={onPlay}
             height={40}
             marginRight={16}
+            children="Back"
           />
         )}
         <IconButton
           icon="fast-forward"
-          title="5 sekundit edasi"
+          title="5s edasi (Alt+3)"
           onClick={onForward}
           height={40}
           marginRight={16}
@@ -66,7 +67,7 @@ function PlayerControls(props) {
       {muted ? (
         <IconButton
           className="controls__mute"
-          title="Heli tagasi"
+          title="Heli tagasi (Alt+M)"
           icon="volume-off"
           onClick={toggleMute}
           height={40}
@@ -76,7 +77,7 @@ function PlayerControls(props) {
         <IconButton
           className="controls__mute"
           icon="volume-up"
-          title="Vaigista heli"
+          title="Vaigista heli (Alt+M)"
           onClick={toggleMute}
           height={40}
           marginRight={16}

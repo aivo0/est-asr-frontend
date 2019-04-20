@@ -1,6 +1,4 @@
 // This cannot be server-rendered because quill library accesses the Document object directly!
-import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
@@ -9,22 +7,12 @@ import ReactDOM from "react-dom";
 import { Button, Icon, toaster } from "evergreen-ui";
 import debounce from "lodash/debounce";
 let BlockEmbed = Quill.import("blots/block/embed");
-//let Inline = Quill.import("blots/inline");
 var Delta = Quill.import("delta");
 import Speaker from "./Speaker";
 import createOption from "../lib/createOption";
 import { endpoint, prodEndpoint } from "../config";
 
-const UPDATE_FILE_SPEAKERS_MUTATION = gql`
-  mutation UPDATE_FILE_SPEAKERS_MUTATION($id: ID!, $speakers: [String]) {
-    updateFileSpeakers(id: $id, speakers: $speakers) {
-      message
-    }
-  }
-`;
-
 function handleClick(e) {
-  //console.log(getOffset(e.target).left, getOffset(e.target).top);
   if (window.myWaveSurferPlayer) {
     window.myWaveSurferPlayer.startTime = parseFloat(
       e.target.getAttribute("start")
@@ -62,17 +50,6 @@ const downloadHandler = (delta, author, title) => {
     .catch(e => console.log(e));
 };
 
-/* class WordBlot extends Inline {
-  static create(value) {
-    let node = super.create();
-    node.addEventListener("click", handleClick, false);
-    return node;
-  }
-}
-WordBlot.blotName = "word";
-WordBlot.tagName = "span";
-Quill.register(WordBlot); */
-
 const Parchment = Quill.import("parchment");
 const Start = new Parchment.Attributor.Attribute("start", "start", {
   scope: Parchment.Scope.INLINE
@@ -90,13 +67,6 @@ const Confidence = new Parchment.Attributor.Attribute(
   }
 );
 Quill.register(Confidence, true);
-
-/* const Parchment = Quill.import("parchment");
-var boxAttributor = new Parchment.Attributor.Class("box", "line", {
-  scope: Parchment.Scope.INLINE,
-  whitelist: ["solid", "double", "dotted"]
-});
-Quill.register(boxAttributor); */
 
 class SpeakerBlot extends BlockEmbed {
   static create(id, start, end) {
@@ -118,10 +88,7 @@ class Editor extends React.Component {
     super(props);
     this.state = {
       loaded: false
-      //text: new Delta(text)
-      /* "<speaker id='1234'>Kõneleja</speaker><p>test</p>"  */
-      /* this.props.html */
-    }; // You can also pass a Quill Delta here
+    };
     this.handleChange = this.handleChange.bind(this);
     this.quillRef = null; // Quill instance
     this.reactQuillRef = null; // ReactQuill component
@@ -183,7 +150,6 @@ class Editor extends React.Component {
     window.myEditorRef = this.quillRef;
     window.myDeltaRef = Delta;
     const words = new Map();
-    //document.querySelector(".ql-speaker").textContent = "Kõneleja";
     ReactDOM.render(
       <Icon
         marginLeft={5}
@@ -336,7 +302,7 @@ class Editor extends React.Component {
     "confidence"
   ];
 
-  saveChanges = async (text, updateFileSpeakersMutation) => {
+  saveChanges = async text => {
     const res = await fetch(
       (process.env.NODE_ENV === "development" ? endpoint : prodEndpoint) +
         `/transcript?id=${this.props.id}`,
@@ -347,32 +313,31 @@ class Editor extends React.Component {
         },
         body: JSON.stringify(text)
       }
-    );
-    const res2 = await updateFileSpeakersMutation({
-      variables: {
-        id: this.props.id,
-        speakers: window.mySpeakerArray.map(sp => sp.label)
-      }
-    });
-    toaster.success("Salvestatud!", {
-      duration: 2,
-      id: "saved-toast"
-    });
+    )
+      .then(res => {
+        toaster.success("Salvestatud!", {
+          duration: 2,
+          id: "saved-toast"
+        });
+      })
+      .catch(e => {
+        toaster.danger(
+          "Viga automaatsel salvestamisel! Kontrolli internetiühendust.",
+          {
+            duration: 120,
+            id: "saved-toast"
+          }
+        );
+      });
   };
   debouncedSave = debounce(this.saveChanges, 15000, {
     leading: false,
     trailing: true
   });
 
-  handleChange = (
-    content,
-    delta,
-    source,
-    editor,
-    updateFileSpeakersMutation
-  ) => {
+  handleChange = (content, delta, source, editor) => {
     if (this.state.loaded && !this.props.demo) {
-      this.debouncedSave(editor.getContents(), updateFileSpeakersMutation);
+      this.debouncedSave(editor.getContents());
     }
   };
 
@@ -381,31 +346,21 @@ class Editor extends React.Component {
       ? this.props.delta
       : new Delta(this.props.html);
     return (
-      <Mutation mutation={UPDATE_FILE_SPEAKERS_MUTATION}>
-        {(updateFileSpeakers, { loading, error }) => (
-          <StyledEditor>
-            <ReactQuill
-              className={this.props.className}
-              defaultValue={defaultVal}
-              onChange={(content, delta, source, editor) =>
-                this.handleChange(
-                  content,
-                  delta,
-                  source,
-                  editor,
-                  updateFileSpeakers
-                )
-              }
-              modules={this.modules}
-              formats={this.formats}
-              ref={el => {
-                this.reactQuillRef = el;
-              }}
-              placeholder="Kui kõne on töödeldud, siis ilmub siia kõne transkriptsioon."
-            />
-          </StyledEditor>
-        )}
-      </Mutation>
+      <StyledEditor>
+        <ReactQuill
+          className={this.props.className}
+          defaultValue={defaultVal}
+          onChange={(content, delta, source, editor) =>
+            this.handleChange(content, delta, source, editor)
+          }
+          modules={this.modules}
+          formats={this.formats}
+          ref={el => {
+            this.reactQuillRef = el;
+          }}
+          placeholder="Kui kõne on töödeldud, siis ilmub siia kõne transkriptsioon."
+        />
+      </StyledEditor>
     );
   }
 }

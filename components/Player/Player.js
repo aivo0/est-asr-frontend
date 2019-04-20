@@ -5,7 +5,7 @@ import TimelinePlugin from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min.js
 
 import PlayerControls from "./PlayerControls";
 
-/* const createRegions = entities => {
+const createRegions = entities => {
   entities.map(entity => ({
     start: entity.entityData.start,
     end: entity.entityData.end,
@@ -13,7 +13,7 @@ import PlayerControls from "./PlayerControls";
     resize: true
   }));
 };
-
+/*
 const getRegions = (editorState, entityType = null) => {
   const content = editorState.getCurrentContent();
   const regions = [];
@@ -79,9 +79,11 @@ function Player(props) {
   };
   const play = () => {
     wavesurfer.current.play();
+    setPlaying(true);
   };
   const pause = () => {
     wavesurfer.current.pause();
+    setPlaying(false);
   };
   const seekBackward = () => {
     wavesurfer.current.skipBackward(5);
@@ -91,6 +93,11 @@ function Player(props) {
   };
   const toggleMute = () => {
     wavesurfer.current.toggleMute();
+  };
+  const togglePlay = () => {
+    wavesurfer.current.playPause();
+    if (wavesurfer.current.isPlaying()) setPlaying(true);
+    else setPlaying(false);
   };
   const updateRegions = () => {
     /* wavesurfer.current.clearRegions();
@@ -146,14 +153,42 @@ function Player(props) {
       window.myWaveSurferPlayer = {};
       window.myWaveSurferPlayer.seekTo = seekTo;
       //console.log(window.myWaveSurferPlayer.seekTo);
+
+      let isAlt = false;
+      document.onkeyup = function(e) {
+        if (e.which == 18) isAlt = false;
+      };
+      window.onkeydown = function(e) {
+        switch (e.which) {
+          case 18:
+            isAlt = true;
+            break;
+          case 49:
+            if (isAlt) seekBackward();
+            break;
+          case 50:
+            if (isAlt) togglePlay();
+            break;
+          case 32:
+            if (isAlt) togglePlay();
+            break;
+          case 51:
+            if (isAlt) seekForward();
+            break;
+          case 77:
+            if (isAlt) toggleMute();
+            break;
+        }
+      };
+
       setIsReady(true);
     });
 
     wavesurfer.current.on("pause", function() {
-      setPlaying(false);
+      //setPlaying(false);
     });
     wavesurfer.current.on("play", function() {
-      setPlaying(true);
+      //setPlaying(true);
     });
     wavesurfer.current.on("audioprocess", () =>
       highlightWord(wavesurfer.current)
@@ -173,7 +208,7 @@ function Player(props) {
     };
   }, []);
   // Regioonide lisamiseks
-  /* useEffect(() => {
+  useEffect(() => {
     console.log("clear regions", isReady);
     if (isReady) {
       wavesurfer.current.clearRegions();
@@ -181,7 +216,7 @@ function Player(props) {
         wavesurfer.current.addRegion(region)
       );
     }
-  }); */
+  });
   const waveRef = useRef(null);
   const waveTimelineRef = useRef(null);
   return (
