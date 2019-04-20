@@ -111,7 +111,6 @@ function Player(props) {
   };
   const toggleMute = () => {
     wavesurfer.current.toggleMute();
-    wavesurfer.current.exportPCM(2000, 5000);
   };
   const togglePlay = () => {
     wavesurfer.current.playPause();
