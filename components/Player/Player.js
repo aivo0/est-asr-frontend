@@ -139,11 +139,6 @@ function Player(props) {
     if (wavesurfer.current.isPlaying()) setPlaying(true);
     else setPlaying(false);
   };
-  const updateRegions = () => {
-    /* wavesurfer.current.clearRegions();
-      regions.forEach(region => wavesurfer.current.addRegion(region)); */
-    console.log("Updating regions");
-  };
   const zoomOut = () => {
     if (zoom > 5) setZoom(zoom - 20);
     wavesurfer.current.zoom(zoom);
@@ -168,9 +163,6 @@ function Player(props) {
       /* bargap: 1,
       barWidth: 3, */
       normalize: true,
-      /* !demo ||
-        (!!window.chrome &&
-          (!!window.chrome.webstore || !!window.chrome.runtime)), */
       height: 80,
       //partialRender: true,
       responsive: true,
@@ -194,25 +186,10 @@ function Player(props) {
       mediaElement
         ? wavesurfer.current.load(demoPath, demoPeaks, "metadata")
         : wavesurfer.current.load(demoPath);
+    } else if (!caches || !caches.match) {
+      // Should be iPhone Safari fallback
+      wavesurfer.current.load(url);
     } else {
-      /* let db;
-      // Version 1 of db files
-      let request = window.indexedDB.open("files", 1);
-      // onerror handler signifies that the database didn't open successfully
-      request.onerror = function() {
-        console.log("IDB failed to open");
-      };
-
-      // onsuccess handler signifies that the database opened successfully
-      request.onsuccess = function() {
-        console.log("Database opened successfully");
-
-        // Store the opened database object in the db variable. This is used a lot below
-        db = request.result;
-
-        // Run the displayData() function to display the notes already in the IDB
-        displayData();
-      }; */
       caches.match(url).then(res => {
         if (!res) {
           caches
@@ -222,16 +199,13 @@ function Player(props) {
             })
             .then(() => caches.match(url))
             .then(res => {
-              console.log(res);
               return getStream(res);
             })
             .then(stream => {
-              console.log(stream);
               return new Response(stream);
             })
             .then(response => {
               return response.blob();
-              //wavesurfer.current.loadBlob(response.blob());
             })
             .then(blob => URL.createObjectURL(blob))
             .then(url => wavesurfer.current.load(url))
@@ -241,72 +215,21 @@ function Player(props) {
           caches
             .match(url)
             .then(res => {
-              console.log(res);
               return getStream(res);
             })
             .then(stream => {
-              console.log(stream);
               return new Response(stream);
             })
             .then(response => {
               return response.blob();
-              //wavesurfer.current.loadBlob(response.blob());
             })
             .then(blob => URL.createObjectURL(blob))
             .then(url => wavesurfer.current.load(url))
             .catch(err => console.error(err));
         }
       });
-      /* .then(blob => {
-          console.log(blob);
-          const file = new File([blob], "audio.mp3");
-          wavesurfer.current.loadBlob(file);
-        }); */
-      /* if (!res) {
-          console.log("not cached");
-          caches.add(demoPath).then(() => {
-            caches.match(demoPath).then(res => {
-              console.log(res);
-              return getStream(res)
-                .then(stream => new Response(stream))
-                .then(response => {
-                  console.log(response.blob());
-                  wavesurfer.current.loadBlob(response.blob());
-                });
-            });
-          });
-        } else {
-          res => {
-            const reader = res.body.getReader();
-            console.log(reader);
-            const stream = new ReadableStream({
-              start(controller) {
-                return pump();
-                function pump() {
-                  return reader.read().then(({ done, value }) => {
-                    // When no more data needs to be consumed, close the stream
-                    if (done) {
-                      controller.close();
-                      return;
-                    }
-                    // Enqueue the next data chunk into our target stream
-                    controller.enqueue(value);
-                    return pump();
-                  });
-                }
-              }
-            });
-
-            console.log(steam);
-            response = new Response(stream);
-            console.log(response.blob);
-            wavesurfer.current.loadBlob(response.blob());
-          };
-        }
-      }); */
     }
     wavesurfer.current.on("ready", function() {
-      console.log("ready");
       wavesurfer.current.zoom(zoom);
 
       //console.log("Player ready");
