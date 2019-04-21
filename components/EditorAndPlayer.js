@@ -35,7 +35,15 @@ const EditorContainer = styled.div`
   box-shadow: ${props => props.theme.bs};
 `;
 
-function EditorAndPlayer({ text, demoPath, id, demoPeaks, path, demo }) {
+function EditorAndPlayer({
+  text,
+  demoPath,
+  id,
+  demoPeaks,
+  path,
+  demo,
+  demoSpeakers
+}) {
   const player = useRef(null);
   const editor = useRef(null);
   let speakers;
@@ -44,6 +52,7 @@ function EditorAndPlayer({ text, demoPath, id, demoPeaks, path, demo }) {
   if (demo) {
     // Hardcoded Delta format
     delta = text;
+    speakers = demoSpeakers;
   } else if (text.startsWith('{"ops":', 0)) {
     // Delta format
     delta = JSON.parse(text);

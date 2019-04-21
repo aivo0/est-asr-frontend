@@ -20,6 +20,27 @@ const WaveformLoader = styled.div`
   justify-content: center;
 `;
 
+const getStream = response => {
+  const reader = response.body.getReader();
+  return new ReadableStream({
+    start(controller) {
+      return pump();
+      function pump() {
+        return reader.read().then(({ done, value }) => {
+          // When no more data needs to be consumed, close the stream
+          if (done) {
+            controller.close();
+            return;
+          }
+          // Enqueue the next data chunk into our target stream
+          controller.enqueue(value);
+          return pump();
+        });
+      }
+    }
+  });
+};
+
 const highlightWord = playerRef => {
   if (
     window.myEditorRef &&
@@ -169,11 +190,121 @@ function Player(props) {
         })
       ]
     });
-    demo
-      ? mediaElement
+    if (demo) {
+      mediaElement
         ? wavesurfer.current.load(demoPath, demoPeaks, "metadata")
-        : wavesurfer.current.load(demoPath)
-      : wavesurfer.current.load(url);
+        : wavesurfer.current.load(demoPath);
+    } else {
+      /* let db;
+      // Version 1 of db files
+      let request = window.indexedDB.open("files", 1);
+      // onerror handler signifies that the database didn't open successfully
+      request.onerror = function() {
+        console.log("IDB failed to open");
+      };
+
+      // onsuccess handler signifies that the database opened successfully
+      request.onsuccess = function() {
+        console.log("Database opened successfully");
+
+        // Store the opened database object in the db variable. This is used a lot below
+        db = request.result;
+
+        // Run the displayData() function to display the notes already in the IDB
+        displayData();
+      }; */
+      caches.match(url).then(res => {
+        if (!res) {
+          caches
+            .open("v1")
+            .then(function(cache) {
+              return cache.add(url);
+            })
+            .then(() => caches.match(url))
+            .then(res => {
+              console.log(res);
+              return getStream(res);
+            })
+            .then(stream => {
+              console.log(stream);
+              return new Response(stream);
+            })
+            .then(response => {
+              return response.blob();
+              //wavesurfer.current.loadBlob(response.blob());
+            })
+            .then(blob => URL.createObjectURL(blob))
+            .then(url => wavesurfer.current.load(url))
+            .catch(err => console.error(err));
+        } else {
+          // TODO: remove duplication
+          caches
+            .match(url)
+            .then(res => {
+              console.log(res);
+              return getStream(res);
+            })
+            .then(stream => {
+              console.log(stream);
+              return new Response(stream);
+            })
+            .then(response => {
+              return response.blob();
+              //wavesurfer.current.loadBlob(response.blob());
+            })
+            .then(blob => URL.createObjectURL(blob))
+            .then(url => wavesurfer.current.load(url))
+            .catch(err => console.error(err));
+        }
+      });
+      /* .then(blob => {
+          console.log(blob);
+          const file = new File([blob], "audio.mp3");
+          wavesurfer.current.loadBlob(file);
+        }); */
+      /* if (!res) {
+          console.log("not cached");
+          caches.add(demoPath).then(() => {
+            caches.match(demoPath).then(res => {
+              console.log(res);
+              return getStream(res)
+                .then(stream => new Response(stream))
+                .then(response => {
+                  console.log(response.blob());
+                  wavesurfer.current.loadBlob(response.blob());
+                });
+            });
+          });
+        } else {
+          res => {
+            const reader = res.body.getReader();
+            console.log(reader);
+            const stream = new ReadableStream({
+              start(controller) {
+                return pump();
+                function pump() {
+                  return reader.read().then(({ done, value }) => {
+                    // When no more data needs to be consumed, close the stream
+                    if (done) {
+                      controller.close();
+                      return;
+                    }
+                    // Enqueue the next data chunk into our target stream
+                    controller.enqueue(value);
+                    return pump();
+                  });
+                }
+              }
+            });
+
+            console.log(steam);
+            response = new Response(stream);
+            console.log(response.blob);
+            wavesurfer.current.loadBlob(response.blob());
+          };
+        }
+      }); */
+    }
     wavesurfer.current.on("ready", function() {
       console.log("ready");
       wavesurfer.current.zoom(zoom);
