@@ -26,7 +26,6 @@ const FILE_QUERY = gql`
       textTitle
       path
       state
-      speakers
     }
   }
 `;
@@ -68,7 +67,6 @@ function Transcriber(props) {
                   text={file.initialTranscription}
                   path={file.path}
                   id={props.id}
-                  speakers={file.speakers}
                 />
               </>
             ) : (

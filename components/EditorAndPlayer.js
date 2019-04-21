@@ -35,17 +35,10 @@ const EditorContainer = styled.div`
   box-shadow: ${props => props.theme.bs};
 `;
 
-function EditorAndPlayer({
-  text,
-  demoPath,
-  id,
-  speakers,
-  demoPeaks,
-  path,
-  demo
-}) {
+function EditorAndPlayer({ text, demoPath, id, demoPeaks, path, demo }) {
   const player = useRef(null);
   const editor = useRef(null);
+  let speakers;
   let htmlContent = undefined;
   let delta = undefined;
   if (demo) {

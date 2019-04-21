@@ -49,7 +49,7 @@ function Player(props) {
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [isReady, setIsReady] = useState(false);
-  const [zoom, setZoom] = useState(10);
+  const [zoom, setZoom] = useState(20);
   const [hasRegions, setHasRegions] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
 
@@ -92,8 +92,9 @@ function Player(props) {
     }
   };
   const seekTo = pos => {
-    if (wavesurfer.current.getDuration() >= pos)
-      wavesurfer.current.seekAndCenter(pos / wavesurfer.current.getDuration());
+    if (wavesurfer.current.getDuration() >= pos) {
+      wavesurfer.current.setCurrentTime(pos);
+    }
   };
   const play = () => {
     wavesurfer.current.play();
@@ -123,29 +124,42 @@ function Player(props) {
     console.log("Updating regions");
   };
   const zoomOut = () => {
-    if (zoom > 5) setZoom(zoom - 10);
+    if (zoom > 5) setZoom(zoom - 20);
     wavesurfer.current.zoom(zoom);
   };
   const zoomIn = () => {
-    if (zoom < 205) setZoom(zoom + 10);
+    if (zoom < 205) setZoom(zoom + 20);
     wavesurfer.current.zoom(zoom);
   };
 
   let lastNode = undefined;
+  const mediaElement =
+    demo &&
+    !!window.chrome &&
+    (!!window.chrome.webstore || !!window.chrome.runtime);
   useEffect(() => {
     wavesurfer.current = WaveSurfer.create({
       container: waveRef.current,
-      backend: "MediaElement", //demoPath ? "MediaElement" : "WebAudio",
+      backend: mediaElement ? "MediaElement" : "WebAudio",
       waveColor: "violet",
       progressColor: "purple",
       autoCenter: true,
       /* bargap: 1,
       barWidth: 3, */
       normalize: true,
-      height: 0,
+      /* !demo ||
+        (!!window.chrome &&
+          (!!window.chrome.webstore || !!window.chrome.runtime)), */
+      height: 80,
       //partialRender: true,
       responsive: true,
       scrollParent: true,
+      closeAudioContext: false,
+      loopSelection: true,
+      hideScrollbar: false,
+      maxCanvasWidth: 4000,
+      pixelRatio: 1,
+      //forceDecode: true,
       plugins: [
         RegionsPlugin.create({
           regions: []
@@ -155,11 +169,13 @@ function Player(props) {
         })
       ]
     });
-    demoPath
-      ? wavesurfer.current.load(demoPath, demoPeaks, "metadata")
+    demo
+      ? mediaElement
+        ? wavesurfer.current.load(demoPath, demoPeaks, "metadata")
+        : wavesurfer.current.load(demoPath)
       : wavesurfer.current.load(url);
     wavesurfer.current.on("ready", function() {
-      wavesurfer.current.setHeight(80);
+      console.log("ready");
       wavesurfer.current.zoom(zoom);
 
       //console.log("Player ready");
@@ -197,18 +213,9 @@ function Player(props) {
       setIsReady(true);
     });
 
-    wavesurfer.current.on("pause", function() {
-      //setPlaying(false);
-    });
-    wavesurfer.current.on("play", function() {
-      //setPlaying(true);
-    });
     wavesurfer.current.on("audioprocess", () =>
       highlightWord(wavesurfer.current)
     );
-    /* wavesurfer.current.on("audioprocess", function(time) {
-        getProgress(time);
-      }); */
     wavesurfer.current.on("mute", function(value) {
       setMuted(value);
     });
