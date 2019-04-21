@@ -44,18 +44,20 @@ const FILE_QUERY = gql`
 `; */
 
 function Transcriber(props) {
+  let succeededOnce = false;
   return (
     <Query
       query={FILE_QUERY}
       variables={{ fileId: props.id }}
-      pollInterval={5000}
+      pollInterval={15000}
     >
       {({ error, loading, data, startPolling, stopPolling }) => {
-        if (error) return <Error error={error} />;
+        if (error && !succeededOnce) return <Error error={error} />;
         if (loading) return <p>Laeb...</p>;
         if (!data.file) return <p>Ei leitud faili koodiga {props.id}</p>;
         const file = data.file;
         if (file.initialTranscription) stopPolling();
+        succeededOnce = true;
         return (
           <TranscriberStyles>
             {file.initialTranscription ? (
