@@ -180,7 +180,7 @@ function Player(props) {
       ]
     });
     if (demo /*  && mediaElement */) {
-      wavesurfer.current.load(path, demoPeaks, "metadata");
+      wavesurfer.current.load(path, demoPeaks, "auto");
     } else if (!caches || !caches.match) {
       // Should be iPhone Safari fallback
       wavesurfer.current.load(path);
