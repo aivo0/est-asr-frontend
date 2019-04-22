@@ -18,9 +18,10 @@ const StyledControls = styled.div`
     justify-content: center;
     width: 100%;
   }
-
-  .controls__mute {
-    align-self: flex-end;
+  .controls-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -134,25 +135,27 @@ function PlayerControls(props) {
           marginRight={16}
         />
       </div>
-      {muted ? (
-        <IconButton
-          className="controls__mute"
-          title="Heli tagasi (Alt+M)"
-          icon="volume-off"
-          onClick={toggleMute}
-          height={40}
-          marginRight={16}
-        />
-      ) : (
-        <IconButton
-          className="controls__mute"
-          icon="volume-up"
-          title="Vaigista heli (Alt+M)"
-          onClick={toggleMute}
-          height={40}
-          marginRight={16}
-        />
-      )}
+      <div className="controls-right">
+        {muted ? (
+          <IconButton
+            className="controls__mute"
+            title="Heli tagasi (Alt+M)"
+            icon="volume-off"
+            onClick={toggleMute}
+            height={40}
+            marginRight={16}
+          />
+        ) : (
+          <IconButton
+            className="controls__mute"
+            icon="volume-up"
+            title="Vaigista heli (Alt+M)"
+            onClick={toggleMute}
+            height={30}
+            marginRight={16}
+          />
+        )}
+      </div>
     </StyledControls>
   );
 }
