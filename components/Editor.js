@@ -44,6 +44,7 @@ const downloadHandler = (delta, author, title) => {
       a.href = url;
       a.download = "transkriptsioon.docx";
       document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+      console.log(a);
       a.click();
       a.remove(); //afterwards we remove the element again
     })
@@ -415,7 +416,7 @@ const StyledEditor = styled.div`
     background-color: rgb(249, 204, 249);
   }
   span[confidence] {
-    display: inline-block; /*bug fix*/
+    display: inline-block;
     position: relative;
     text-decoration: none;
   }
@@ -423,9 +424,9 @@ const StyledEditor = styled.div`
     content: attr(confidence);
     position: absolute;
     bottom: 130%;
-    left: 20%;
+    left: -40%;
     background: ${props => props.theme.black};
-    padding: 5px 15px;
+    padding: 5px 5px;
     color: white;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;

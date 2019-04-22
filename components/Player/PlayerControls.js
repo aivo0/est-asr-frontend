@@ -142,7 +142,7 @@ function PlayerControls(props) {
             title="Heli tagasi (Alt+M)"
             icon="volume-off"
             onClick={toggleMute}
-            height={40}
+            height={30}
             marginRight={16}
           />
         ) : (
