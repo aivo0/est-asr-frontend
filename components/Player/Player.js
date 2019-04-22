@@ -150,14 +150,14 @@ function Player(props) {
   };
 
   let lastNode = undefined;
-  const mediaElement =
+  /* const mediaElement =
     demo &&
     !!window.chrome &&
-    (!!window.chrome.webstore || !!window.chrome.runtime);
+    (!!window.chrome.webstore || !!window.chrome.runtime); */
   useEffect(() => {
     wavesurfer.current = WaveSurfer.create({
       container: waveRef.current,
-      backend: mediaElement ? "MediaElement" : "WebAudio",
+      backend: demo ? "MediaElement" : "WebAudio",
       waveColor: "violet",
       progressColor: "purple",
       autoCenter: true,
