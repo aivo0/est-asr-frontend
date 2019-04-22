@@ -227,9 +227,8 @@ function Player(props) {
     wavesurfer.current.on("ready", function() {
       if (window.innerWidth < 450) {
         wavesurfer.current.setHeight(40);
-      } else {
-        wavesurfer.current.zoom(zoom);
       }
+      wavesurfer.current.zoom(zoom);
 
       //console.log("Player ready");
       window.myWaveSurferPlayer = {};

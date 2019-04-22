@@ -469,8 +469,7 @@ const StyledEditor = styled.div`
   }
   .ql-header,
   .ql-list,
-  .ql-picker,
-  .ql-align,
+  .ql-color-picker,
   .ql-image,
   .ql-link {
     @media (max-width: 450px) {
