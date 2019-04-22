@@ -68,33 +68,35 @@ function EditorAndPlayer({
     speakers = speakerArray;
   }
   return (
-    <PageContainer>
-      <EditorContainer>
-        <Editor
-          html={htmlContent}
-          delta={delta}
-          speakers={speakers}
-          ref={editor}
-          id={id}
-          demo={demo}
-        />
-      </EditorContainer>
-      <StyledPlayer>
-        <Player
-          url={`${
-            process.env.NODE_ENV === "development" ? endpoint : prodEndpoint
-          }/uploads?path=${path}`}
-          //onRegionChange
-          //seek
-          demoPeaks={demoPeaks}
-          demoPath={demoPath}
-          ref={player}
-          demo={demo}
-          //getProgress={getProgress}
-          //regions={regions}
-        />
-      </StyledPlayer>
-    </PageContainer>
+    <>
+      <PageContainer>
+        <EditorContainer>
+          <Editor
+            html={htmlContent}
+            delta={delta}
+            speakers={speakers}
+            ref={editor}
+            id={id}
+            demo={demo}
+          />
+        </EditorContainer>
+        <StyledPlayer>
+          <Player
+            url={`${
+              process.env.NODE_ENV === "development" ? endpoint : prodEndpoint
+            }/uploads?path=${path}`}
+            //onRegionChange
+            //seek
+            demoPeaks={demoPeaks}
+            demoPath={demoPath}
+            ref={player}
+            demo={demo}
+            //getProgress={getProgress}
+            //regions={regions}
+          />
+        </StyledPlayer>
+      </PageContainer>
+    </>
   );
 }
 
