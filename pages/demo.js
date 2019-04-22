@@ -8,6 +8,9 @@ const Inner = styled.div`
   padding: 2rem;
   background: ${props => props.theme.backgroundGrey};
   min-height: 80vh;
+  @media (max-width: 450px) {
+    padding: 10px;
+  }
 `;
 
 const Demo = props => (

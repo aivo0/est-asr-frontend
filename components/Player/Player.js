@@ -15,10 +15,6 @@ const Waveform = styled.div`
     opacity: 0.3;
   }
 `;
-const WaveformLoader = styled.div`
-  display: flex;
-  justify-content: center;
-`;
 
 const getStream = response => {
   const reader = response.body.getReader();

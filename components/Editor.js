@@ -467,6 +467,21 @@ const StyledEditor = styled.div`
   span[confidence]:hover:before {
     opacity: 1;
   }
+  .ql-header,
+  .ql-list,
+  .ql-picker,
+  .ql-align,
+  .ql-image,
+  .ql-link {
+    @media (max-width: 450px) {
+      display: none !important;
+    }
+  }
+  .ql-formats {
+    @media (max-width: 450px) {
+      margin: 0 !important;
+    }
+  }
 `;
 
 export default Editor;
