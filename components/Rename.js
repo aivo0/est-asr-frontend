@@ -5,6 +5,9 @@ import createOption from "../lib/createOption";
 
 const Container = styled.div`
   cursor: pointer;
+  @media (max-width: 450px) {
+    display: none !important;
+  }
 `;
 
 const StyledInput = styled.input`
