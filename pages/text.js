@@ -10,6 +10,8 @@ const Inner = styled.div`
     padding: 10px;
   }
   .my-survey {
+    display: flex;
+    justify-content: center;
     margin-top: 0;
     padding-top: 0;
     margin-bottom: 10px;

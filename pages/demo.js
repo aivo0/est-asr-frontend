@@ -15,6 +15,8 @@ const Inner = styled.div`
     margin-top: 0;
     padding-top: 0;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
     p,
     a {
       font-size: 16px !important;
