@@ -29,7 +29,7 @@ const Nav = () => (
           {!me && (
             <>
               <Link href="/demo">
-                <a>Demo</a>
+                <a>Vaata demo</a>
               </Link>
               <Link href="/signup">
                 <a>Logi sisse</a>

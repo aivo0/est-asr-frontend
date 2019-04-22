@@ -66,6 +66,7 @@ const highlightWord = playerRef => {
 
 function Player(props) {
   const { demoPath, url, demoPeaks, ref, demo } = props;
+  const path = demoPath ? demoPath : url;
   const wavesurfer = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -182,22 +183,20 @@ function Player(props) {
         })
       ]
     });
-    if (demo) {
-      mediaElement
-        ? wavesurfer.current.load(demoPath, demoPeaks, "metadata")
-        : wavesurfer.current.load(demoPath);
+    if (demo /*  && mediaElement */) {
+      wavesurfer.current.load(path, demoPeaks, "metadata");
     } else if (!caches || !caches.match) {
       // Should be iPhone Safari fallback
-      wavesurfer.current.load(url);
+      wavesurfer.current.load(path);
     } else {
-      caches.match(url).then(res => {
+      caches.match(path).then(res => {
         if (!res) {
           caches
             .open("v1")
             .then(function(cache) {
-              return cache.add(url);
+              return cache.add(path);
             })
-            .then(() => caches.match(url))
+            .then(() => caches.match(path))
             .then(res => {
               return getStream(res);
             })
@@ -213,7 +212,7 @@ function Player(props) {
         } else {
           // TODO: remove duplication
           caches
-            .match(url)
+            .match(path)
             .then(res => {
               return getStream(res);
             })

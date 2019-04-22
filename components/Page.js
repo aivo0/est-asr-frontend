@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Meta from "../components/Meta";
 
 const theme = {
-  red: "#FF0000",
+  red: "#FE621D",
   black: "#393939",
   grey: "#3A3A3A",
   lightgrey: "#E1E1E1",
@@ -26,12 +26,6 @@ const Inner = styled.div`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'open_sans';
-    src: url('/static/OpenSans-Regular.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
   html {
     box-sizing: border-box;
     font-size: 10px;

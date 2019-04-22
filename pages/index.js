@@ -1,141 +1,160 @@
 import styled from "styled-components";
-import { Icon } from "evergreen-ui";
-import { Button } from "evergreen-ui/commonjs/buttons";
 import Link from "next/link";
 
-const Inner = styled.div`
-  margin-top: 20px;
+const Container = styled.div`
   display: grid;
-  grid-template-columns: minmax(10px, 1fr) 5fr 5fr minmax(10px, 1fr);
-  grid-template-rows: auto auto auto auto auto;
-  grid-column-gap: 50px;
-  grid-row-gap: 20px;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+  grid-template-rows: 472px minmax(472px, auto);
   line-height: 1.5;
-  justify-items: center;
-  h1 {
-    font-size: 48px;
+  @media (max-width: 700px) {
+    grid-template-columns: minmax(320px, 1fr);
+  }
+`;
+
+const Hero = styled.div`
+  /* justify-self: center; */
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  background-color: #4357ad;
+  @media (max-width: 700px) {
+    grid-column-end: 2;
+  }
+
+  div {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url("/static/hero.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 90%;
+    height: 100%;
+    background-blend-mode: multiply;
+    background-color: #4357ad;
+    h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: #ffffff;
+      padding-bottom: 5px;
+    }
+    button {
+      width: 210px;
+      height: 50px;
+      border-radius: 30px;
+      background-color: #d2f1e4;
+      font-family: OpenSans;
+      font-size: 18px;
+      font-weight: 600;
+      color: #4357ad;
+      cursor: pointer;
+    }
+  }
+`;
+const Message = styled.div`
+  background-color: #d2f1e4;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  div {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url("/static/background.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #d2f1e4;
+    background-blend-mode: multiply;
+  }
+  h3 {
+    font-family: PlayfairDisplay;
+    font-size: 36px;
+    font-weight: bold;
+    color: #4357ad;
+  }
+`;
+
+const Features = styled.div`
+  margin: 70px 20px 50px 80px;
+  @media (max-width: 700px) {
+    margin: 35px 20px 35px 35px;
   }
   p {
+    font-family: PlayfairDisplay;
     font-size: 24px;
+    font-weight: bold;
+    color: #4357ad;
   }
-  ul > div {
+  ul {
+    margin-block-start: 0;
+    padding-inline-start: 0;
+  }
+  li {
+    color: #313638;
     display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+    img {
+      margin-right: 22px;
+    }
+    p {
+      font-family: OpenSans;
+      font-size: 20px;
+      font-weight: normal;
+      color: #313638;
+    }
   }
-  span {
-    font-size: 18px;
-  }
-  div > img {
-    width: 300px;
-    box-shadow: ${props => props.theme.bs};
-  }
-`;
-
-const AlignLeft = styled.div`
-  justify-self: center;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  min-width: 350px;
-  @media (max-width: 930px) {
-    grid-column-end: 4;
-    min-width: 300px;
-  }
-`;
-
-const AlignRight = styled.div`
-  justify-self: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  min-width: 350px;
-  @media (max-width: 930px) {
-    grid-column-start: 2;
-    min-width: 300px;
-  }
-`;
-
-const Middle = styled.div`
-  grid-column-start: 2;
-  grid-column-end: 4;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
-`;
-
-const EditorImg = styled.img`
-  box-shadow: ${props => props.theme.bs};
-  align-self: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  @media (max-width: 930px) {
-    grid-column-start: 2;
-    width: 100%;
-  }
-  width: 450px;
 `;
 
 const Home = props => (
-  <Inner>
-    <AlignLeft>
-      <h1>Transkriptsioon oma helisalvestisest</h1>
-      <p>Heli töödeldakse algoritmi abil. Teksti täiendamisel on siin abiks:</p>
+  <Container>
+    <Hero>
+      <div>
+        <h1>Transkriptsioon oma helisalvestisest</h1>
+        <Link href="/signup">
+          <button>Logi sisse</button>
+        </Link>
+      </div>
+    </Hero>
+    <Message>
+      <div>
+        <h3>Heli töödeldakse TalTechis loodud tehnoloogiaga.</h3>
+      </div>
+    </Message>
+    <Features>
+      <p>Teksti täiendamisel on siin abiks:</p>
       <ul>
-        <div>
-          <Icon icon="headset" color="disabled" marginRight={15} size={30} />
-          <span>Integreeritud helimängija</span>
-        </div>
-        <div>
-          <Icon icon="edit" marginRight={15} size={30} />
-          <span>Lihtne tekstiredaktor</span>
-        </div>
-        <div>
-          <Icon icon="people" color="success" marginRight={15} size={30} />
-          <span>
-            Kõnelejatega tekstiplokid. Kõnelejate vahetumise tuvastab algoritm
-            automaatselt
-          </span>
-        </div>
-        <div>
-          <Icon
-            icon="cloud-download"
-            color="selected"
-            marginRight={15}
-            size={30}
-          />
-          <span>Valmis teksti saab ka failina eksportida</span>
-        </div>
+        <li>
+          <img src="/static/headphones.svg" alt="helimängija" />
+          <p>Integreeritud helimängija</p>
+        </li>
+        <li>
+          <img src="/static/pencil.svg" alt="tekstiredaktor" />
+          <p>Lihtne tekstiredaktor</p>
+        </li>
+        <li>
+          <img src="/static/chatbubble.svg" alt="kõneleja-tuvastamine" />
+          <p>Kõnelejate vahetumise automaatne tuvastamine</p>
+        </li>
+        <li>
+          <img src="/static/download.svg" alt="alla-laadimine" />
+          <p> Valmis teksti saab ka failina eksportida</p>
+        </li>
       </ul>
-    </AlignLeft>
-
-    <EditorImg src="/static/editor50.png" alt="Tekstiredaktori kuvatõmmis" />
-
-    <AlignLeft>
-      <p>Info algoritmi ebakindlusest, et vigu oleks lihtsam leida</p>
-      <img src="/static/confidence.png" />
-    </AlignLeft>
-    <AlignRight>
-      <p>Kõnelejate valimine ja ümber nimetamine</p>
-      <img src="/static/speaker_selection.png" />
-    </AlignRight>
-    <Middle>
-      <Link href="/signup">
-        <Button
-          height={48}
-          appearance="primary"
-          intent="success"
-          marginRight={20}
-        >
-          Loo konto
-        </Button>
-      </Link>
-      <Link href="/demo">
-        <Button height={48} marginLeft={20}>
-          Vaata demo
-        </Button>
-      </Link>
-    </Middle>
-  </Inner>
+    </Features>
+  </Container>
 );
 
 export default Home;

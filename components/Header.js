@@ -16,23 +16,25 @@ Router.onRouteChangeError = () => {
 };
 
 const Logo = styled.h1`
-  font-family: "Monserrat";
-  font-size: 4rem;
   margin-right: 1rem;
   position: relative;
   z-index: 2;
   margin-block-start: 0;
   margin-block-end: 0;
+  cursor: pointer;
   a {
     padding: 0.5rem 1rem;
-    color: ${props => props.theme.black};
     text-underline-position: uppercase;
     text-decoration: none;
-    cursor: pointer;
+    font-family: PlayfairDisplay;
+    font-size: 24px;
+    font-weight: bold;
+    color: #313638;
   }
   @media (max-width: 700px) {
     margin: 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 `;
 
@@ -40,6 +42,10 @@ const InnerContainer = styled.div`
   display: flex;
   align-items: center;
   max-height: 90px;
+  margin-left: 60px;
+  @media (max-width: 700px) {
+    margin: 0;
+  }
 `;
 
 const StyledHeader = styled.header`
@@ -62,7 +68,7 @@ const Header = () => (
       <Logo>
         <Link href="/">
           <InnerContainer>
-            <Icon icon="pulse" size={50} color="danger" marginLeft={10} />
+            <img src="/static/logo.svg" alt="logo" />
             <a>Tekstiks</a>
           </InnerContainer>
         </Link>

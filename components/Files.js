@@ -24,8 +24,8 @@ const Center = styled.div`
 
 const FilesList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-gap: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   padding-top: 30px;
