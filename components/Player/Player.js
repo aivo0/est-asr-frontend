@@ -225,7 +225,11 @@ function Player(props) {
       });
     }
     wavesurfer.current.on("ready", function() {
-      wavesurfer.current.zoom(zoom);
+      if (window.innerWidth < 450) {
+        wavesurfer.current.setHeight(40);
+      } else {
+        wavesurfer.current.zoom(zoom);
+      }
 
       //console.log("Player ready");
       window.myWaveSurferPlayer = {};
