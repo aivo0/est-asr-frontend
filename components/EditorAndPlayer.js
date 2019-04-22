@@ -8,7 +8,7 @@ import parseSpeakers from "../lib/parseSpeakers";
 const Editor = dynamic(() => import("./Editor"), {
   ssr: false,
   loading: () => (
-    <p style={{ marginLeft: 40 + "px" }}>Laeb teksiredaktorit ...</p>
+    <p style={{ marginLeft: 40 + "px" }}>Laeb tekstiredaktorit ...</p>
   )
 });
 const Player = dynamic(() => import("./Player/Player"), {
