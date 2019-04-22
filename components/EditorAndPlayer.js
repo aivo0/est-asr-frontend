@@ -6,10 +6,14 @@ import { endpoint, prodEndpoint } from "../config";
 import parseSpeakers from "../lib/parseSpeakers";
 
 const Editor = dynamic(() => import("./Editor"), {
-  ssr: false
+  ssr: false,
+  loading: () => (
+    <p style={{ marginLeft: 40 + "px" }}>Laeb teksiredaktorit ...</p>
+  )
 });
 const Player = dynamic(() => import("./Player/Player"), {
-  ssr: false
+  ssr: false,
+  loading: () => <p style={{ marginLeft: 40 + "px" }}>Laeb helimängijat ...</p>
 });
 
 const StyledPlayer = styled.div`
