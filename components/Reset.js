@@ -56,10 +56,10 @@ class Reset extends Component {
             }}
           >
             <fieldset disabled={loading} aria-busy={loading}>
-              <h2>Reset Your Password</h2>
+              <h2>Lähtesta oma parool</h2>
               <Error error={error} />
               <label htmlFor="password">
-                Password
+                Uus parool
                 <input
                   type="password"
                   name="password"
@@ -70,7 +70,7 @@ class Reset extends Component {
               </label>
 
               <label htmlFor="confirmPassword">
-                Confirm Your Password
+                Uue parooli kinnitus
                 <input
                   type="password"
                   name="confirmPassword"
