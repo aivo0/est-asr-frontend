@@ -74,7 +74,7 @@ class UploadFile extends Component {
                   accept="audio/*"
                   id="file"
                   name="file"
-                  placeholder="Lae helisalvestis ülesse"
+                  placeholder="Lae helisalvestis ülesse (kuni 100 MB)"
                   required
                   onChange={this.handleChange}
                 />
