@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import styled from "styled-components";
+import Link from "next/link";
 import File from "./File";
 import User from "./User";
 
@@ -29,6 +30,10 @@ const FilesList = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   padding-top: 30px;
+  p > a {
+    border-bottom: 2px solid #fe621d;
+    cursor: pointer;
+  }
 `;
 
 class Files extends Component {
@@ -56,9 +61,17 @@ class Files extends Component {
                   }
                   return (
                     <FilesList>
-                      {data.filesByUser.map(file => (
-                        <File file={file} key={file.id} />
-                      ))}
+                      {data.filesByUser.length > 0 ? (
+                        data.filesByUser.map(file => (
+                          <File file={file} key={file.id} />
+                        ))
+                      ) : (
+                        <Link href="/upload">
+                          <p>
+                            Lae ülesse <a>oma esimene fail</a>.
+                          </p>
+                        </Link>
+                      )}
                     </FilesList>
                   );
                 }}
