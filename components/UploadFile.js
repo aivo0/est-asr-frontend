@@ -30,7 +30,7 @@ class UploadFile extends Component {
     const file = files[0];
     this.setState({ file });
   };
-  update = (cache, payload) => {
+  /* update = (cache, payload) => {
     // manually update the cache on the client, so it matches the server
     // 1. Read the cache for the files we want
     const data = cache.readQuery({ query: FILES_BY_USER });
@@ -39,15 +39,11 @@ class UploadFile extends Component {
     data.filesByUser = data.filesByUser.concat(payload.data.singleUpload);
     // 3. Put the files back!
     cache.writeQuery({ query: FILES_BY_USER, data });
-  };
+  }; */
 
   render() {
     return (
-      <Mutation
-        mutation={UPLOAD_FILE_MUTATION}
-        variables={this.state}
-        update={this.update}
-      >
+      <Mutation mutation={UPLOAD_FILE_MUTATION} variables={this.state}>
         {(singleUpload, { loading, error }) => (
           <Form
             data-test="form"
