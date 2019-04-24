@@ -5,6 +5,7 @@ import gql from "graphql-tag";
 import Router from "next/router";
 import Form from "./styles/Form";
 import Error from "./ErrorMessage";
+import styled from "styled-components";
 import { FILES_BY_USER } from "./Files";
 
 const UPLOAD_FILE_MUTATION = gql`
@@ -18,6 +19,10 @@ const UPLOAD_FILE_MUTATION = gql`
       state
     }
   }
+`;
+
+const InfoP = styled.p`
+  font-weight: normal;
 `;
 
 class UploadFile extends Component {
@@ -64,7 +69,8 @@ class UploadFile extends Component {
             <Error error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
               <label htmlFor="file">
-                Helisalvestis
+                <h3>Helisalvestis</h3>
+
                 <input
                   type="file"
                   accept="audio/*"
@@ -74,6 +80,10 @@ class UploadFile extends Component {
                   required
                   onChange={this.handleChange}
                 />
+                <InfoP>
+                  Toetatud formaadid: wav, mp3, ogg, mp2, m4a, mp4, flac, amr,
+                  mpg. Faili suurus kuni 100 MB.
+                </InfoP>
               </label>
 
               <button type="submit">Lae ülesse</button>
