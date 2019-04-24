@@ -83,7 +83,10 @@ function Transcriber(props) {
                   </h3>
                 ) : null}
 
-                <p>Lehte uuendatakse automaatselt!</p>
+                <p>
+                  <b>Lehte uuendatakse automaatselt!</b> Normaalse koormuse
+                  korral on töötlemise aeg ligikaudu pool helifaili kestusest.
+                </p>
                 <EditorAndPlayer
                   text=""
                   path={file.path}
