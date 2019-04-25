@@ -415,59 +415,36 @@ const StyledEditor = styled.div`
   .highlighted {
     background-color: rgb(249, 204, 249);
   }
+
   span[confidence] {
-    display: inline-block;
     position: relative;
-    text-decoration: none;
   }
   span[confidence]:after {
+    position: absolute;
+    padding: 8px;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    background-color: ${props => props.theme.black};
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #fff;
     content: attr(confidence);
-    position: absolute;
-    bottom: 130%;
-    left: -40%;
-    background: ${props => props.theme.black};
-    padding: 5px 5px;
-    color: white;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    border-radius: 10px;
-    white-space: nowrap;
+    min-width: 100px;
+    /* width: -moz-max-content; */
+    /* width: -webkit-max-content; */
     opacity: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-  }
-  span[confidence]:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 20px solid ${props => props.theme.black};
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    opacity: 0;
-    left: 30%;
-    bottom: 90%;
+    transition: all 0.2s ease-in-out 0.25s;
+    visibility: hidden;
+    z-index: 2;
+    bottom: 150%;
+    left: -20px;
   }
   span[confidence]:hover:after {
-    bottom: 100%;
-  }
-  span[confidence]:hover:before {
-    bottom: 70%;
-  }
-  span[confidence]:hover:after,
-  span[confidence]:hover:before {
     opacity: 1;
+    visibility: visible;
+    bottom: 120%;
   }
+
   .ql-header,
   .ql-list,
   .ql-color-picker,
