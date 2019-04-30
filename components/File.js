@@ -17,6 +17,10 @@ const SpinnerContainer = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
+  p {
+    flex-grow: 0;
+    padding: 0;
+  }
 `;
 
 export default class Item extends Component {
@@ -76,7 +80,7 @@ export default class Item extends Component {
         <>
           {file.state === "UPLOADED" || file.state === "PROCESSING" ? (
             <SpinnerContainer>
-              <p>Staatus: {text}</p>
+              <p>Staatus:</p> {text}
               <Spinner size={15} marginLeft={2} />
             </SpinnerContainer>
           ) : (
