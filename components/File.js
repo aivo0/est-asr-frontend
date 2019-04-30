@@ -76,7 +76,7 @@ export default class Item extends Component {
         <>
           {file.state === "UPLOADED" || file.state === "PROCESSING" ? (
             <SpinnerContainer>
-              Staatus: {text}
+              <p>Staatus: {text}</p>
               <Spinner size={15} marginLeft={2} />
             </SpinnerContainer>
           ) : (
