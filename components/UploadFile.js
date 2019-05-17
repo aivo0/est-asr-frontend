@@ -73,7 +73,7 @@ class UploadFile extends Component {
 
                 <input
                   type="file"
-                  accept="audio/*"
+                  accept="audio/*,video/*,audio/wav,audio/x-wav,audio/mp3,audio/mpeg,audio/ogg,video/ogg,video/x-mpeg2,video/mpeg2,audio/x-m4a,audio/flac,audio/x-flac,audio/x-amr,audio/amr"
                   id="file"
                   name="file"
                   placeholder="Lae helisalvestis ülesse (kuni 100 MB)"

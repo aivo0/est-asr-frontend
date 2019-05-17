@@ -56,6 +56,16 @@ function Transcriber(props) {
         if (loading) return <p>Laeb...</p>;
         if (!data.file) return <p>Ei leitud faili koodiga {props.id}</p>;
         const file = data.file;
+        if (file.state === "PROCESSING_ERROR") {
+          return (
+            <Error
+              error={{
+                message:
+                  "Faili transkribeerimine ebaõnnestus! Kontrolli, kas fail oli sobivas formaadis ja mitte liiga suur."
+              }}
+            />
+          );
+        }
         if (file.initialTranscription) stopPolling();
         succeededOnce = true;
         return (

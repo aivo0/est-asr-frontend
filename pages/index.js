@@ -57,6 +57,9 @@ const Hero = styled.div`
       color: #4357ad;
       cursor: pointer;
     }
+    button:hover {
+      background-color: #ade4cc;
+    }
   }
 `;
 const Message = styled.div`
